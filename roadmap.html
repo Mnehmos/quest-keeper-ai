@@ -7,6 +7,11 @@
     <meta name="description" content="Development roadmap for Quest Keeper AI - from text-based proof-of-concept to multiplayer platform">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Override sticky navigation */
+        nav {
+            position: static !important;
+        }
+
         .roadmap-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -20,6 +25,7 @@
             background: rgba(0, 255, 136, 0.05);
             border: 2px solid var(--primary);
             border-radius: 4px;
+            position: static !important;
         }
 
         .roadmap-header h1 {
@@ -314,6 +320,19 @@
     </style>
 </head>
 <body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🎲 QUEST KEEPER</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="analysis.html">Analysis</a>
+                <a href="roadmap.html" class="active">Roadmap</a>
+                <a href="quickstart.html">Quick Start</a>
+                <a href="api-reference.html">API Reference</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="roadmap-container">
         <div class="roadmap-header">
             <h1>&gt; IMPLEMENTATION_ROADMAP</h1>
@@ -336,7 +355,6 @@
                     <div class="value">5 Major</div>
                 </div>
             </div>
-            <p style="margin-top: 20px;"><a href="index.html" style="color: var(--primary);">← Back to Main Site</a></p>
         </div>
 
         <div class="content-wrapper">
