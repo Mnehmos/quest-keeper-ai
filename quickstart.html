@@ -209,6 +209,13 @@
                     <h3>Compatible Platforms</h3>
 
                     <div class="platform-card">
+                        <h3>🤖 Claude Desktop</h3>
+                        <p>Official Anthropic desktop app with native MCP support</p>
+                        <p><strong>Features:</strong> Direct Claude integration, built-in MCP server management, native desktop experience</p>
+                        <p><a href="https://claude.ai/download" target="_blank">Download Claude Desktop →</a></p>
+                    </div>
+
+                    <div class="platform-card">
                         <h3>🦘 KiloCode.ai</h3>
                         <p>AI-powered coding assistant with MCP support</p>
                         <p><strong>Features:</strong> Free models available, bring your own API key, VS Code extension</p>
@@ -223,7 +230,7 @@
                     </div>
 
                     <div class="highlight-box">
-                        <p><strong>Note:</strong> Both platforms require installing as VS Code extensions. Follow their respective setup guides, then return here to configure the MCP servers.</p>
+                        <p><strong>Note:</strong> Claude Desktop has native MCP configuration. VS Code extensions (KiloCode/RooCode) require separate installation. Follow their respective setup guides, then return here to configure the MCP servers.</p>
                     </div>
                 </section>
 
@@ -282,7 +289,12 @@ PORT=3001</div>
                     <p>Add the following to your MCP settings file (location varies by platform):</p>
 
                     <div class="highlight-box">
-                        <p><strong>RooCode:</strong> Typically at <code>%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings\mcp_settings.json</code></p>
+                        <p><strong>Claude Desktop:</strong> Edit <code>claude_desktop_config.json</code></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
+                            <li>Windows: <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>RooCode:</strong> Typically at <code>%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings\mcp_settings.json</code></p>
                         <p><strong>KiloCode:</strong> Check KiloCode documentation for MCP settings location</p>
                     </div>
 
