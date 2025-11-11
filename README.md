@@ -14,7 +14,7 @@ Quest Keeper AI is **playable now** in alpha state through third-party AI code a
 - **[KiloCode.ai](https://kilocode.ai)** - AI-powered coding assistant with MCP support
 - **[RooCode.com](https://roocode.com)** - Full-featured AI development environment
 
-📖 **[Quick Start Guide](https://questkeeperai.com/quickstart.html)** - Get started in minutes
+📖 **[Quick Start Guide](https://questkeeperai.com/quickstart)** - Get started in minutes
 
 ## 🚀 Overview
 
@@ -52,10 +52,10 @@ Quest Keeper uses a dual-server architecture:
 
 ## 📚 Documentation
 
-- **[Comprehensive Analysis](https://questkeeperai.com/analysis.html)** - 18,000-word deep dive into architecture and features
-- **[API Reference](https://questkeeperai.com/api-reference.html)** - Complete documentation for all 97 MCP tools
-- **[Implementation Roadmap](https://questkeeperai.com/roadmap.html)** - Development path from alpha to multiplayer platform
-- **[Quick Start Guide](https://questkeeperai.com/quickstart.html)** - Setup instructions for all compatible platforms
+- **[Comprehensive Analysis](https://questkeeperai.com/analysis)** - 18,000-word deep dive into architecture and features
+- **[API Reference](https://questkeeperai.com/api-reference)** - Complete documentation for all 97 MCP tools
+- **[Implementation Roadmap](https://questkeeperai.com/roadmap)** - Development path from alpha to multiplayer platform
+- **[Quick Start Guide](https://questkeeperai.com/quickstart)** - Setup instructions for all compatible platforms
 
 ## 🎯 Key Features
 
@@ -140,7 +140,7 @@ Quest Keeper uses a dual-server architecture:
    Create a level 5 ranger named Lyra with high DEX and WIS
    ```
 
-See the **[Quick Start Guide](https://questkeeperai.com/quickstart.html)** for detailed setup instructions.
+See the **[Quick Start Guide](https://questkeeperai.com/quickstart)** for detailed setup instructions.
 
 ## 🎲 Example Gameplay
 
@@ -222,7 +222,7 @@ DM: [casts Hunter's Mark, consuming a 1st level spell slot]
 - Scene rendering
 - Animation system
 
-See the **[Implementation Roadmap](https://questkeeperai.com/roadmap.html)** for full details.
+See the **[Implementation Roadmap](https://questkeeperai.com/roadmap)** for full details.
 
 ## 🤝 Contributing
 

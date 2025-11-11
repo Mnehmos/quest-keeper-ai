@@ -1075,3 +1075,98 @@ footer p {
 .hero-content h1:hover {
     animation: glitch 0.3s infinite;
 }
+}
+
+/* Email Signup Section */
+.email-signup {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 255, 136, 0.05));
+    border-top: 2px solid var(--border-cyan);
+    border-bottom: 2px solid var(--border-cyan);
+}
+
+.signup-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.signup-container h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 3px;
+}
+
+.signup-container > p:first-of-type {
+    color: var(--text-white);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.signup-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.signup-form input[type="email"] {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    background: rgba(10, 10, 15, 0.8);
+    border: 2px solid var(--border-cyan);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.signup-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.signup-form input[type="email"]::placeholder {
+    color: var(--text-muted);
+}
+
+.signup-button {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    letter-spacing: 2px;
+}
+
+.signup-button:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.privacy-note {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .signup-form {
+        flex-direction: column;
+    }
+    
+    .signup-container h2 {
+        font-size: 1.5rem;
+    }
+}
