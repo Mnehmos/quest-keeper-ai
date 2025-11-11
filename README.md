@@ -14,7 +14,7 @@ Quest Keeper AI is **playable now** in alpha state through third-party AI code a
 - **[KiloCode.ai](https://kilocode.ai)** - AI-powered coding assistant with MCP support
 - **[RooCode.com](https://roocode.com)** - Full-featured AI development environment
 
-📖 **[Quick Start Guide](https://mnehmos.github.io/quest-keeper-ai/quickstart.html)** - Get started in minutes
+📖 **[Quick Start Guide](https://questkeeperai.com/quickstart.html)** - Get started in minutes
 
 ## 🚀 Overview
 
@@ -52,10 +52,10 @@ Quest Keeper uses a dual-server architecture:
 
 ## 📚 Documentation
 
-- **[Comprehensive Analysis](https://mnehmos.github.io/quest-keeper-ai/analysis.html)** - 18,000-word deep dive into architecture and features
-- **[API Reference](https://mnehmos.github.io/quest-keeper-ai/api-reference.html)** - Complete documentation for all 97 MCP tools
-- **[Implementation Roadmap](https://mnehmos.github.io/quest-keeper-ai/roadmap.html)** - Development path from alpha to multiplayer platform
-- **[Quick Start Guide](https://mnehmos.github.io/quest-keeper-ai/quickstart.html)** - Setup instructions for all compatible platforms
+- **[Comprehensive Analysis](https://questkeeperai.com/analysis.html)** - 18,000-word deep dive into architecture and features
+- **[API Reference](https://questkeeperai.com/api-reference.html)** - Complete documentation for all 97 MCP tools
+- **[Implementation Roadmap](https://questkeeperai.com/roadmap.html)** - Development path from alpha to multiplayer platform
+- **[Quick Start Guide](https://questkeeperai.com/quickstart.html)** - Setup instructions for all compatible platforms
 
 ## 🎯 Key Features
 
@@ -140,7 +140,7 @@ Quest Keeper uses a dual-server architecture:
    Create a level 5 ranger named Lyra with high DEX and WIS
    ```
 
-See the **[Quick Start Guide](https://mnehmos.github.io/quest-keeper-ai/quickstart.html)** for detailed setup instructions.
+See the **[Quick Start Guide](https://questkeeperai.com/quickstart.html)** for detailed setup instructions.
 
 ## 🎲 Example Gameplay
 
@@ -222,7 +222,7 @@ DM: [casts Hunter's Mark, consuming a 1st level spell slot]
 - Scene rendering
 - Animation system
 
-See the **[Implementation Roadmap](https://mnehmos.github.io/quest-keeper-ai/roadmap.html)** for full details.
+See the **[Implementation Roadmap](https://questkeeperai.com/roadmap.html)** for full details.
 
 ## 🤝 Contributing
 
@@ -256,9 +256,9 @@ Contributions are welcome! This is a solo-developed project in alpha stage.
 
 ## 🔗 Links
 
-- **Website**: [https://mnehmos.github.io/quest-keeper-ai/](https://mnehmos.github.io/quest-keeper-ai/)
+- **Website**: [https://questkeeperai.com](https://questkeeperai.com)
 - **MCP Servers Repository**: [https://github.com/Mnehmos/rpg-mcp-servers](https://github.com/Mnehmos/rpg-mcp-servers)
-- **Documentation**: [https://mnehmos.github.io/quest-keeper-ai/](https://mnehmos.github.io/quest-keeper-ai/)
+- **Documentation**: [https://questkeeperai.com](https://questkeeperai.com)
 - **Model Context Protocol**: [https://modelcontextprotocol.io/](https://modelcontextprotocol.io/)
 
 ## 📄 License
