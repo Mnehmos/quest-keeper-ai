@@ -119,6 +119,14 @@ nav {
     letter-spacing: 2px;
 }
 
+.logo-icon {
+    height: 1.5em;
+    width: 1.5em;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.5));
+}
+
 .logo::before {
     content: '> ';
     color: var(--neon-green);
