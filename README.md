@@ -56,6 +56,7 @@ Quest Keeper uses a dual-server architecture:
 - **[API Reference](https://questkeeperai.com/api-reference)** - Complete documentation for all 97 MCP tools
 - **[Implementation Roadmap](https://questkeeperai.com/roadmap)** - Development path from alpha to multiplayer platform
 - **[Quick Start Guide](https://questkeeperai.com/quickstart)** - Setup instructions for all compatible platforms
+- **[Style Guide](https://questkeeperai.com/style-guide)** - Retro-futuristic design system and UI components
 
 ## 🎯 Key Features
 
