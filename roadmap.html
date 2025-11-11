@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementation Roadmap - Quest Keeper AI</title>
+    <meta name="description" content="Complete 24-month implementation roadmap for Quest Keeper AI - from text-based proof-of-concept to full visual multiplayer platform">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .roadmap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .roadmap-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+        }
+
+        .roadmap-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .roadmap-header .subtitle {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .toc {
+            background: rgba(0, 255, 136, 0.03);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            padding: 30px;
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .toc h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc li {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .toc li:before {
+            content: "▶";
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .toc a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .content-section {
+            margin-bottom: 80px;
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .content-section h3 {
+            color: var(--primary);
+            font-size: 1.5em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        .phase-card {
+            background: rgba(0, 255, 136, 0.03);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .phase-card.complete {
+            border-color: #00ff88;
+            background: rgba(0, 255, 136, 0.08);
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .phase-header h2 {
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+
+        .phase-status {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .phase-status.complete {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .phase-status.upcoming {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .timeline-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .timeline-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .timeline-card .label {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .timeline-card .value {
+            color: var(--primary);
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .deliverables {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .deliverables li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .deliverables li:before {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .deliverables li.done:before {
+            content: "✅";
+        }
+
+        .deliverables li.pending:before {
+            content: "🔄";
+        }
+
+        .deliverables li.upcoming:before {
+            content: "📋";
+        }
+
+        .code-block {
+            background: #000;
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            border: 1px solid var(--primary);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .pricing-table th {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: #000;
+            padding: 12px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .toc {
+                position: static;
+                margin-bottom: 60px;
+                max-height: none;
+            }
+
+            .roadmap-header h1 {
+                font-size: 1.8em;
+            }
+
+            .phase-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="roadmap-container">
+        <div class="roadmap-header">
+            <h1>&gt; IMPLEMENTATION_ROADMAP</h1>
+            <p class="subtitle">24-Month Journey to Full Visual Multiplayer Platform</p>
+            <div class="timeline-info">
+                <div class="timeline-card">
+                    <div class="label">Timeline</div>
+                    <div class="value">24 Months</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="label">Budget</div>
+                    <div class="value">$1.5M-$2.5M</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="label">Team Size</div>
+                    <div class="value">4-15 People</div>
+                </div>
+                <div class="timeline-card">
+                    <div class="label">Phases</div>
+                    <div class="value">5 Major</div>
+                </div>
+            </div>
+            <p style="margin-top: 20px;"><a href="index.html" style="color: var(--primary);">← Back to Main Site</a></p>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="toc">
+                <h2>// PHASES</h2>
+                <ul>
+                    <li><a href="#executive-summary">Executive Summary</a></li>
+                    <li><a href="#phase-1">Phase 1: Foundation</a></li>
+                    <li><a href="#phase-2">Phase 2: Visual Integration</a></li>
+                    <li><a href="#phase-3">Phase 3: Universal Systems</a></li>
+                    <li><a href="#phase-4">Phase 4: Multiplayer</a></li>
+                    <li><a href="#phase-5">Phase 5: Platform Launch</a></li>
+                    <li><a href="#resources">Resource Requirements</a></li>
+                    <li><a href="#risks">Risk Mitigation</a></li>
+                    <li><a href="#metrics">Success Metrics</a></li>
+                    <li><a href="#competitive">Competitive Advantages</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+            </div>
+
+            <div class="main-content">
+                <section id="executive-summary" class="content-section">
+                    <h2>// EXECUTIVE_SUMMARY</h2>
+                    <p>This roadmap transforms the current D&D 5e MCP server implementation into a comprehensive, visual, multi-system RPG platform. The journey spans 18-24 months across 5 major phases, evolving from a text-based AI dungeon master to a full-featured visual RPG platform with universal system support.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>Current State:</strong> Sophisticated dual-server architecture with complete D&D 5e mechanics, 97+ MCP tools, AI integration via Claude</p>
+                        <p><strong>End Goal:</strong> Visual AI-powered RPG platform supporting any system, with multiplayer, marketplace, and mobile apps</p>
+                    </div>
+                </section>
+
+                <section id="phase-1" class="content-section">
+                    <div class="phase-card complete">
+                        <div class="phase-header">
+                            <h2>Phase 1: Foundation</h2>
+                            <span class="phase-status complete">90% Complete</span>
+                        </div>
+
+                        <div class="timeline-info">
+                            <div class="timeline-card">
+                                <div class="label">Duration</div>
+                                <div class="value">Months 1-3</div>
+                            </div>
+                            <div class="timeline-card">
+                                <div class="label">Status</div>
+                                <div class="value">Nearly Done</div>
+                            </div>
+                        </div>
+
+                        <h3>Current Status</h3>
+                        <p>The foundation is largely complete with:</p>
+                        <ul class="deliverables">
+                            <li class="done">Full D&D 5e implementation (characters, combat, spells, inventory)</li>
+                            <li class="done">97+ MCP tools</li>
+                            <li class="done">3D spatial combat engine</li>
+                            <li class="done">Stronghold management system</li>
+                            <li class="done">AI DM integration via Roo Code</li>
+                            <li class="done">Persistent world state</li>
+                            <li class="done">Quest and progression systems</li>
+                        </ul>
+
+                        <h3>Remaining Work (10%)</h3>
+
+                        <h4>1.1 Condition System (Week 1)</h4>
+                        <p><strong>Goal:</strong> Automatic application of D&D 5e conditions with mechanical effects</p>
+                        <div class="code-block">CREATE TABLE conditions (
+  id INTEGER PRIMARY KEY,
+  entity_type TEXT NOT NULL,
+  entity_id INTEGER NOT NULL,
+  condition_name TEXT NOT NULL,
+  duration_rounds INTEGER,
+  save_dc INTEGER,
+  save_ability TEXT,
+  onset_round INTEGER,
+  effects TEXT  -- JSON
+);</div>
+                        <p><strong>New Tools:</strong> add_condition(), remove_condition(), get_active_conditions(), process_condition_effects(), tick_conditions()</p>
+
+                        <h4>1.2 Concentration & Duration Tracking (Week 2)</h4>
+                        <p><strong>Goal:</strong> Automatic concentration saves and spell duration management</p>
+                        <p><strong>Features:</strong> Auto-prompt CON save when taking damage, calculate DC = max(10, damage/2), track spell durations, end concentration automatically if save fails</p>
+
+                        <h4>1.3 Rest System (Week 3)</h4>
+                        <p><strong>Short Rest:</strong> Spend hit dice to recover HP, recover some class features, takes 1 hour in-game time</p>
+                        <p><strong>Long Rest:</strong> Recover all HP, recover half of hit dice, recover all spell slots, reduce exhaustion, takes 8 hours in-game time</p>
+
+                        <h4>1.4 Character Import (Week 4)</h4>
+                        <p><strong>Sources:</strong> D&D Beyond (via unofficial API), CSV files, JSON (structured data)</p>
+
+                        <h4>1.5 Web UI Foundation (Weeks 5-6)</h4>
+                        <p><strong>Stack:</strong> React + TypeScript, Tailwind CSS, Express backend, WebSocket for real-time updates</p>
+                        <p><strong>Initial Pages:</strong> Character sheet (read-only), Inventory viewer, Spell list, Combat log viewer</p>
+
+                        <h3>Phase 1 Deliverables</h3>
+                        <ul class="deliverables">
+                            <li class="done">Complete D&D 5e mechanics</li>
+                            <li class="done">100+ MCP tools</li>
+                            <li class="pending">Automated condition system</li>
+                            <li class="pending">Concentration tracking</li>
+                            <li class="pending">Rest mechanics</li>
+                            <li class="pending">Character import</li>
+                            <li class="pending">Basic web UI</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="phase-2" class="content-section">
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <h2>Phase 2: Visual Integration</h2>
+                            <span class="phase-status upcoming">Upcoming</span>
+                        </div>
+
+                        <div class="timeline-info">
+                            <div class="timeline-card">
+                                <div class="label">Duration</div>
+                                <div class="value">Months 4-8</div>
+                            </div>
+                            <div class="timeline-card">
+                                <div class="label">Focus</div>
+                                <div class="value">AI Video Generation</div>
+                            </div>
+                        </div>
+
+                        <h3>Goal</h3>
+                        <p>Transform text-based gameplay into hybrid visual + text experience using AI video generation.</p>
+
+                        <h3>2.1 Video Generation API Integration (Month 4)</h3>
+                        <p><strong>Technology Choice: Veo 2 (Primary)</strong></p>
+                        <ul class="deliverables">
+                            <li class="upcoming">4K resolution</li>
+                            <li class="upcoming">2-minute video length</li>
+                            <li class="upcoming">Camera control</li>
+                            <li class="upcoming">Excellent quality</li>
+                            <li class="upcoming">API via Vertex AI</li>
+                        </ul>
+
+                        <h3>2.2 Video Caching System (Month 5)</h3>
+                        <p>Smart cache architecture with:</p>
+                        <ul class="deliverables">
+                            <li class="upcoming">Hash-based exact matching</li>
+                            <li class="upcoming">Semantic similarity search (embeddings)</li>
+                            <li class="upcoming">Access count tracking</li>
+                            <li class="upcoming">LRU eviction for storage limits</li>
+                            <li class="upcoming">CDN distribution</li>
+                            <li class="upcoming">100+ scenes pre-cached before beta launch</li>
+                        </ul>
+
+                        <h3>2.3 Visual Style Preferences (Month 5)</h3>
+                        <p><strong>Style Presets:</strong></p>
+                        <ul class="deliverables">
+                            <li class="upcoming">Classic Fantasy (traditional book cover art)</li>
+                            <li class="upcoming">Dark Souls (gritty, moody, atmospheric)</li>
+                            <li class="upcoming">Anime RPG (bright, colorful, anime-style)</li>
+                            <li class="upcoming">Pixel Adventure (16-bit retro aesthetic)</li>
+                            <li class="upcoming">Oil Painting (classical art style)</li>
+                        </ul>
+
+                        <h3>2.4 Hybrid Text+Video Interface (Months 6-7)</h3>
+                        <p><strong>Components:</strong> VideoPlayer (looping scene background), OverlayUI (HP bars, initiative tracker, conditions), NarrativePanel (story text + combat log), ChatPanel, CharacterPanel, InputBar with autocomplete</p>
+
+                        <h3>2.5 Performance Optimization (Month 8)</h3>
+                        <p><strong>Bandwidth Tiers:</strong> 4K (>10 Mbps), 1080p (>5 Mbps), 720p (>2 Mbps), 480p (<2 Mbps)</p>
+
+                        <h3>Phase 2 Deliverables</h3>
+                        <ul class="deliverables">
+                            <li class="upcoming">Veo 2 API integration</li>
+                            <li class="upcoming">Video caching system (>80% hit rate)</li>
+                            <li class="upcoming">5+ visual style presets</li>
+                            <li class="upcoming">Hybrid UI deployed</li>
+                            <li class="upcoming">Smooth scene transitions</li>
+                            <li class="upcoming">100+ pregenerated scenes</li>
+                            <li class="upcoming">Adaptive streaming</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="phase-3" class="content-section">
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <h2>Phase 3: Universal Systems</h2>
+                            <span class="phase-status upcoming">Upcoming</span>
+                        </div>
+
+                        <div class="timeline-info">
+                            <div class="timeline-card">
+                                <div class="label">Duration</div>
+                                <div class="value">Months 9-12</div>
+                            </div>
+                            <div class="timeline-card">
+                                <div class="label">Focus</div>
+                                <div class="value">Any RPG System</div>
+                            </div>
+                        </div>
+
+                        <h3>Goal</h3>
+                        <p>Enable ANY RPG system to be played, not just D&D 5e.</p>
+
+                        <h3>3.1 Universal RPG Template (Month 9)</h3>
+                        <p>Abstract rule engine supporting multiple resolution types:</p>
+                        <ul class="deliverables">
+                            <li class="upcoming">d20 + modifier (D&D, Pathfinder)</li>
+                            <li class="upcoming">Dice pool (Shadowrun, World of Darkness)</li>
+                            <li class="upcoming">2d6 + modifier (Powered by the Apocalypse)</li>
+                            <li class="upcoming">Percentile (Call of Cthulhu)</li>
+                            <li class="upcoming">Narrative (Fate)</li>
+                        </ul>
+
+                        <h3>3.2 PDF-to-Game Converter (Month 10)</h3>
+                        <p><strong>AI Extraction Pipeline:</strong></p>
+                        <ol>
+                            <li>Extract text from PDF</li>
+                            <li>Identify system type</li>
+                            <li>Extract mechanics using Claude</li>
+                            <li>Build system definition</li>
+                            <li>Validate with automated tests</li>
+                        </ol>
+
+                        <h3>3.3 System Testing Framework (Month 11)</h3>
+                        <p><strong>Test Scenarios:</strong> Create 10 valid characters, Roll 100 checks (analyze distribution), Simulate 20 rounds of combat, Level up character 5 times, Test edge cases</p>
+
+                        <h3>3.4 System Marketplace (Month 12)</h3>
+                        <p><strong>Features:</strong> Search and browse systems, Rating and review system, Download/install with one click, Automatic updates, Creator analytics, Revenue sharing (70% to creator)</p>
+
+                        <h3>Phase 3 Deliverables</h3>
+                        <ul class="deliverables">
+                            <li class="upcoming">Universal system engine</li>
+                            <li class="upcoming">5+ RPG systems supported (D&D 5e, CoC, PbtA, Fate, Shadowrun)</li>
+                            <li class="upcoming">PDF converter (90%+ accuracy)</li>
+                            <li class="upcoming">Testing framework</li>
+                            <li class="upcoming">System marketplace</li>
+                            <li class="upcoming">20+ community systems</li>
+                            <li class="upcoming">Creator revenue program</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="phase-4" class="content-section">
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <h2>Phase 4: Multiplayer & Social</h2>
+                            <span class="phase-status upcoming">Upcoming</span>
+                        </div>
+
+                        <div class="timeline-info">
+                            <div class="timeline-card">
+                                <div class="label">Duration</div>
+                                <div class="value">Months 13-16</div>
+                            </div>
+                            <div class="timeline-card">
+                                <div class="label">Focus</div>
+                                <div class="value">Multiplayer</div>
+                            </div>
+                        </div>
+
+                        <h3>Goal</h3>
+                        <p>Enable groups of 2-6 players to play together online.</p>
+
+                        <h3>4.1 Cloud Infrastructure (Month 13)</h3>
+                        <p><strong>Migration:</strong> SQLite → PostgreSQL, Add Redis (caching + pub/sub), WebSocket server, Load balancer, CDN for static assets</p>
+
+                        <h3>4.2 Session Management (Month 14)</h3>
+                        <p><strong>Features:</strong> Create/join sessions, Session browser, Invite system, Spectator mode, Session templates</p>
+                        <p><strong>Chat System:</strong> In-character (IC) messages, Out-of-character (OOC) messages, System messages, Private whispers, Dice roll integration</p>
+
+                        <h3>4.3 DM Control Panel (Month 15)</h3>
+                        <p><strong>Quick Actions:</strong> Adjust HP, Add/remove conditions, Award XP, Give items, Whisper player, Roll dice for NPC</p>
+                        <p><strong>Shared Views:</strong> Share images with players, Share battle maps, Share handouts, Control visibility per player</p>
+
+                        <h3>4.4 Session Recording (Month 16)</h3>
+                        <p><strong>Replay Features:</strong> Play/pause, Speed control (0.5x to 2x), Jump to timestamps, Skip to encounters, Export to video</p>
+
+                        <h3>Phase 4 Deliverables</h3>
+                        <ul class="deliverables">
+                            <li class="upcoming">Cloud infrastructure (PostgreSQL + Redis)</li>
+                            <li class="upcoming">Real-time synchronization (<100ms latency)</li>
+                            <li class="upcoming">Multiplayer sessions (4-6 players)</li>
+                            <li class="upcoming">Chat system (IC/OOC/whispers)</li>
+                            <li class="upcoming">DM control panel</li>
+                            <li class="upcoming">Session recording & replay</li>
+                            <li class="upcoming">Support 1000+ concurrent sessions</li>
+                            <li class="upcoming">99.9% uptime</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="phase-5" class="content-section">
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <h2>Phase 5: Platform Launch</h2>
+                            <span class="phase-status upcoming">Upcoming</span>
+                        </div>
+
+                        <div class="timeline-info">
+                            <div class="timeline-card">
+                                <div class="label">Duration</div>
+                                <div class="value">Months 17-24</div>
+                            </div>
+                            <div class="timeline-card">
+                                <div class="label">Focus</div>
+                                <div class="value">Commercial Launch</div>
+                            </div>
+                        </div>
+
+                        <h3>Goal</h3>
+                        <p>Transform into polished commercial platform.</p>
+
+                        <h3>5.1 Public Beta (Months 17-18)</h3>
+                        <p><strong>Beta Program:</strong> Invite-only access, 1000 beta testers initially, Expand to 10,000 by month 18, 3 months free premium for beta users</p>
+
+                        <h3>5.2 Subscription Tiers (Month 19)</h3>
+                        <table class="pricing-table">
+                            <tr>
+                                <th>Tier</th>
+                                <th>Price</th>
+                                <th>Features</th>
+                            </tr>
+                            <tr>
+                                <td>Free</td>
+                                <td>$0</td>
+                                <td>3 characters, 720p video, 10 sessions/month</td>
+                            </tr>
+                            <tr>
+                                <td>Plus</td>
+                                <td>$9.99</td>
+                                <td>10 characters, 1080p video, unlimited sessions, session recording</td>
+                            </tr>
+                            <tr>
+                                <td>Pro</td>
+                                <td>$19.99</td>
+                                <td>Unlimited characters, 4K video, custom systems, API access</td>
+                            </tr>
+                            <tr>
+                                <td>Creator</td>
+                                <td>$49.99</td>
+                                <td>Pro + marketplace publishing + 70% revenue share</td>
+                            </tr>
+                        </table>
+
+                        <h3>5.3 Creator Marketplace (Month 20)</h3>
+                        <p><strong>Revenue Model:</strong> Creators set price (or free), Platform takes 30%, Creator gets 70%, Minimum withdrawal: $50, Monthly payouts via Stripe Connect</p>
+
+                        <h3>5.4 Mobile Apps (Months 21-23)</h3>
+                        <p><strong>React Native Apps:</strong></p>
+                        <ul class="deliverables">
+                            <li class="upcoming">iOS App (native UI, push notifications, offline mode)</li>
+                            <li class="upcoming">Android App (Material Design, widget support)</li>
+                            <li class="upcoming">Haptic feedback for dice rolls</li>
+                            <li class="upcoming">Voice input for commands</li>
+                            <li class="upcoming">Tablet optimization</li>
+                        </ul>
+
+                        <h3>5.5 Launch Preparation (Month 24)</h3>
+                        <p><strong>Launch Day:</strong></p>
+                        <ol>
+                            <li>Final system checks</li>
+                            <li>Scale infrastructure</li>
+                            <li>Enable all features</li>
+                            <li>Open registration</li>
+                            <li>Send announcements</li>
+                            <li>Monitor closely</li>
+                        </ol>
+
+                        <h3>Phase 5 Deliverables</h3>
+                        <ul class="deliverables">
+                            <li class="upcoming">1000+ beta testers</li>
+                            <li class="upcoming">Subscription system live</li>
+                            <li class="upcoming">Creator marketplace with payouts</li>
+                            <li class="upcoming">Mobile apps (iOS + Android)</li>
+                            <li class="upcoming">Comprehensive documentation</li>
+                            <li class="upcoming">Launch marketing campaign</li>
+                            <li class="upcoming">10,000+ registered users at launch</li>
+                            <li class="upcoming">$50K+ MRR</li>
+                            <li class="upcoming">4.5+ star rating on app stores</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="resources" class="content-section">
+                    <h2>// RESOURCE_REQUIREMENTS</h2>
+
+                    <h3>Team by Phase</h3>
+
+                    <div class="highlight-box">
+                        <h4>Phase 1-2 (Months 1-8):</h4>
+                        <p>2 Backend Developers, 1 Frontend Developer, 1 AI/ML Engineer, 1 Product Manager, Part-time Designer & QA</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Phase 3-4 (Months 9-16):</h4>
+                        <p>3 Backend Developers, 2 Frontend Developers, 1 AI/ML Engineer, 1 Mobile Developer, 1 DevOps Engineer, 1 Product Manager, Full-time Designer, QA, Community Manager</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Phase 5 (Months 17-24):</h4>
+                        <p>4 Backend Developers, 3 Frontend Developers, 2 Mobile Developers, 1 AI/ML Engineer, 2 DevOps Engineers, 1 Product Manager, 1 Designer, 2 QA Engineers, 1 Community Manager, 1 Support Lead, 1 Marketing Manager</p>
+                    </div>
+
+                    <h3>Infrastructure Costs</h3>
+                    <div class="timeline-info">
+                        <div class="timeline-card">
+                            <div class="label">Phase 1-2</div>
+                            <div class="value">~$700/mo</div>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="label">Phase 3-4</div>
+                            <div class="value">~$4,800/mo</div>
+                        </div>
+                        <div class="timeline-card">
+                            <div class="label">Phase 5</div>
+                            <div class="value">~$21,500/mo</div>
+                        </div>
+                    </div>
+
+                    <h3>Total Budget</h3>
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="number">$1.2M-$2M</div>
+                            <div class="label">Salaries</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">$180K</div>
+                            <div class="label">Infrastructure</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">$50K</div>
+                            <div class="label">Tools & Licenses</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">$100K</div>
+                            <div class="label">Marketing</div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>24-Month Total: $1.5M - $2.5M</h3>
+                    </div>
+                </section>
+
+                <section id="risks" class="content-section">
+                    <h2>// RISK_MITIGATION</h2>
+
+                    <h3>Technical Risks</h3>
+                    <div class="highlight-box">
+                        <p><strong>Video API unavailable</strong><br>
+                        Mitigation: Adapter layer, fallback to static images, self-hosted alternative</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Database performance at scale</strong><br>
+                        Mitigation: Early load testing, horizontal scaling, caching</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>AI costs exceed budget</strong><br>
+                        Mitigation: Rate limiting, response caching, free tier without AI</p>
+                    </div>
+
+                    <h3>Business Risks</h3>
+                    <div class="highlight-box">
+                        <p><strong>Low user adoption</strong><br>
+                        Mitigation: Strong beta program, influencer partnerships, free tier</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Creator marketplace fails</strong><br>
+                        Mitigation: Seed with quality systems, 70% rev share, creator tools</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>Competition</strong><br>
+                        Mitigation: Unique features (universal systems, visual gen, AI DM), rapid iteration</p>
+                    </div>
+                </section>
+
+                <section id="metrics" class="content-section">
+                    <h2>// SUCCESS_METRICS</h2>
+
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="number">10K+</div>
+                            <div class="label">Launch Users</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">$50K+</div>
+                            <div class="label">MRR Target</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">99.9%</div>
+                            <div class="label">Uptime Target</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">4.5+</div>
+                            <div class="label">App Rating</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="competitive" class="content-section">
+                    <h2>// COMPETITIVE_ADVANTAGES</h2>
+
+                    <ul class="deliverables">
+                        <li class="upcoming">Only platform with AI DM + full RPG rules</li>
+                        <li class="upcoming">Universal system support (any RPG)</li>
+                        <li class="upcoming">Visual storytelling via AI video</li>
+                        <li class="upcoming">Comprehensive spell/character management</li>
+                        <li class="upcoming">Unique stronghold system</li>
+                        <li class="upcoming">Best-in-class tactical combat</li>
+                        <li class="upcoming">Mobile-first design</li>
+                        <li class="upcoming">Creator marketplace with 70% revenue share</li>
+                    </ul>
+                </section>
+
+                <section id="conclusion" class="content-section">
+                    <h2>// CONCLUSION</h2>
+
+                    <div class="highlight-box">
+                        <h3>The Vision</h3>
+                        <p>The first truly universal RPG platform combining:</p>
+                        <ul>
+                            <li>AI-powered game mastering</li>
+                            <li>Visual storytelling through video</li>
+                            <li>Support for any tabletop RPG system</li>
+                            <li>Seamless multiplayer experience</li>
+                            <li>Mobile-first design</li>
+                            <li>Creator economy</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>The Impact</h3>
+                        <p>Democratizing tabletop RPGs, making them accessible to anyone, anywhere, anytime—with or without a human game master.</p>
+                    </div>
+
+                    <h3>Next Steps</h3>
+                    <ol>
+                        <li>Complete Phase 1 remaining work (2 weeks)</li>
+                        <li>Begin Veo 2 API integration (Month 4)</li>
+                        <li>Hire frontend developer for web UI</li>
+                        <li>Start beta tester recruitment</li>
+                        <li>Secure initial funding ($500K for first year)</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+
+        <a href="#" class="back-to-top">↑ Back to Top</a>
+    </div>
+
+    <footer style="margin-top: 100px; padding: 40px 20px; text-align: center; border-top: 2px solid var(--primary);">
+        <p>&copy; 2025 Quest Keeper AI. All rights reserved.</p>
+        <p style="margin-top: 10px;"><a href="index.html" style="color: var(--primary);">← Back to Main Site</a></p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Show/hide back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
