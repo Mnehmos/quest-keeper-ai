@@ -44,14 +44,26 @@
             font-size: 0.9em;
         }
 
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
         .toc {
             background: rgba(0, 255, 136, 0.03);
             border: 2px solid var(--primary);
             border-radius: 4px;
             padding: 30px;
-            margin-bottom: 60px;
             position: sticky;
             top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .main-content {
+            min-width: 0;
         }
 
         .toc h2 {
@@ -213,9 +225,15 @@
             font-size: 0.9em;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
             .toc {
                 position: static;
+                margin-bottom: 60px;
+                max-height: none;
             }
 
             .analysis-header h1 {
@@ -237,27 +255,29 @@
             <p style="margin-top: 20px;"><a href="index.html" style="color: var(--primary);">← Back to Main Site</a></p>
         </div>
 
-        <div class="toc">
-            <h2>// TABLE_OF_CONTENTS</h2>
-            <ul>
-                <li><a href="#executive-summary">Executive Summary</a></li>
-                <li><a href="#architecture">Architecture Overview</a></li>
-                <li><a href="#game-state-server">Game State Server Analysis</a></li>
-                <li><a href="#combat-engine">Combat Engine Server Analysis</a></li>
-                <li><a href="#dm-mode">Dungeon Master Mode Configuration</a></li>
-                <li><a href="#system-integration">System Integration</a></li>
-                <li><a href="#advanced-features">Advanced Features</a></li>
-                <li><a href="#best-practices">Best Practices & Patterns</a></li>
-                <li><a href="#use-cases">Use Cases & Examples</a></li>
-                <li><a href="#strengths">Strengths & Innovations</a></li>
-                <li><a href="#limitations">Limitations & Considerations</a></li>
-                <li><a href="#future">Future Enhancement Opportunities</a></li>
-                <li><a href="#comparison">Comparison to Alternatives</a></li>
-                <li><a href="#conclusion">Conclusion</a></li>
-            </ul>
-        </div>
+        <div class="content-wrapper">
+            <div class="toc">
+                <h2>// TABLE_OF_CONTENTS</h2>
+                <ul>
+                    <li><a href="#executive-summary">Executive Summary</a></li>
+                    <li><a href="#architecture">Architecture Overview</a></li>
+                    <li><a href="#game-state-server">Game State Server Analysis</a></li>
+                    <li><a href="#combat-engine">Combat Engine Server Analysis</a></li>
+                    <li><a href="#dm-mode">Dungeon Master Mode Configuration</a></li>
+                    <li><a href="#system-integration">System Integration</a></li>
+                    <li><a href="#advanced-features">Advanced Features</a></li>
+                    <li><a href="#best-practices">Best Practices & Patterns</a></li>
+                    <li><a href="#use-cases">Use Cases & Examples</a></li>
+                    <li><a href="#strengths">Strengths & Innovations</a></li>
+                    <li><a href="#limitations">Limitations & Considerations</a></li>
+                    <li><a href="#future">Future Enhancement Opportunities</a></li>
+                    <li><a href="#comparison">Comparison to Alternatives</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+            </div>
 
-        <section id="executive-summary" class="content-section">
+            <div class="main-content">
+                <section id="executive-summary" class="content-section">
             <h2>// EXECUTIVE_SUMMARY</h2>
             <p>This is a sophisticated multi-server MCP (Model Context Protocol) architecture designed to enable AI-powered D&D 5e gameplay. The system consists of two complementary servers that handle game state persistence and combat mechanics, with a custom Roo Code mode configuration for AI dungeon master functionality.</p>
 
@@ -768,6 +788,8 @@ roll_dice({ notation: "8d6" })              // Fireball damage</pre>
             <h3>Final Assessment</h3>
             <p>A groundbreaking proof-of-concept that demonstrates the viability of AI-powered D&D gameplay with full mechanical fidelity. The system successfully bridges the gap between narrative AI flexibility and crunchy D&D rules, opening new possibilities for tabletop RPG experiences.</p>
         </section>
+            </div>
+        </div>
 
         <a href="#" class="back-to-top">↑ Back to Top</a>
     </div>
