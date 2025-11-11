@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Keeper AI - Your Adventure Awaits</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">Quest Keeper AI</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#signup">Get Notified</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Quest Keeper AI</h1>
+                <p class="tagline">Where AI-Powered Adventures Come to Life</p>
+                <p class="description">
+                    Embark on dynamically generated quests crafted by advanced AI.
+                    Every decision matters, every story is unique, and your adventure never ends.
+                </p>
+                <a href="#signup" class="cta-button">Join the Waitlist</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About the Game</h2>
+            <p>
+                Quest Keeper AI is an innovative RPG experience where artificial intelligence
+                creates personalized adventures tailored to your playstyle. No two journeys
+                are the same, and the world evolves based on your choices.
+            </p>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Dynamic Quests</h3>
+                    <p>AI-generated missions that adapt to your playstyle and decisions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Intelligent NPCs</h3>
+                    <p>Characters with realistic personalities powered by advanced AI</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Living World</h3>
+                    <p>A world that remembers your actions and evolves accordingly</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚔️</div>
+                    <h3>Epic Adventures</h3>
+                    <p>Endless possibilities with procedurally generated storylines</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="signup" class="signup">
+            <h2>Be Among the First to Play</h2>
+            <p>Sign up to get notified when Quest Keeper AI launches</p>
+            <form class="signup-form" id="signupForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="submit-button">Notify Me</button>
+            </form>
+            <p class="signup-note">We respect your privacy. No spam, ever.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Quest Keeper AI. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Discord</a>
+                <a href="#" class="social-link">GitHub</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert('Thanks for your interest! We\'ll notify you at ' + email + ' when we launch.');
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
