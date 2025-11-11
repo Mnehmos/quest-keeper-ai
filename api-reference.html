@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - Quest Keeper AI</title>
+    <meta name="description" content="Complete API reference for Quest Keeper AI's MCP tools - 97 tools across Game State and Combat Engine servers">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Override sticky navigation */
+        nav {
+            position: static !important;
+        }
+
+        .api-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .api-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            position: static !important;
+        }
+
+        .api-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .api-header .subtitle {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .tool-count {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .toc {
+            background: rgba(0, 255, 136, 0.03);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            padding: 30px;
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .toc h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc li {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        .toc li:before {
+            content: "▶";
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .toc a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .content-section h3 {
+            color: var(--secondary);
+            font-size: 1.5em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .server-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 10px;
+            color: var(--primary);
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .tool-card {
+            background: rgba(0, 255, 136, 0.03);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .tool-card:hover {
+            background: rgba(0, 255, 136, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 255, 136, 0.2);
+        }
+
+        .tool-card h4 {
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .tool-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .tool-list li {
+            padding: 8px 12px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .toc {
+                position: static;
+                max-height: none;
+            }
+
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🎲 QUEST KEEPER</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="analysis.html">Analysis</a>
+                <a href="roadmap.html">Roadmap</a>
+                <a href="quickstart.html">Quick Start</a>
+                <a href="api-reference.html" class="active">API Reference</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="api-container">
+        <header class="api-header">
+            <h1>// API REFERENCE</h1>
+            <div class="subtitle">Complete MCP Tool Documentation</div>
+            <div class="tool-count">97 TOTAL TOOLS // 2 SERVERS // MODEL CONTEXT PROTOCOL</div>
+        </header>
+
+        <div class="content-wrapper">
+            <aside class="toc">
+                <h2>// CONTENTS</h2>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#game-state">Game State Server</a></li>
+                    <li><a href="#characters">→ Characters</a></li>
+                    <li><a href="#inventory">→ Inventory</a></li>
+                    <li><a href="#world">→ World State</a></li>
+                    <li><a href="#npcs">→ NPCs & Monsters</a></li>
+                    <li><a href="#encounters">→ Encounters</a></li>
+                    <li><a href="#quests">→ Quest System</a></li>
+                    <li><a href="#spells">→ Spell Management</a></li>
+                    <li><a href="#strongholds">→ Strongholds</a></li>
+                    <li><a href="#batch">→ Batch Operations</a></li>
+                    <li><a href="#combat-engine">Combat Engine Server</a></li>
+                    <li><a href="#dice">→ Dice & Rolls</a></li>
+                    <li><a href="#spatial">→ Spatial Combat</a></li>
+                    <li><a href="#tactical">→ Tactical Analysis</a></li>
+                    <li><a href="#combat-batch">→ Batch Operations</a></li>
+                </ul>
+            </aside>
+
+            <main class="main-content">
+                <section id="overview" class="content-section">
+                    <h2>// OVERVIEW</h2>
+                    <p>Quest Keeper AI provides 97 MCP (Model Context Protocol) tools across two specialized servers for building AI-powered D&D 5e campaigns.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>🎮 Game State Server:</strong> 68 tools for character management, world persistence, and game logic</p>
+                        <p><strong>⚔️ Combat Engine Server:</strong> 29 tools for dice mechanics, spatial combat, and tactical operations</p>
+                    </div>
+
+                    <h3>Server Architecture</h3>
+                    <p>The dual-server architecture separates concerns:</p>
+                    <ul>
+                        <li><strong>Game State Server</strong> - Handles persistence, character data, world state, and game progression</li>
+                        <li><strong>Combat Engine Server</strong> - Provides stateless combat calculations, dice rolling, and spatial combat</li>
+                    </ul>
+
+                    <div class="code-example">
+<pre>// Typical workflow: coordinating both servers
+1. get_character() → [Game State] Retrieve character stats
+2. attack_roll() → [Combat Engine] Calculate attack
+3. damage_roll() → [Combat Engine] Calculate damage
+4. apply_damage() → [Game State] Update HP</pre>
+                    </div>
+                </section>
+
+                <section id="game-state" class="content-section">
+                    <h2>// GAME STATE SERVER <span class="server-badge">rpg-game-state</span></h2>
+                    <p>The Game State Server manages all persistent game data using SQLite for reliable storage across sessions.</p>
+
+                    <h3 id="characters">Character Management</h3>
+                    <p>CRUD operations for player characters with full D&D 5e stat tracking.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>create_character</h4>
+                            <p>Creates a new player character with name, race, class, level, ability scores, and inventory.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_character</h4>
+                            <p>Retrieves complete character data by ID including stats, HP, inventory, and equipped items.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>update_character</h4>
+                            <p>Updates any character field - HP, XP, level, stats, position, or equipped items.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>list_characters</h4>
+                            <p>Returns all characters in the database with basic info for party management.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_character_by_name</h4>
+                            <p>Finds a character by name for natural language queries.</p>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+<pre>// Example: Create a 5th level ranger
+{
+  "name": "Lyra Swiftarrow",
+  "race": "Wood Elf",
+  "class": "Ranger",
+  "level": 5,
+  "max_hp": 38,
+  "current_hp": 38,
+  "ability_scores": {
+    "str": 10, "dex": 18, "con": 14,
+    "int": 12, "wis": 15, "cha": 8
+  }
+}</pre>
+                    </div>
+
+                    <h3 id="inventory">Inventory Management</h3>
+                    <p>Full item system with quantities, weights, and equipment slots.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>add_item</h4>
+                            <p>Adds items to character inventory with quantity, weight, and optional equipment status.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_inventory</h4>
+                            <p>Returns complete inventory list with all item properties and total weight.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>remove_item</h4>
+                            <p>Removes items by ID or reduces quantity for stackable items.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>update_item</h4>
+                            <p>Modifies item properties, quantity, or equipped status.</p>
+                        </div>
+                    </div>
+
+                    <h3 id="world">World State Management</h3>
+                    <p>Flexible key-value storage for campaign state, locations, and narrative progress.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>save_world_state</h4>
+                            <p>Stores arbitrary world data like locations, time, weather, or faction standings.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_world_state</h4>
+                            <p>Retrieves stored world state data by key for campaign continuity.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>update_world_state</h4>
+                            <p>Updates existing world state entries without recreating.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>append_world_state</h4>
+                            <p>Appends to existing text-based state (e.g., adding to location descriptions).</p>
+                        </div>
+                    </div>
+
+                    <h3 id="npcs">NPCs & Monsters</h3>
+                    <p>Full creature management with D&D 5e stat blocks, abilities, and AI behavior.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>create_npc</h4>
+                            <p>Creates individual NPCs/monsters with complete stat blocks, abilities, and inventory.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>create_npc_group</h4>
+                            <p>Spawns multiple identical creatures at once (e.g., "5 goblins").</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_npc</h4>
+                            <p>Retrieves complete NPC data including current HP, status effects, and position.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>list_npcs</h4>
+                            <p>Returns all NPCs in the world with filtering options.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>update_npc</h4>
+                            <p>Modifies NPC stats, HP, position, or any other property.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>remove_npc</h4>
+                            <p>Removes NPCs from the world (death, dismissal, etc.).</p>
+                        </div>
+                    </div>
+
+                    <h3 id="encounters">Encounter Management</h3>
+                    <p>Complete combat encounter system with initiative tracking and turn management.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>create_encounter</h4>
+                            <p>Starts a new combat encounter with name, description, and initial difficulty.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>add_to_encounter</h4>
+                            <p>Adds characters or NPCs to active encounter with initiative rolls.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_encounter_state</h4>
+                            <p>Returns complete encounter status, participants, initiative order, and current turn.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>next_turn</h4>
+                            <p>Advances to next creature in initiative order.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>end_encounter</h4>
+                            <p>Concludes combat, awards XP, and cleans up encounter data.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>apply_damage</h4>
+                            <p>Applies damage to characters or NPCs, handles death, and tracks HP.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_active_encounter</h4>
+                            <p>Gets the currently active encounter if one exists.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>start_turn</h4>
+                            <p>Begins a creature's turn and resets action economy.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>end_turn</h4>
+                            <p>Ends current turn and processes end-of-turn effects.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>consume_action</h4>
+                            <p>Tracks action economy (action, bonus action, reaction, movement).</p>
+                        </div>
+                    </div>
+
+                    <h3 id="quests">Quest System</h3>
+                    <p>Track campaign objectives, quest progress, and story beats.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>save_story_progress</h4>
+                            <p>Saves narrative progress, plot points, and story state.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>add_quest</h4>
+                            <p>Creates new quests with objectives, rewards, and status tracking.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_active_quests</h4>
+                            <p>Returns all active quests for a character or the party.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>update_quest_state</h4>
+                            <p>Updates quest progress, completes objectives, or changes quest status.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>assign_quest_to_character</h4>
+                            <p>Links quests to specific characters for personal storylines.</p>
+                        </div>
+                    </div>
+
+                    <h3 id="spells">Spell Management</h3>
+                    <p>Complete spellcasting system with spell slots, spell tracking, and D&D 5e rules.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>add_spell</h4>
+                            <p>Adds spells to a character's spell list with level, school, and details.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>remove_spell</h4>
+                            <p>Removes spells from character's known/prepared spells.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_character_spells</h4>
+                            <p>Returns all spells known/prepared by a character.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>update_spell_status</h4>
+                            <p>Changes spell prepared status or modifies spell properties.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_spell_slots</h4>
+                            <p>Returns available spell slots by level for a character.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>use_spell_slot</h4>
+                            <p>Consumes a spell slot when casting a spell.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>recover_spell_slot</h4>
+                            <p>Restores spell slots during short/long rests or special abilities.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>reset_spell_slots</h4>
+                            <p>Fully restores all spell slots (typically after long rest).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>initialize_spellcasting</h4>
+                            <p>Sets up spell slots for a spellcasting character based on class/level.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>cast_spell</h4>
+                            <p>Complete spell casting flow including slot consumption and effects.</p>
+                        </div>
+                    </div>
+
+                    <h3 id="strongholds">Stronghold System</h3>
+                    <p>Domain-level play with base building, hirelings, and passive income generation.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>create_stronghold</h4>
+                            <p>Establishes a new stronghold with location, size, and initial facilities.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_stronghold_status</h4>
+                            <p>Returns complete stronghold data including facilities, income, and events.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_character_strongholds</h4>
+                            <p>Lists all strongholds owned by a character.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>update_stronghold</h4>
+                            <p>Modifies stronghold properties like defenses, reputation, or resources.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>add_facility</h4>
+                            <p>Constructs new facilities (barracks, library, workshop, etc.).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>upgrade_facility</h4>
+                            <p>Improves existing facilities to higher tiers with better benefits.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_stronghold_facilities</h4>
+                            <p>Lists all facilities and their current status.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>list_facility_types</h4>
+                            <p>Returns available facility types and their costs/benefits.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>recruit_hireling</h4>
+                            <p>Hires NPCs for stronghold staff (guards, craftsmen, etc.).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>assign_hireling</h4>
+                            <p>Assigns hirelings to specific roles or facilities.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>manage_hireling_loyalty</h4>
+                            <p>Tracks and modifies hireling morale and loyalty.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>calculate_hireling_costs</h4>
+                            <p>Computes weekly/monthly costs for maintaining hirelings.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>list_character_hirelings</h4>
+                            <p>Returns all hirelings employed by a character.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>establish_business</h4>
+                            <p>Creates income-generating businesses in the stronghold.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>process_weekly_income</h4>
+                            <p>Generates passive income from businesses and facilities.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_stronghold_businesses</h4>
+                            <p>Lists all businesses and their income rates.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>generate_stronghold_event</h4>
+                            <p>Creates random events (attacks, opportunities, problems) for the stronghold.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>resolve_stronghold_event</h4>
+                            <p>Handles player responses to stronghold events and applies outcomes.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_stronghold_events</h4>
+                            <p>Returns active and pending stronghold events.</p>
+                        </div>
+                    </div>
+
+                    <h3 id="batch">Batch Operations</h3>
+                    <p>Optimized operations for handling multiple creatures or actions simultaneously.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>batch_create_npcs</h4>
+                            <p>Creates multiple NPCs in a single transaction for performance.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>batch_update_npcs</h4>
+                            <p>Updates multiple NPCs at once (e.g., move entire group).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>batch_apply_damage</h4>
+                            <p>Applies damage to multiple creatures (area effects, explosions).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>batch_remove_npcs</h4>
+                            <p>Removes multiple NPCs efficiently.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>batch_add_to_encounter</h4>
+                            <p>Adds multiple creatures to encounter simultaneously.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="combat-engine" class="content-section">
+                    <h2>// COMBAT ENGINE SERVER <span class="server-badge">rpg-combat-engine</span></h2>
+                    <p>The Combat Engine Server provides stateless combat calculations and spatial battlefield management.</p>
+
+                    <h3 id="dice">Dice & Rolling Mechanics</h3>
+                    <p>Complete D&D 5e dice system with advantage, modifiers, and critical hits.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>roll_dice</h4>
+                            <p>Rolls any dice notation (1d20, 3d6+4, 8d8) with full support for modifiers.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>roll_check</h4>
+                            <p>Ability checks with advantage/disadvantage and proficiency bonuses.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>attack_roll</h4>
+                            <p>Attack rolls with modifiers, advantage/disadvantage, and critical hit detection.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>initiative_roll</h4>
+                            <p>Initiative rolls with DEX modifiers for combat order.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>damage_roll</h4>
+                            <p>Damage calculations with type tracking and critical damage.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>saving_throw</h4>
+                            <p>Saving throws against DC with success/failure and damage on save.</p>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+<pre>// Example: Attack roll with advantage
+{
+  "attacker": "Lyra",
+  "target": "Goblin Chief",
+  "modifier": 7,
+  "advantage": true
+}
+
+// Returns: { result: 25, roll: "2d20kh1+7 = [18,12]→18+7 = 25", hit: true }</pre>
+                    </div>
+
+                    <h3 id="spatial">Spatial Combat System</h3>
+                    <p>3D battlefield with terrain, elevation, line-of-sight, and movement.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>initialize_battlefield</h4>
+                            <p>Creates a new battlefield with dimensions and terrain features.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>place_creature</h4>
+                            <p>Places a creature on the battlefield at specific coordinates.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>move_creature</h4>
+                            <p>Moves creature with pathfinding, terrain checking, and opportunity attacks.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>check_line_of_sight</h4>
+                            <p>Determines if two positions have clear line of sight (for ranged attacks/spells).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_area_effect_targets</h4>
+                            <p>Finds all creatures within an area (sphere, cone, cube) for AoE spells.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>check_flanking</h4>
+                            <p>Checks if a creature is flanked for advantage on attacks.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>check_height_advantage</h4>
+                            <p>Determines bonuses from elevation differences.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>describe_battlefield</h4>
+                            <p>Generates narrative description of the battlefield layout.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>generate_battlefield_map</h4>
+                            <p>Creates ASCII map visualization of current battlefield state.</p>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+<pre>// Example battlefield map output
+ ═══════════════════════════════════════
+ │ 🧙 · · · ■ · · · · · │
+ │ · · · · ■ · · 👹 · · │
+ │ · · ⚔️ · · · · · · · │
+ │ · · · · ▲ ▲ · · · · │
+ │ · · · · ▲ ▲ · · 🗡️ · │
+ ═══════════════════════════════════════
+
+ Legend:
+ 🧙 Wizard (PC)   👹 Goblin   ⚔️ Fighter (PC)
+ ■ Wall   ▲ Difficult Terrain   · Open</pre>
+                    </div>
+
+                    <h3 id="tactical">Tactical Analysis</h3>
+                    <p>Advanced combat features for complex encounters.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>get_tactical_summary</h4>
+                            <p>Provides AI DM with tactical situation analysis (cover, threats, positioning).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>describe_detailed_tactical_situation</h4>
+                            <p>Detailed narrative description of combat positioning for immersion.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>get_combat_log</h4>
+                            <p>Returns history of all combat actions for review.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>clear_combat_log</h4>
+                            <p>Clears combat log (typically after encounter ends).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>use_reaction</h4>
+                            <p>Handles reactions (opportunity attacks, counterspell, etc.).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>use_legendary_action</h4>
+                            <p>Legendary creature actions between turns.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>trigger_lair_action</h4>
+                            <p>Lair actions on initiative count 20 for powerful creatures.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>execute_multiattack</h4>
+                            <p>Handles monsters with multiple attacks per action.</p>
+                        </div>
+                    </div>
+
+                    <h3 id="combat-batch">Batch Combat Operations</h3>
+                    <p>Optimized operations for large-scale battles and area effects.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>batch_place_creatures</h4>
+                            <p>Places multiple creatures on battlefield efficiently.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>batch_move_creatures</h4>
+                            <p>Moves entire groups simultaneously (e.g., goblin horde).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>batch_attack_rolls</h4>
+                            <p>Resolves multiple attacks at once (swarms, volleys).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>batch_damage_rolls</h4>
+                            <p>Calculates damage for multiple targets (fireballs, explosions).</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>batch_saving_throws</h4>
+                            <p>Rolls saves for multiple creatures against area effects.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>batch_initiative_rolls</h4>
+                            <p>Rolls initiative for all combatants at encounter start.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="complete-list" class="content-section">
+                    <h2>// COMPLETE TOOL LIST</h2>
+
+                    <h3>Game State Server (68 tools)</h3>
+                    <ul class="tool-list">
+                        <li>create_character</li>
+                        <li>get_character</li>
+                        <li>update_character</li>
+                        <li>list_characters</li>
+                        <li>get_character_by_name</li>
+                        <li>add_item</li>
+                        <li>get_inventory</li>
+                        <li>remove_item</li>
+                        <li>update_item</li>
+                        <li>save_world_state</li>
+                        <li>get_world_state</li>
+                        <li>update_world_state</li>
+                        <li>append_world_state</li>
+                        <li>create_npc</li>
+                        <li>create_npc_group</li>
+                        <li>get_npc</li>
+                        <li>list_npcs</li>
+                        <li>update_npc</li>
+                        <li>remove_npc</li>
+                        <li>create_encounter</li>
+                        <li>add_to_encounter</li>
+                        <li>get_encounter_state</li>
+                        <li>next_turn</li>
+                        <li>end_encounter</li>
+                        <li>apply_damage</li>
+                        <li>get_active_encounter</li>
+                        <li>start_turn</li>
+                        <li>end_turn</li>
+                        <li>consume_action</li>
+                        <li>save_story_progress</li>
+                        <li>add_quest</li>
+                        <li>get_active_quests</li>
+                        <li>update_quest_state</li>
+                        <li>assign_quest_to_character</li>
+                        <li>add_spell</li>
+                        <li>remove_spell</li>
+                        <li>get_character_spells</li>
+                        <li>update_spell_status</li>
+                        <li>get_spell_slots</li>
+                        <li>use_spell_slot</li>
+                        <li>recover_spell_slot</li>
+                        <li>reset_spell_slots</li>
+                        <li>initialize_spellcasting</li>
+                        <li>cast_spell</li>
+                        <li>create_stronghold</li>
+                        <li>get_stronghold_status</li>
+                        <li>get_character_strongholds</li>
+                        <li>update_stronghold</li>
+                        <li>add_facility</li>
+                        <li>upgrade_facility</li>
+                        <li>get_stronghold_facilities</li>
+                        <li>list_facility_types</li>
+                        <li>recruit_hireling</li>
+                        <li>assign_hireling</li>
+                        <li>manage_hireling_loyalty</li>
+                        <li>calculate_hireling_costs</li>
+                        <li>list_character_hirelings</li>
+                        <li>establish_business</li>
+                        <li>process_weekly_income</li>
+                        <li>get_stronghold_businesses</li>
+                        <li>generate_stronghold_event</li>
+                        <li>resolve_stronghold_event</li>
+                        <li>get_stronghold_events</li>
+                        <li>batch_create_npcs</li>
+                        <li>batch_update_npcs</li>
+                        <li>batch_apply_damage</li>
+                        <li>batch_remove_npcs</li>
+                        <li>batch_add_to_encounter</li>
+                    </ul>
+
+                    <h3>Combat Engine Server (29 tools)</h3>
+                    <ul class="tool-list">
+                        <li>roll_dice</li>
+                        <li>roll_check</li>
+                        <li>attack_roll</li>
+                        <li>initiative_roll</li>
+                        <li>damage_roll</li>
+                        <li>saving_throw</li>
+                        <li>use_reaction</li>
+                        <li>use_legendary_action</li>
+                        <li>trigger_lair_action</li>
+                        <li>execute_multiattack</li>
+                        <li>initialize_battlefield</li>
+                        <li>place_creature</li>
+                        <li>move_creature</li>
+                        <li>check_line_of_sight</li>
+                        <li>get_area_effect_targets</li>
+                        <li>get_tactical_summary</li>
+                        <li>check_flanking</li>
+                        <li>check_height_advantage</li>
+                        <li>get_combat_log</li>
+                        <li>clear_combat_log</li>
+                        <li>describe_battlefield</li>
+                        <li>describe_detailed_tactical_situation</li>
+                        <li>generate_battlefield_map</li>
+                        <li>batch_place_creatures</li>
+                        <li>batch_move_creatures</li>
+                        <li>batch_attack_rolls</li>
+                        <li>batch_damage_rolls</li>
+                        <li>batch_saving_throws</li>
+                        <li>batch_initiative_rolls</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <p>Quest Keeper AI // Model Context Protocol // D&D 5e System</p>
+        <p>
+            <a href="https://github.com/Mnehmos/rpg-mcp-servers">GitHub</a> |
+            <a href="analysis.html">Analysis</a> |
+            <a href="roadmap.html">Roadmap</a> |
+            <a href="quickstart.html">Quick Start</a>
+        </p>
+    </footer>
+</body>
+</html>
