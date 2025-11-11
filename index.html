@@ -25,8 +25,9 @@
 
         <section class="hero">
             <div class="hero-content">
-                <h1>Quest Keeper AI</h1>
-                <p class="tagline">The First AI-Powered Universal RPG Platform</p>
+                <div class="terminal-prompt">root@questkeeper:~$</div>
+                <h1>&gt; QUEST_KEEPER_AI</h1>
+                <p class="tagline">[ THE_FIRST_AI-POWERED_UNIVERSAL_RPG_PLATFORM ]</p>
                 <p class="description">
                     Full D&D 5e mechanics with AI dungeon master integration. 97+ MCP tools,
                     3D spatial combat, comprehensive spell management, and support for any tabletop RPG system.
@@ -45,13 +46,13 @@
                         <div class="stat-label">D&D 5e Rules</div>
                     </div>
                 </div>
-                <a href="#signup" class="cta-button">Join the Waitlist</a>
-                <a href="https://github.com/Mnehmos/quest-keeper-ai" class="cta-button secondary">View on GitHub</a>
+                <a href="#signup" class="cta-button">&gt; JOIN_WAITLIST</a>
+                <a href="https://github.com/Mnehmos/quest-keeper-ai" class="cta-button secondary">&gt; VIEW_SOURCE</a>
             </div>
         </section>
 
         <section id="about" class="about">
-            <h2>About the Platform</h2>
+            <h2>// ABOUT_THE_PLATFORM</h2>
             <p>
                 Quest Keeper AI is a groundbreaking MCP (Model Context Protocol) implementation that combines
                 <strong>authentic D&D 5e mechanics</strong> with <strong>AI-powered game mastering</strong>.
@@ -66,7 +67,7 @@
         </section>
 
         <section id="features" class="features">
-            <h2>Core Features</h2>
+            <h2>[ CORE_FEATURES ]</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎲</div>
@@ -112,7 +113,7 @@
         </section>
 
         <section id="architecture" class="architecture">
-            <h2>Technical Architecture</h2>
+            <h2>// SYSTEM_ARCHITECTURE</h2>
             <div class="architecture-diagram">
                 <div class="server-card">
                     <h3>🎮 Game State Server</h3>
@@ -160,7 +161,7 @@
         </section>
 
         <section id="roadmap" class="roadmap">
-            <h2>Development Roadmap</h2>
+            <h2>[ DEVELOPMENT_ROADMAP ]</h2>
             <p class="roadmap-intro">24-month journey from text-based proof-of-concept to full visual multiplayer platform</p>
 
             <div class="timeline">
@@ -248,7 +249,7 @@
         </section>
 
         <section id="docs" class="documentation">
-            <h2>Documentation</h2>
+            <h2>// DOCUMENTATION</h2>
             <div class="docs-grid">
                 <div class="doc-card">
                     <h3>📖 Comprehensive Analysis</h3>
@@ -274,7 +275,7 @@
         </section>
 
         <section class="comparison">
-            <h2>Why Quest Keeper AI?</h2>
+            <h2>[ COMPARISON_MATRIX ]</h2>
             <div class="comparison-grid">
                 <div class="comparison-card">
                     <h3>vs. D&D Beyond</h3>
@@ -308,13 +309,18 @@
         </section>
 
         <section id="signup" class="signup">
-            <h2>Be Among the First to Play</h2>
+            <h2>[ JOIN THE QUEST ]</h2>
             <p>Sign up to get notified when Quest Keeper AI launches</p>
-            <form class="signup-form" id="signupForm">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit" class="submit-button">Notify Me</button>
+            <form
+                action="https://formspree.io/f/mnnlqvaw"
+                method="POST"
+                class="signup-form"
+                id="signupForm">
+                <input type="email" name="email" placeholder="your.email@domain.com" required>
+                <input type="hidden" name="_subject" value="New Quest Keeper AI Signup">
+                <button type="submit" class="submit-button">&gt; NOTIFY_ME</button>
             </form>
-            <p class="signup-note">We respect your privacy. No spam, ever.</p>
+            <p class="signup-note">// No spam. Just launch updates.</p>
         </section>
 
         <footer>
@@ -328,13 +334,6 @@
     </div>
 
     <script>
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            alert('Thanks for your interest! We\'ll notify you at ' + email + ' when we launch.');
-            this.reset();
-        });
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -345,6 +344,22 @@
                 }
             });
         });
+
+        // Terminal-style typing effect for the logo
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            const text = logo.textContent;
+            logo.textContent = '';
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    logo.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            setTimeout(typeWriter, 500);
+        }
     </script>
 </body>
 </html>
