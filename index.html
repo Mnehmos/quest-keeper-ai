@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quest Keeper AI - AI-Powered D&D 5e Platform</title>
-    <meta name="description" content="The first AI-powered tabletop RPG platform with full D&D 5e mechanics, visual storytelling, and universal system support.">
+    <title>Quest Keeper AI - AI-Powered RPG Companion with Visual Game Engine</title>
+    <meta name="description" content="The first AI-powered tabletop RPG platform combining an AI Dungeon Master with 3D battlemap visualization, procedural world generation, and complete game state management.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -28,52 +28,58 @@
             <div class="hero-content">
                 <div class="terminal-prompt">root@questkeeper:~$</div>
                 <h1>&gt; QUEST_KEEPER_AI</h1>
-                <p class="tagline">[ THE_FIRST_AI-POWERED_UNIVERSAL_RPG_PLATFORM ]</p>
+                <p class="tagline">[ AI_DUNGEON_MASTER + VISUAL_GAME_ENGINE ]</p>
                 <p class="description">
-                    Full D&D 5e mechanics with AI dungeon master integration. 97+ MCP tools,
-                    3D spatial combat, comprehensive spell management, and support for any tabletop RPG system.
+                    A desktop RPG companion combining an AI Dungeon Master with 3D battlemap visualization,
+                    procedural world generation, and complete game state management. Where every action has
+                    mechanical weight, every quest tracks progress, and your world persists across sessions.
                 </p>
                 <div class="hero-stats">
                     <div class="stat">
-                        <div class="stat-number">97+</div>
+                        <div class="stat-number">80+</div>
                         <div class="stat-label">MCP Tools</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">3D</div>
-                        <div class="stat-label">Spatial Combat</div>
+                        <div class="stat-label">Battlemap</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">ALPHA</div>
                         <div class="stat-label">Playable Now</div>
                     </div>
                 </div>
-                <p style="margin: 20px 0; padding: 10px; background: rgba(0, 255, 136, 0.1); border: 1px solid var(--primary); border-radius: 4px;">
-                    <strong>🎮 Play Now in Alpha:</strong> Compatible with <a href="https://claude.ai/download" target="_blank" style="color: var(--primary);">Claude Desktop</a>, <a href="https://kilocode.ai" target="_blank" style="color: var(--primary);">KiloCode.ai</a>, and <a href="https://roocode.com" target="_blank" style="color: var(--primary);">RooCode.com</a>
-                </p>
+                <div style="margin: 20px 0; padding: 15px; background: rgba(0, 255, 136, 0.1); border: 1px solid var(--primary); border-radius: 4px;">
+                    <p style="margin-bottom: 10px;">
+                        <strong>🖥️ Desktop App:</strong> Full Tauri application with React frontend &amp; Three.js 3D rendering
+                    </p>
+                    <p>
+                        <strong>🎮 MCP Backend:</strong> Compatible with <a href="https://claude.ai/download" target="_blank" style="color: var(--primary);">Claude Desktop</a>, <a href="https://kilocode.ai" target="_blank" style="color: var(--primary);">KiloCode</a>, and <a href="https://roocode.com" target="_blank" style="color: var(--primary);">RooCode</a>
+                    </p>
+                </div>
                 <a href="/quickstart" class="cta-button">&gt; GET_STARTED</a>
-                <a href="https://github.com/Mnehmos/rpg-mcp-servers" target="_blank" class="cta-button secondary">&gt; VIEW_ON_GITHUB</a>
+                <a href="https://github.com/Mnehmos/rpg-mcp" target="_blank" class="cta-button secondary">&gt; VIEW_BACKEND</a>
             </div>
         </section>
 
         <section id="about" class="about">
             <h2>// ABOUT_THE_PLATFORM</h2>
             <p>
-                Quest Keeper AI is a groundbreaking MCP (Model Context Protocol) implementation that combines
-                <strong>authentic D&D 5e mechanics</strong> with <strong>AI-powered game mastering</strong>.
-                The system features a sophisticated dual-server architecture handling game state persistence
-                and real-time combat mechanics, enabling solo or multiplayer adventures with full rule fidelity.
+                Quest Keeper AI bridges the gap between <strong>pure narrative AI tools</strong> (like AI Dungeon) and
+                <strong>pure mechanical trackers</strong> (like D&D Beyond). It combines rich AI-powered storytelling
+                with persistent, trackable game state—where the AI describes the world, but the engine defines it.
             </p>
             <div class="key-innovation">
-                <h3>🚀 Key Innovation</h3>
-                <p>The first system to bridge the gap between LLM AI assistants and traditional tabletop RPG mechanics,
-                providing persistent state management and authentic D&D 5e rule implementation while maintaining narrative flexibility.</p>
+                <h3>🚀 The Problem We Solve</h3>
+                <p><strong>AI tools:</strong> Great storytelling, zero mechanical tracking. "You have a sword" but no stats, no inventory, no progression.</p>
+                <p style="margin-top: 10px;"><strong>Mechanical tools:</strong> Excellent character sheets, but no AI. Manual everything.</p>
+                <p style="margin-top: 10px;"><strong>Quest Keeper AI:</strong> The first system where LLMs never lie about state. All game data comes from verified database, not hallucination.</p>
             </div>
         </section>
 
         <section class="email-signup">
             <div class="signup-container">
                 <h2>[ JOIN THE QUEST ]</h2>
-                <p>Sign up to get notified when Quest Keeper AI launches</p>
+                <p>Sign up to get notified about Quest Keeper AI updates and releases</p>
                 <form class="signup-form" action="https://formspree.io/f/mnnlqvaw" method="POST">
                     <input type="email" name="email" placeholder="your.email@domain.com" required>
                     <input type="hidden" name="_subject" value="New Quest Keeper AI Signup">
@@ -88,43 +94,43 @@
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎲</div>
-                    <h3>Complete D&D 5e</h3>
-                    <p>Full implementation of ability scores, skills, spells, combat mechanics, and advancement</p>
+                    <h3>D&D 5e Mechanics</h3>
+                    <p>Full implementation of ability scores, skills, combat mechanics, and character advancement with dice rolling</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🗺️</div>
-                    <h3>3D Spatial Combat</h3>
-                    <p>Advanced battlefield with elevation, line-of-sight, cover mechanics, and tactical positioning</p>
+                    <h3>3D Battlemap</h3>
+                    <p>React Three Fiber visualization with tactical grid, terrain features, and creature tokens with size categories</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>Spell System</h3>
-                    <p>Comprehensive spellcasting with spell slots, preparation, upcasting, and concentration tracking</p>
+                    <div class="feature-icon">🌍</div>
+                    <h3>Procedural Worlds</h3>
+                    <p>Perlin noise terrain generation with biomes, regions, structures, and points of interest</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🏰</div>
-                    <h3>Stronghold Management</h3>
-                    <p>Build and manage bases, recruit staff, establish businesses, and handle domain-level events</p>
+                    <div class="feature-icon">📜</div>
+                    <h3>Quest System</h3>
+                    <p>Multi-objective quests with progress tracking, prerequisites, rewards, and OSRS-style quest chains</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🤖</div>
                     <h3>AI Dungeon Master</h3>
-                    <p>Claude AI integration for narrative storytelling, NPC interactions, and dynamic encounters</p>
+                    <p>Multi-LLM support (Claude, GPT, Gemini, OpenRouter) with tool calling for mechanical accuracy</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💾</div>
                     <h3>Persistent World</h3>
-                    <p>SQLite database storing characters, inventory, world state, NPCs, and quest progress</p>
+                    <p>SQLite database with WAL mode storing characters, inventory, world state, quests, and relationships</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>97+ MCP Tools</h3>
-                    <p>Extensive API for character management, combat, spells, inventory, and world interaction</p>
+                    <div class="feature-icon">🔮</div>
+                    <h3>DM Secrets</h3>
+                    <p>Hidden information system with reveal conditions, leak detection, and spoiler formatting for dramatic reveals</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Tactical Analysis</h3>
-                    <p>Real-time battlefield assessment, flanking detection, height advantage, and movement validation</p>
+                    <div class="feature-icon">🏰</div>
+                    <h3>Grand Strategy</h3>
+                    <p>Nation management, diplomacy, fog of war, turn-based resolution for domain-level play</p>
                 </div>
             </div>
         </section>
@@ -133,133 +139,132 @@
             <h2>// SYSTEM_ARCHITECTURE</h2>
             <div class="architecture-diagram">
                 <div class="server-card">
-                    <h3>🎮 Game State Server</h3>
-                    <p class="server-desc">Persistent state management layer</p>
+                    <h3>🖥️ Quest Keeper AI Frontend</h3>
+                    <p class="server-desc">Tauri desktop application with dual-pane interface</p>
                     <ul class="server-features">
-                        <li>Character management (creation, stats, progression)</li>
-                        <li>Inventory & equipment tracking</li>
-                        <li>World state persistence</li>
-                        <li>NPC & monster management</li>
-                        <li>Encounter & turn tracking</li>
-                        <li>Quest system</li>
-                        <li>Spell management</li>
-                        <li>Stronghold operations</li>
+                        <li>React 19 + TypeScript frontend</li>
+                        <li>Three.js / React Three Fiber 3D battlemap</li>
+                        <li>Zustand state management</li>
+                        <li>Multi-LLM orchestration</li>
+                        <li>Markdown chat with tool inspection</li>
+                        <li>Character sheets, inventory, world state views</li>
+                        <li>Real-time combat visualization</li>
+                        <li>Cross-platform (Windows, macOS, Linux)</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Tauri 2.x</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Three.js</span>
+                        <span class="tech-badge">Zustand</span>
+                    </div>
+                </div>
+
+                <div class="server-card">
+                    <h3>⚙️ rpg-mcp Backend</h3>
+                    <p class="server-desc">Unified MCP server with 80+ tools</p>
+                    <ul class="server-features">
+                        <li>Character &amp; NPC management with D&D stats</li>
+                        <li>Inventory with equipment slots &amp; consumables</li>
+                        <li>Combat encounters with initiative &amp; actions</li>
+                        <li>Quest system with objectives &amp; rewards</li>
+                        <li>World generation with Perlin noise</li>
+                        <li>Dice rolling with all D&D notation</li>
+                        <li>Grand strategy &amp; nation management</li>
+                        <li>DM secrets with reveal conditions</li>
                     </ul>
                     <div class="tech-stack">
                         <span class="tech-badge">TypeScript</span>
                         <span class="tech-badge">SQLite</span>
                         <span class="tech-badge">MCP SDK</span>
-                    </div>
-                </div>
-
-                <div class="server-card">
-                    <h3>⚔️ Combat Engine Server</h3>
-                    <p class="server-desc">Real-time mechanics & calculations</p>
-                    <ul class="server-features">
-                        <li>Dice rolling (all D&D notation)</li>
-                        <li>Attack & damage resolution</li>
-                        <li>Saving throws & ability checks</li>
-                        <li>3D spatial battlefield</li>
-                        <li>Line-of-sight & cover</li>
-                        <li>Movement validation</li>
-                        <li>Area effect targeting</li>
-                        <li>Combat logging</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tech-badge">TypeScript</span>
-                        <span class="tech-badge">3D Engine</span>
-                        <span class="tech-badge">MCP SDK</span>
+                        <span class="tech-badge">Zod</span>
                     </div>
                 </div>
             </div>
             <div class="integration-note">
-                <p>Both servers communicate via MCP (Model Context Protocol) and integrate seamlessly with Claude AI through the Roo Code extension.</p>
+                <p>The frontend spawns rpg-mcp as a sidecar process, communicating via JSON-RPC over stdio using the Model Context Protocol. The backend can also run standalone with Claude Desktop, RooCode, or any MCP-compatible client.</p>
             </div>
         </section>
 
         <section id="roadmap" class="roadmap">
             <h2>[ DEVELOPMENT_ROADMAP ]</h2>
-            <p class="roadmap-intro">Solo development path from text-based foundation to multiplayer platform</p>
+            <p class="roadmap-intro">From core foundation to comprehensive RPG platform</p>
 
             <div class="timeline">
                 <div class="phase phase-complete">
                     <div class="phase-header">
-                        <h3>Phase 1: Foundation</h3>
-                        <span class="phase-status complete">90% Complete</span>
+                        <h3>Phase 1: Core Foundation</h3>
+                        <span class="phase-status complete">✅ Complete</span>
                     </div>
-                    <p class="phase-duration">~2 weeks remaining</p>
+                    <p class="phase-duration">Unified backend, working integration</p>
                     <ul class="phase-deliverables">
-                        <li>✅ Complete D&D 5e mechanics</li>
-                        <li>✅ 97+ MCP tools</li>
-                        <li>✅ 3D spatial combat engine</li>
-                        <li>✅ Stronghold system</li>
-                        <li>🔄 Condition & concentration tracking</li>
-                        <li>🔄 Rest mechanics</li>
-                        <li>🔄 Basic web UI</li>
+                        <li>✅ Unified rpg-mcp server (80+ tools)</li>
+                        <li>✅ Tauri frontend with React + Three.js</li>
+                        <li>✅ Character, inventory, combat systems</li>
+                        <li>✅ Quest system with objectives</li>
+                        <li>✅ World generation with regions</li>
+                        <li>✅ Multi-LLM support</li>
+                        <li>✅ SQLite persistence with WAL mode</li>
+                    </ul>
+                </div>
+
+                <div class="phase phase-complete">
+                    <div class="phase-header">
+                        <h3>Phase 2: Advanced Systems</h3>
+                        <span class="phase-status complete">🔄 In Progress</span>
+                    </div>
+                    <p class="phase-duration">Current development focus</p>
+                    <ul class="phase-deliverables">
+                        <li>✅ DM Secrets system with reveal conditions</li>
+                        <li>✅ Grand strategy &amp; nation management</li>
+                        <li>✅ Turn-based resolution system</li>
+                        <li>🔄 Spatial combat with grid positions</li>
+                        <li>🔄 World map visualization</li>
+                        <li>🔄 POI system for locations</li>
                     </ul>
                 </div>
 
                 <div class="phase">
                     <div class="phase-header">
-                        <h3>Phase 2: Universal Systems</h3>
+                        <h3>Phase 3: Progression Systems</h3>
                         <span class="phase-status upcoming">Upcoming</span>
                     </div>
-                    <p class="phase-duration">Timeline TBD</p>
+                    <p class="phase-duration">OSRS-style depth</p>
                     <ul class="phase-deliverables">
-                        <li>Universal RPG template engine</li>
-                        <li>PDF-to-game converter</li>
-                        <li>Support for 5+ RPG systems</li>
-                        <li>System testing framework</li>
-                        <li>Creator marketplace</li>
-                        <li>Revenue sharing (70% to creators)</li>
+                        <li>Skill system with XP curves</li>
+                        <li>Quest chains with prerequisites</li>
+                        <li>Achievement tracking</li>
+                        <li>Faction reputation system</li>
+                        <li>Discovery mechanics</li>
                     </ul>
                 </div>
 
                 <div class="phase">
                     <div class="phase-header">
-                        <h3>Phase 3: Multiplayer & Social</h3>
+                        <h3>Phase 4: Session Management</h3>
                         <span class="phase-status upcoming">Upcoming</span>
                     </div>
-                    <p class="phase-duration">Timeline TBD</p>
+                    <p class="phase-duration">Play forever</p>
                     <ul class="phase-deliverables">
-                        <li>Cloud infrastructure (PostgreSQL + Redis)</li>
-                        <li>Real-time synchronization</li>
-                        <li>4-6 player sessions</li>
-                        <li>DM control panel</li>
-                        <li>Session recording & replay</li>
-                        <li>1000+ concurrent sessions</li>
+                        <li>Session save/load</li>
+                        <li>Context condensing for LLM limits</li>
+                        <li>Adventure log export</li>
+                        <li>Campaign templates (LOTR, etc.)</li>
+                        <li>Generative world building workflows</li>
                     </ul>
                 </div>
 
                 <div class="phase">
                     <div class="phase-header">
-                        <h3>Phase 4: Platform Launch</h3>
-                        <span class="phase-status upcoming">Upcoming</span>
+                        <h3>Phase 5: Platform Features</h3>
+                        <span class="phase-status upcoming">Future</span>
                     </div>
-                    <p class="phase-duration">Timeline TBD</p>
+                    <p class="phase-duration">Community &amp; content</p>
                     <ul class="phase-deliverables">
-                        <li>Public beta (1000+ testers)</li>
-                        <li>Subscription tiers ($9.99 - $49.99)</li>
-                        <li>Mobile apps (iOS + Android)</li>
-                        <li>Creator marketplace live</li>
-                        <li>10,000+ registered users</li>
-                        <li>Full commercial launch</li>
-                    </ul>
-                </div>
-
-                <div class="phase">
-                    <div class="phase-header">
-                        <h3>Phase 5: Visual Integration</h3>
-                        <span class="phase-status upcoming">Post-Launch</span>
-                    </div>
-                    <p class="phase-duration">Lowest Priority</p>
-                    <ul class="phase-deliverables">
-                        <li>Veo 2 AI video generation</li>
-                        <li>Smart caching system (&gt;80% hit rate)</li>
-                        <li>5+ visual style presets</li>
-                        <li>Hybrid text+video interface</li>
-                        <li>100+ pregenerated scenes</li>
-                        <li>Adaptive streaming</li>
+                        <li>Universal RPG system support</li>
+                        <li>Content sharing marketplace</li>
+                        <li>Mobile companion apps</li>
+                        <li>Multiplayer foundation</li>
+                        <li>Visual generation integration</li>
                     </ul>
                 </div>
             </div>
@@ -269,62 +274,64 @@
             <h2>// DOCUMENTATION</h2>
             <div class="docs-grid">
                 <div class="doc-card">
-                    <h3>📖 Comprehensive Analysis</h3>
-                    <p>Detailed 18,000-word analysis of the system architecture, features, and implementation</p>
+                    <h3>📖 System Analysis</h3>
+                    <p>Comprehensive review of the backend and frontend architecture, capabilities, and integration</p>
                     <a href="/analysis" class="doc-link">Read Analysis →</a>
                 </div>
                 <div class="doc-card">
-                    <h3>🗺️ Implementation Roadmap</h3>
-                    <p>Solo development roadmap from foundation to multiplayer platform launch</p>
+                    <h3>🗺️ Development Roadmap</h3>
+                    <p>Detailed development plan from core systems through platform features</p>
                     <a href="/roadmap" class="doc-link">View Roadmap →</a>
                 </div>
                 <div class="doc-card">
                     <h3>🔧 API Reference</h3>
-                    <p>Complete reference for all 97 MCP tools: Game State (68 tools) and Combat Engine (29 tools)</p>
+                    <p>Complete documentation for all 80+ MCP tools across CRUD, combat, quests, and more</p>
                     <a href="/api-reference" class="doc-link">View API Docs →</a>
                 </div>
                 <div class="doc-card">
                     <h3>🚀 Quick Start Guide</h3>
-                    <p>Get started with Quest Keeper AI in minutes</p>
+                    <p>Get started with Quest Keeper AI—both the desktop app and standalone MCP backend</p>
                     <a href="/quickstart" class="doc-link">Get Started →</a>
                 </div>
                 <div class="doc-card">
-                    <h3>🎨 Style Guide</h3>
-                    <p>Retro-futuristic design system with colors, typography, and UI components</p>
+                    <h3>🎨 Design System</h3>
+                    <p>Retro-futuristic design language with colors, typography, and UI components</p>
                     <a href="/style-guide" class="doc-link">View Style Guide →</a>
                 </div>
             </div>
         </section>
 
         <section class="comparison">
-            <h2>[ COMPARISON_MATRIX ]</h2>
+            <h2>[ WHY_QUEST_KEEPER ]</h2>
             <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>vs. AI Dungeon</h3>
+                    <ul class="pros-cons">
+                        <li class="pro">✅ Full D&D 5e mechanics</li>
+                        <li class="pro">✅ Authentic dice &amp; combat</li>
+                        <li class="pro">✅ Persistent state</li>
+                        <li class="pro">✅ Visual battlemap</li>
+                        <li class="pro">✅ Free &amp; open source</li>
+                    </ul>
+                </div>
                 <div class="comparison-card">
                     <h3>vs. D&D Beyond</h3>
                     <ul class="pros-cons">
-                        <li class="pro">✅ Native AI integration</li>
+                        <li class="pro">✅ AI Dungeon Master</li>
                         <li class="pro">✅ 3D spatial combat</li>
-                        <li class="pro">✅ Stronghold management</li>
-                        <li class="pro">✅ Free & open source</li>
-                        <li class="con">❌ Less visual polish (for now)</li>
+                        <li class="pro">✅ Procedural worlds</li>
+                        <li class="pro">✅ Quest tracking</li>
+                        <li class="pro">✅ Free &amp; open source</li>
                     </ul>
                 </div>
                 <div class="comparison-card">
                     <h3>vs. Roll20</h3>
                     <ul class="pros-cons">
-                        <li class="pro">✅ AI Dungeon Master</li>
+                        <li class="pro">✅ AI-driven narrative</li>
                         <li class="pro">✅ Full API access</li>
-                        <li class="pro">✅ Persistent world state</li>
-                        <li class="con">❌ Text-based maps (Phase 2 will add visual)</li>
-                    </ul>
-                </div>
-                <div class="comparison-card">
-                    <h3>vs. AI Dungeon</h3>
-                    <ul class="pros-cons">
-                        <li class="pro">✅ Full D&D 5e rules</li>
-                        <li class="pro">✅ Authentic dice mechanics</li>
-                        <li class="pro">✅ Complete character sheets</li>
-                        <li class="pro">✅ Tactical combat system</li>
+                        <li class="pro">✅ Solo or group play</li>
+                        <li class="pro">✅ Desktop native</li>
+                        <li class="pro">✅ World generation</li>
                     </ul>
                 </div>
             </div>
@@ -332,7 +339,7 @@
 
         <section id="signup" class="signup">
             <h2>[ JOIN THE QUEST ]</h2>
-            <p>Sign up to get notified when Quest Keeper AI launches</p>
+            <p>Sign up to get notified about releases, updates, and community events</p>
             <form
                 action="https://formspree.io/f/mnnlqvaw"
                 method="POST"
@@ -348,9 +355,8 @@
         <footer>
             <p>&copy; 2025 Quest Keeper AI. All rights reserved.</p>
             <div class="social-links">
-                <a href="#" class="social-link">Twitter</a>
-                <a href="#" class="social-link">Discord</a>
-                <a href="#" class="social-link">GitHub</a>
+                <a href="https://github.com/Mnehmos/rpg-mcp" target="_blank" class="social-link">GitHub (Backend)</a>
+                <a href="https://github.com/Mnehmos/QuestKeeperAI-v2" target="_blank" class="social-link">GitHub (Frontend)</a>
             </div>
         </footer>
     </div>
@@ -366,22 +372,6 @@
                 }
             });
         });
-
-        // Terminal-style typing effect for the logo
-        const logo = document.querySelector('.logo');
-        if (logo) {
-            const text = logo.textContent;
-            logo.textContent = '';
-            let i = 0;
-            const typeWriter = () => {
-                if (i < text.length) {
-                    logo.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 100);
-                }
-            };
-            setTimeout(typeWriter, 500);
-        }
     </script>
 </body>
 </html>

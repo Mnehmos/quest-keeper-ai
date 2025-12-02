@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Start Guide - Quest Keeper AI</title>
-    <meta name="description" content="Get started with Quest Keeper AI - Setup instructions for MCP servers and third-party harnesses">
+    <meta name="description" content="Get started with Quest Keeper AI - Setup the desktop app or standalone MCP backend">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" href="/styles.css">
     <style>
-        /* Override sticky navigation */
-        nav {
-            position: static !important;
-        }
-
         .quickstart-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -24,33 +19,32 @@
             margin-bottom: 60px;
             padding: 40px 20px;
             background: rgba(0, 255, 136, 0.05);
-            border: 2px solid var(--primary);
+            border: 2px solid var(--neon-cyan);
             border-radius: 4px;
-            position: static !important;
         }
 
         .quickstart-header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            color: var(--primary);
+            color: var(--neon-cyan);
         }
 
         .quickstart-header .subtitle {
             font-size: 1.2em;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             margin-bottom: 20px;
         }
 
         .content-wrapper {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 280px 1fr;
             gap: 40px;
             align-items: start;
         }
 
         .toc {
             background: rgba(0, 255, 136, 0.03);
-            border: 2px solid var(--primary);
+            border: 2px solid var(--neon-cyan);
             border-radius: 4px;
             padding: 30px;
             position: sticky;
@@ -60,9 +54,9 @@
         }
 
         .toc h2 {
-            color: var(--primary);
+            color: var(--neon-cyan);
             margin-bottom: 20px;
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
 
         .toc ul {
@@ -71,24 +65,27 @@
         }
 
         .toc li {
-            margin: 10px 0;
+            margin: 12px 0;
             padding-left: 20px;
+            position: relative;
         }
 
         .toc li:before {
             content: "▶";
-            color: var(--primary);
-            margin-right: 10px;
+            color: var(--neon-cyan);
+            position: absolute;
+            left: 0;
+            font-size: 0.8em;
         }
 
         .toc a {
-            color: var(--text-primary);
+            color: var(--text-white);
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .toc a:hover {
-            color: var(--primary);
+            color: var(--neon-cyan);
         }
 
         .main-content {
@@ -100,42 +97,48 @@
         }
 
         .content-section h2 {
-            color: var(--primary);
+            color: var(--neon-cyan);
             font-size: 2em;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 2px solid var(--neon-cyan);
         }
 
         .content-section h3 {
-            color: var(--primary);
-            font-size: 1.5em;
+            color: var(--neon-cyan);
+            font-size: 1.4em;
             margin-top: 40px;
             margin-bottom: 15px;
         }
 
         .highlight-box {
             background: rgba(0, 255, 136, 0.05);
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid var(--neon-cyan);
             padding: 20px;
             margin: 20px 0;
+        }
+
+        .highlight-box.warning {
+            border-left-color: var(--neon-orange);
+            background: rgba(255, 149, 0, 0.05);
         }
 
         .code-block {
             background: #000;
-            border: 1px solid var(--primary);
+            border: 1px solid var(--neon-cyan);
             border-radius: 4px;
             padding: 20px;
             overflow-x: auto;
             margin: 20px 0;
-            font-family: 'Courier New', monospace;
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
             font-size: 0.9em;
             line-height: 1.6;
+            color: var(--neon-green);
         }
 
         .step-number {
             display: inline-block;
-            background: var(--primary);
+            background: var(--neon-cyan);
             color: #000;
             width: 30px;
             height: 30px;
@@ -148,24 +151,65 @@
 
         .platform-card {
             background: rgba(0, 255, 136, 0.03);
-            border: 2px solid var(--primary);
+            border: 2px solid var(--neon-cyan);
             border-radius: 4px;
             padding: 30px;
             margin: 20px 0;
+            transition: all 0.3s;
+        }
+
+        .platform-card:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
         }
 
         .platform-card h3 {
             margin-top: 0;
+            color: var(--neon-cyan);
         }
 
         .platform-card a {
-            color: var(--primary);
+            color: var(--neon-cyan);
             text-decoration: none;
             font-weight: bold;
         }
 
         .platform-card a:hover {
             text-decoration: underline;
+        }
+
+        .tab-container {
+            margin: 30px 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 12px 24px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-button:hover, .tab-button.active {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         @media (max-width: 1024px) {
@@ -186,19 +230,19 @@
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo"><img src="/favicon.svg" alt="Quest Keeper D20" class="logo-icon"> QUEST KEEPER</div>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/analysis">Analysis</a>
-                <a href="/roadmap">Roadmap</a>
-                <a href="/quickstart" class="active">Quick Start</a>
-                <a href="/api-reference">API Reference</a>
-                <a href="/style-guide">Style Guide</a>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <nav>
+            <div class="logo"><img src="/favicon.svg" alt="Quest Keeper D20" class="logo-icon"> Quest Keeper AI</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/analysis">Analysis</a></li>
+                <li><a href="/roadmap">Roadmap</a></li>
+                <li><a href="/quickstart">Quick Start</a></li>
+                <li><a href="/api-reference">API Reference</a></li>
+                <li><a href="/style-guide">Style Guide</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="quickstart-container">
         <div class="quickstart-header">
@@ -206,241 +250,263 @@
             <p class="subtitle">Get started with Quest Keeper AI in minutes</p>
         </div>
 
-        <div class="email-signup" style="margin: 40px auto; max-width: 1200px;">
-            <div class="signup-container">
-                <h2>[ JOIN THE QUEST ]</h2>
-                <p>Sign up to get notified when Quest Keeper AI launches</p>
-                <form class="signup-form" action="https://formspree.io/f/mnnlqvaw" method="POST">
-                    <input type="email" name="email" placeholder="your.email@domain.com" required>
-                    <input type="hidden" name="_subject" value="New Quest Keeper AI Signup">
-                    <button type="submit" class="signup-button">&gt; NOTIFY_ME</button>
-                </form>
-                <p class="privacy-note">No spam. Unsubscribe anytime.</p>
-            </div>
-        </div>
-        </div>
-
         <div class="content-wrapper">
             <div class="toc">
                 <h2>// CONTENTS</h2>
                 <ul>
-                    <li><a href="#play-now">Play Now (Easy)</a></li>
-                    <li><a href="#prerequisites">Prerequisites</a></li>
-                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#choose-path">Choose Your Path</a></li>
+                    <li><a href="#desktop-app">Desktop App Setup</a></li>
+                    <li><a href="#mcp-standalone">MCP Backend Only</a></li>
                     <li><a href="#configuration">Configuration</a></li>
                     <li><a href="#first-game">Your First Game</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
                 </ul>
             </div>
 
             <div class="main-content">
-                <section id="play-now" class="content-section">
-                    <h2>// PLAY_NOW_ALPHA</h2>
+                <section id="choose-path" class="content-section">
+                    <h2>// CHOOSE_YOUR_PATH</h2>
 
                     <div class="highlight-box">
-                        <p><strong>🎮 Easiest Way to Play:</strong> Use third-party AI code assistants that support MCP (Model Context Protocol). Just clone the repo, configure the servers, and start playing!</p>
+                        <p><strong>Two ways to play Quest Keeper AI:</strong></p>
+                        <ul style="margin-top: 10px; margin-left: 20px;">
+                            <li><strong>Desktop App</strong> - Full Tauri application with 3D battlemap, character sheets, and built-in chat</li>
+                            <li><strong>MCP Backend</strong> - Use with Claude Desktop, RooCode, KiloCode, or any MCP client</li>
+                        </ul>
                     </div>
 
-                    <h3>Compatible Platforms</h3>
+                    <div class="platform-card">
+                        <h3>🖥️ Quest Keeper AI Desktop App</h3>
+                        <p>The complete experience with visual interface, 3D battlemap, and multi-LLM support.</p>
+                        <p><strong>Best for:</strong> Solo play, visual feedback, integrated experience</p>
+                        <p><a href="#desktop-app">Setup Desktop App →</a></p>
+                    </div>
+
+                    <div class="platform-card">
+                        <h3>⚙️ rpg-mcp Backend Only</h3>
+                        <p>Use the MCP server with your preferred AI client for text-based adventures.</p>
+                        <p><strong>Best for:</strong> Existing MCP workflows, Claude Desktop users, developers</p>
+                        <p><a href="#mcp-standalone">Setup MCP Backend →</a></p>
+                    </div>
+                </section>
+
+                <section id="desktop-app" class="content-section">
+                    <h2>// DESKTOP_APP_SETUP</h2>
+
+                    <h3>Prerequisites</h3>
+                    <ul>
+                        <li><strong>Node.js 18+</strong> - <a href="https://nodejs.org" target="_blank" style="color: var(--neon-cyan);">Download here</a></li>
+                        <li><strong>Rust</strong> - Required for Tauri (<a href="https://rustup.rs" target="_blank" style="color: var(--neon-cyan);">Install via rustup</a>)</li>
+                        <li><strong>Git</strong> - <a href="https://git-scm.com" target="_blank" style="color: var(--neon-cyan);">Download here</a></li>
+                        <li><strong>LLM API Key</strong> - OpenAI, Anthropic, Gemini, or OpenRouter</li>
+                    </ul>
+
+                    <h3><span class="step-number">1</span> Clone the Repositories</h3>
+                    <div class="code-block"># Clone the frontend
+git clone https://github.com/Mnehmos/QuestKeeperAI-v2.git
+cd QuestKeeperAI-v2
+
+# Clone the backend (as sidecar)
+git clone https://github.com/Mnehmos/rpg-mcp.git</div>
+
+                    <h3><span class="step-number">2</span> Build the MCP Backend</h3>
+                    <div class="code-block">cd rpg-mcp
+npm install
+npm run build:binaries</div>
+
+                    <div class="highlight-box">
+                        <p><strong>📦 Output:</strong> This creates platform-specific binaries in <code>bin/</code>:</p>
+                        <ul style="margin-top: 10px; margin-left: 20px;">
+                            <li><code>rpg-mcp-win.exe</code> (Windows)</li>
+                            <li><code>rpg-mcp-macos</code> (macOS)</li>
+                            <li><code>rpg-mcp-linux</code> (Linux)</li>
+                        </ul>
+                    </div>
+
+                    <h3><span class="step-number">3</span> Copy Binary to Frontend</h3>
+                    <div class="code-block"># Windows example
+copy bin\rpg-mcp-win.exe ..\QuestKeeperAI-v2\src-tauri\binaries\rpg-mcp-server-x86_64-pc-windows-msvc.exe
+
+# macOS example
+cp bin/rpg-mcp-macos ../QuestKeeperAI-v2/src-tauri/binaries/rpg-mcp-server-x86_64-apple-darwin
+
+# Linux example
+cp bin/rpg-mcp-linux ../QuestKeeperAI-v2/src-tauri/binaries/rpg-mcp-server-x86_64-unknown-linux-gnu</div>
+
+                    <h3><span class="step-number">4</span> Install &amp; Run Frontend</h3>
+                    <div class="code-block">cd ../QuestKeeperAI-v2
+npm install
+npm run tauri dev</div>
+
+                    <h3><span class="step-number">5</span> Configure API Keys</h3>
+                    <p>Click the ⚙️ Settings button in the app and add your LLM API key(s).</p>
+
+                    <div class="highlight-box">
+                        <p><strong>🎮 You're ready!</strong> Start chatting with the AI to create characters and begin your adventure.</p>
+                    </div>
+                </section>
+
+                <section id="mcp-standalone" class="content-section">
+                    <h2>// MCP_BACKEND_ONLY</h2>
+
+                    <p>Use rpg-mcp with any MCP-compatible client:</p>
 
                     <div class="platform-card">
                         <h3>🤖 Claude Desktop</h3>
                         <p>Official Anthropic desktop app with native MCP support</p>
-                        <p><strong>Features:</strong> Direct Claude integration, built-in MCP server management, native desktop experience</p>
                         <p><a href="https://claude.ai/download" target="_blank">Download Claude Desktop →</a></p>
                     </div>
 
                     <div class="platform-card">
-                        <h3>🦘 KiloCode.ai</h3>
-                        <p>AI-powered coding assistant with MCP support</p>
-                        <p><strong>Features:</strong> Free models available, bring your own API key, VS Code extension</p>
-                        <p><a href="https://kilocode.ai" target="_blank">Visit KiloCode.ai →</a></p>
+                        <h3>🦘 KiloCode</h3>
+                        <p>AI-powered VS Code extension with MCP support</p>
+                        <p><a href="https://kilocode.ai" target="_blank">Visit KiloCode →</a></p>
                     </div>
 
                     <div class="platform-card">
-                        <h3>🦙 RooCode.com</h3>
+                        <h3>🦙 RooCode</h3>
                         <p>Full-featured AI development environment</p>
-                        <p><strong>Features:</strong> Free tier available, multiple AI providers, built-in MCP support</p>
-                        <p><a href="https://roocode.com" target="_blank">Visit RooCode.com →</a></p>
+                        <p><a href="https://roocode.com" target="_blank">Visit RooCode →</a></p>
                     </div>
 
-                    <div class="highlight-box">
-                        <p><strong>Note:</strong> Claude Desktop has native MCP configuration. VS Code extensions (KiloCode/RooCode) require separate installation. Follow their respective setup guides, then return here to configure the MCP servers.</p>
-                    </div>
-                </section>
-
-                <section id="prerequisites" class="content-section">
-                    <h2>// PREREQUISITES</h2>
-
-                    <p>Before you begin, make sure you have:</p>
-
-                    <ul>
-                        <li><strong>Node.js:</strong> Version 16 or higher (<a href="https://nodejs.org" target="_blank" style="color: var(--primary);">Download here</a>)</li>
-                        <li><strong>Git:</strong> For cloning the repository (<a href="https://git-scm.com" target="_blank" style="color: var(--primary);">Download here</a>)</li>
-                        <li><strong>VS Code:</strong> With RooCode or KiloCode extension installed</li>
-                        <li><strong>AI Provider:</strong> API key for Claude, OpenAI, or use free models (depending on your platform)</li>
-                    </ul>
-
-                    <div class="highlight-box">
-                        <h3>Platform-Specific Setup</h3>
-                        <p><strong>RooCode:</strong> Install from VS Code Marketplace or via CLI:</p>
-                        <div class="code-block">code --install-extension RooVeterinaryInc.roo-cline</div>
-                        <p><strong>KiloCode:</strong> Follow setup instructions at <a href="https://kilocode.ai" target="_blank" style="color: var(--primary);">kilocode.ai</a></p>
-                    </div>
-                </section>
-
-                <section id="installation" class="content-section">
-                    <h2>// INSTALLATION</h2>
-
-                    <h3><span class="step-number">1</span> Clone the Repository</h3>
-                    <div class="code-block">git clone https://github.com/Mnehmos/rpg-mcp-servers.git
-cd rpg-mcp-servers</div>
-
-                    <h3><span class="step-number">2</span> Install Game State Server</h3>
-                    <div class="code-block">cd game-state-server
+                    <h3><span class="step-number">1</span> Clone &amp; Build</h3>
+                    <div class="code-block">git clone https://github.com/Mnehmos/rpg-mcp.git
+cd rpg-mcp
 npm install
 npm run build</div>
 
-                    <h3><span class="step-number">3</span> Install Combat Engine Server</h3>
-                    <div class="code-block">cd ../combat-engine-server
-npm install
-npm run build</div>
+                    <h3><span class="step-number">2</span> Configure MCP Client</h3>
+                    <p>Add to your MCP settings file:</p>
 
-                    <h3><span class="step-number">4</span> Optional: Configure Environment Variables</h3>
-                    <p>Create <code>.env</code> files in each server directory if you want custom settings:</p>
+                    <div class="tab-container">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" onclick="showTab('claude')">Claude Desktop</button>
+                            <button class="tab-button" onclick="showTab('roocode')">RooCode</button>
+                        </div>
 
-                    <p><strong>game-state-server/.env:</strong></p>
-                    <div class="code-block">DATABASE_PATH=./data/my_rpg.db
-PORT=3001</div>
+                        <div id="claude" class="tab-content active">
+                            <p><strong>Config location:</strong></p>
+                            <ul style="margin: 10px 0 10px 20px;">
+                                <li>macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
+                                <li>Windows: <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
+                            </ul>
+                            <div class="code-block">{
+  "mcpServers": {
+    "rpg-mcp": {
+      "command": "node",
+      "args": ["PATH_TO_REPO/rpg-mcp/dist/index.js"],
+      "env": {}
+    }
+  }
+}</div>
+                        </div>
 
-                    <p><strong>combat-engine-server/.env:</strong></p>
-                    <div class="code-block">PORT=3002</div>
+                        <div id="roocode" class="tab-content">
+                            <p><strong>Config location:</strong> <code>%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings\mcp_settings.json</code></p>
+                            <div class="code-block">{
+  "mcpServers": {
+    "rpg-mcp": {
+      "command": "node",
+      "args": ["PATH_TO_REPO/rpg-mcp/dist/index.js"],
+      "cwd": "PATH_TO_REPO/rpg-mcp",
+      "enabled": true,
+      "alwaysAllow": ["*"]
+    }
+  }
+}</div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box warning">
+                        <p><strong>⚠️ Important:</strong> Replace <code>PATH_TO_REPO</code> with the actual path to your cloned repository!</p>
+                    </div>
+
+                    <h3><span class="step-number">3</span> Restart &amp; Play</h3>
+                    <p>Restart your MCP client and start playing!</p>
                 </section>
 
                 <section id="configuration" class="content-section">
                     <h2>// CONFIGURATION</h2>
 
-                    <h3>Configure MCP Settings</h3>
-                    <p>Add the following to your MCP settings file (location varies by platform):</p>
+                    <h3>Database Location</h3>
+                    <p>rpg-mcp uses SQLite for persistence. The database (<code>rpg.db</code>) is created in the working directory.</p>
 
-                    <div class="highlight-box">
-                        <p><strong>Claude Desktop:</strong> Edit <code>claude_desktop_config.json</code></p>
-                        <ul style="margin-left: 20px; margin-top: 10px;">
-                            <li>macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
-                            <li>Windows: <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
-                        </ul>
-                        <p style="margin-top: 10px;"><strong>RooCode:</strong> Typically at <code>%APPDATA%\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings\mcp_settings.json</code></p>
-                        <p><strong>KiloCode:</strong> Check KiloCode documentation for MCP settings location</p>
-                    </div>
+                    <h3>Pre-populated Content</h3>
+                    <p>The bundled database includes Fellowship of the Ring content ready to play:</p>
+                    <ul>
+                        <li>9 Fellowship characters with full stats</li>
+                        <li>Signature items (Sting, Glamdring, etc.)</li>
+                        <li>Starting quests and locations</li>
+                    </ul>
 
-                    <div class="code-block">{
-  "mcpServers": {
-    "rpg-game-state": {
-      "name": "rpg-game-state-server",
-      "command": "node",
-      "args": ["dist/index.js"],
-      "cwd": "PATH_TO_YOUR_PROJECT/rpg-mcp-servers/game-state-server",
-      "enabled": true,
-      "alwaysAllow": [
-        "create_character", "get_character", "get_character_by_name",
-        "list_characters", "update_character", "add_item", "get_inventory",
-        "remove_item", "update_item", "save_world_state", "get_world_state",
-        "update_world_state", "create_npc", "create_npc_group", "get_npc",
-        "list_npcs", "update_npc", "remove_npc", "create_encounter",
-        "add_to_encounter", "get_encounter_state", "get_active_encounter",
-        "start_turn", "end_turn", "next_turn", "consume_action",
-        "end_encounter", "apply_damage", "save_story_progress",
-        "add_quest", "get_active_quests", "update_quest_state",
-        "assign_quest_to_character"
-      ]
-    },
-    "rpg-combat-engine": {
-      "name": "rpg-combat-engine-server",
-      "command": "node",
-      "args": ["dist/index.js"],
-      "cwd": "PATH_TO_YOUR_PROJECT/rpg-mcp-servers/combat-engine-server",
-      "enabled": true,
-      "alwaysAllow": [
-        "roll_dice", "roll_check", "attack_roll", "initiative_roll",
-        "damage_roll", "saving_throw", "use_reaction", "use_legendary_action",
-        "trigger_lair_action", "execute_multiattack", "initialize_battlefield",
-        "place_creature", "move_creature", "check_line_of_sight",
-        "get_area_effect_targets", "get_tactical_summary", "check_flanking",
-        "check_height_advantage", "describe_battlefield",
-        "describe_detailed_tactical_situation", "generate_battlefield_map",
-        "get_combat_log", "clear_combat_log"
-      ]
-    }
-  }
-}</div>
+                    <h3>Environment Variables</h3>
+                    <div class="code-block"># Optional: Custom database path
+DATABASE_PATH=./data/custom.db
 
-                    <div class="highlight-box">
-                        <p><strong>⚠️ Important:</strong> Replace <code>PATH_TO_YOUR_PROJECT</code> with the actual path to your cloned repository!</p>
-                    </div>
+# Optional: Debug logging
+DEBUG=rpg-mcp:*</div>
                 </section>
 
                 <section id="first-game" class="content-section">
                     <h2>// YOUR_FIRST_GAME</h2>
 
-                    <h3><span class="step-number">1</span> Restart Your Platform</h3>
-                    <p>Restart VS Code (or reload window) to ensure MCP servers are loaded.</p>
+                    <h3>Test the Connection</h3>
+                    <p>In the desktop app, type <code>/test</code> to list all available MCP tools.</p>
 
-                    <h3><span class="step-number">2</span> Start a Conversation</h3>
-                    <p>Open your AI assistant (RooCode/KiloCode chat) and say:</p>
-                    <div class="code-block">"I want to create a new D&D 5e character and start an adventure!"</div>
-
-                    <h3><span class="step-number">3</span> Let the AI Guide You</h3>
-                    <p>The AI will use the MCP tools to:</p>
-                    <ul>
-                        <li>Create your character sheet</li>
-                        <li>Roll for abilities and stats</li>
-                        <li>Set up inventory and equipment</li>
-                        <li>Initialize combat encounters</li>
-                        <li>Generate battlefield visualizations</li>
-                    </ul>
-
+                    <h3>Example Commands</h3>
                     <div class="highlight-box">
-                        <h3>Example Commands to Try</h3>
                         <ul>
-                            <li>"Create a level 5 elf ranger named Lyra"</li>
-                            <li>"Roll initiative for combat"</li>
-                            <li>"Show me the battlefield map"</li>
-                            <li>"Attack the nearest enemy"</li>
-                            <li>"Cast fireball at coordinates (10, 5)"</li>
+                            <li>"List all characters" - See pre-loaded Fellowship</li>
+                            <li>"Create a level 3 dwarf fighter named Thorin" - New character</li>
+                            <li>"Give Thorin a battleaxe" - Add items</li>
+                            <li>"Start combat with 3 goblins" - Begin encounter</li>
+                            <li>"Roll 2d6+3 for damage" - Dice rolling</li>
+                            <li>"Create a quest to find the lost ring" - Quest system</li>
                         </ul>
                     </div>
 
-                    <h3>Features You Can Explore</h3>
+                    <h3>Available Tool Categories</h3>
                     <ul>
-                        <li><strong>Character Creation:</strong> Full D&D 5e character sheets with all abilities</li>
-                        <li><strong>Combat:</strong> 3D spatial combat with elevation, cover, and line of sight</li>
-                        <li><strong>Spellcasting:</strong> Complete spell system with slots and concentration</li>
-                        <li><strong>Inventory:</strong> Track items, equipment, and treasure</li>
-                        <li><strong>NPCs:</strong> Create allies and enemies with full stat blocks</li>
-                        <li><strong>World State:</strong> Persistent world that remembers your adventures</li>
-                        <li><strong>Quests:</strong> Track objectives and rewards</li>
+                        <li><strong>CRUD:</strong> create_character, get_character, list_characters, update_character, delete_character</li>
+                        <li><strong>Inventory:</strong> create_item_template, give_item, remove_item, equip_item, get_inventory</li>
+                        <li><strong>Combat:</strong> create_encounter, execute_combat_action, advance_turn, end_encounter</li>
+                        <li><strong>Quests:</strong> create_quest, assign_quest, update_objective, complete_quest, get_quest_log</li>
+                        <li><strong>World:</strong> generate_world, get_world_state, apply_map_patch</li>
+                        <li><strong>Math:</strong> dice_roll, probability_calculate</li>
+                        <li><strong>Secrets:</strong> create_secret, reveal_secret, check_reveal_conditions</li>
+                        <li><strong>Strategy:</strong> create_nation, propose_alliance, resolve_turn</li>
                     </ul>
                 </section>
 
-                <section class="content-section">
-                    <h2>// NEED_HELP?</h2>
+                <section id="troubleshooting" class="content-section">
+                    <h2>// TROUBLESHOOTING</h2>
+
+                    <h3>MCP Server Not Starting</h3>
+                    <ul>
+                        <li>Check that Node.js 18+ is installed: <code>node --version</code></li>
+                        <li>Ensure the path in your MCP config is correct</li>
+                        <li>Try running <code>node dist/index.js</code> directly to see errors</li>
+                    </ul>
+
+                    <h3>Desktop App Build Errors</h3>
+                    <ul>
+                        <li>Ensure Rust is installed: <code>rustc --version</code></li>
+                        <li>Run <code>npm run tauri info</code> to check dependencies</li>
+                        <li>On Windows, install Visual Studio Build Tools</li>
+                    </ul>
+
+                    <h3>Database Issues</h3>
+                    <ul>
+                        <li>Delete <code>rpg.db</code> to reset to clean state</li>
+                        <li>Check file permissions in the working directory</li>
+                        <li>Ensure only one instance is running (SQLite locking)</li>
+                    </ul>
 
                     <div class="highlight-box">
-                        <h3>Resources</h3>
+                        <h3>Need Help?</h3>
                         <ul>
-                            <li><strong>GitHub:</strong> <a href="https://github.com/Mnehmos/rpg-mcp-servers" target="_blank" style="color: var(--primary);">github.com/Mnehmos/rpg-mcp-servers</a></li>
-                            <li><strong>Comprehensive Analysis:</strong> <a href="analysis.html" style="color: var(--primary);">Read the full system documentation</a></li>
-                            <li><strong>Roadmap:</strong> <a href="roadmap.html" style="color: var(--primary);">See what's coming next</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="highlight-box">
-                        <h3>Tips for Best Experience</h3>
-                        <ul>
-                            <li>Be specific with your commands (e.g., "Roll 1d20+5 for attack" instead of "attack")</li>
-                            <li>Ask the AI to show you the battlefield map frequently during combat</li>
-                            <li>Use tactical commands like "check line of sight to goblin"</li>
-                            <li>Save your progress with "save world state"</li>
-                            <li>The AI can generate full campaign narratives and encounters!</li>
+                            <li><strong>Backend Issues:</strong> <a href="https://github.com/Mnehmos/rpg-mcp/issues" target="_blank" style="color: var(--neon-cyan);">GitHub Issues (rpg-mcp)</a></li>
+                            <li><strong>Frontend Issues:</strong> <a href="https://github.com/Mnehmos/QuestKeeperAI-v2/issues" target="_blank" style="color: var(--neon-cyan);">GitHub Issues (Frontend)</a></li>
                         </ul>
                     </div>
                 </section>
@@ -448,13 +514,19 @@ PORT=3001</div>
         </div>
     </div>
 
-    <footer style="margin-top: 100px; padding: 40px 20px; text-align: center; border-top: 2px solid var(--primary);">
+    <footer style="margin-top: 100px; padding: 40px 20px; text-align: center; border-top: 2px solid var(--neon-cyan);">
         <p>&copy; 2025 Quest Keeper AI. All rights reserved.</p>
-        <p style="margin-top: 10px;"><a href="index.html" style="color: var(--primary);">← Back to Main Site</a></p>
+        <p style="margin-top: 10px;"><a href="/" style="color: var(--neon-cyan);">← Back to Main Site</a></p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
