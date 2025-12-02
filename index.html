@@ -17,8 +17,8 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#architecture">Architecture</a></li>
+                    <li><a href="#comparison">Compare</a></li>
                     <li><a href="#roadmap">Roadmap</a></li>
-                    <li><a href="#docs">Docs</a></li>
                     <li><a href="#signup">Get Notified</a></li>
                 </ul>
             </nav>
@@ -185,6 +185,227 @@
             </div>
         </section>
 
+        <section id="comparison" class="comparison">
+            <h2>[ COMPETITIVE_LANDSCAPE ]</h2>
+            <p class="comparison-intro">How Quest Keeper AI compares to existing platforms—honestly.</p>
+
+            <!-- The Core Problem -->
+            <div class="trust-problem">
+                <h3>🎯 The Mechanical Trust Problem</h3>
+                <p>The fundamental issue with AI game masters: <em>"The High Paladin sends you to recover the Crown of Might. After 27 sessions, you still haven't found it. The AI DM admits there is no Crown of Might. You wasted 27 sessions."</em></p>
+                <p style="margin-top: 10px;"><strong>Quest Keeper's Solution:</strong> LLM describes, engine validates. All game state comes from SQLite, not hallucination. The AI can narrate finding a sword, but the sword must exist in the database first.</p>
+            </div>
+
+            <!-- Comparison Matrix -->
+            <div class="comparison-matrix">
+                <h3>// TECHNICAL_COMPARISON</h3>
+                <div class="matrix-scroll">
+                    <table class="matrix-table">
+                        <thead>
+                            <tr>
+                                <th>Capability</th>
+                                <th>AI Dungeon</th>
+                                <th>Roll20</th>
+                                <th>Foundry VTT</th>
+                                <th>D&D Beyond</th>
+                                <th class="highlight">Quest Keeper</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>AI Integration</strong></td>
+                                <td>Core (15+ models)</td>
+                                <td>None</td>
+                                <td>Community modules</td>
+                                <td>None</td>
+                                <td class="highlight">Core (multi-LLM)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mechanical Validation</strong></td>
+                                <td>❌ None</td>
+                                <td>Manual only</td>
+                                <td>Module-dependent</td>
+                                <td>Character creation</td>
+                                <td class="highlight">✅ Engine-validated</td>
+                            </tr>
+                            <tr>
+                                <td><strong>State Persistence</strong></td>
+                                <td>Cloud only</td>
+                                <td>Cloud only</td>
+                                <td>LevelDB (local)</td>
+                                <td>Cloud only</td>
+                                <td class="highlight">SQLite (local)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>API Access</strong></td>
+                                <td>❌ None</td>
+                                <td>Pro tier only</td>
+                                <td>Full JavaScript API</td>
+                                <td>❌ None (7yr wait)</td>
+                                <td class="highlight">80+ MCP tools</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Self-Hosted</strong></td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td class="highlight">✅</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Open Source</strong></td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td class="highlight">✅ MIT</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3D Battlemap</strong></td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>Via modules</td>
+                                <td>❌ (Sigil cancelled)</td>
+                                <td class="highlight">✅ Three.js</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pricing</strong></td>
+                                <td>Free–$50/mo</td>
+                                <td>Free–$11/mo</td>
+                                <td>$50 one-time</td>
+                                <td>Free–$6/mo + books</td>
+                                <td class="highlight">Free forever</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detailed Comparisons -->
+            <div class="detailed-comparisons">
+                <div class="comparison-card detailed">
+                    <h3>vs. AI Dungeon</h3>
+                    <p class="competitor-desc">The pioneer of AI interactive fiction with 15+ model options from 12B to 671B parameters.</p>
+                    <div class="comparison-columns">
+                        <div class="advantages">
+                            <h4>Quest Keeper Advantages</h4>
+                            <ul>
+                                <li><strong>Mechanical honesty:</strong> Game state is database-validated, not AI-hallucinated</li>
+                                <li><strong>Real dice rolls:</strong> Actual probability with all D&D notation (advantage, exploding, drop lowest)</li>
+                                <li><strong>Visual feedback:</strong> 3D battlemap, character sheets, inventory UI</li>
+                                <li><strong>Self-hosted:</strong> Your data stays on your machine</li>
+                                <li><strong>Free &amp; open source:</strong> No $50/month Mythic tier needed</li>
+                            </ul>
+                        </div>
+                        <div class="disadvantages">
+                            <h4>AI Dungeon Advantages</h4>
+                            <ul>
+                                <li><strong>Model variety:</strong> 15+ AI models including GPT-4 Turbo with 128K context</li>
+                                <li><strong>Established library:</strong> Thousands of community scenarios</li>
+                                <li><strong>Zero setup:</strong> Browser-based, works immediately</li>
+                                <li><strong>Unlimited free tier:</strong> Play forever with smaller models</li>
+                                <li><strong>Custom fine-tunes:</strong> Story-optimized models like Harbinger-24B</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-card detailed">
+                    <h3>vs. Roll20</h3>
+                    <p class="competitor-desc">Market leader with 15+ million users and browser-based convenience.</p>
+                    <div class="comparison-columns">
+                        <div class="advantages">
+                            <h4>Quest Keeper Advantages</h4>
+                            <ul>
+                                <li><strong>AI Dungeon Master:</strong> Roll20 has explicitly banned AI content</li>
+                                <li><strong>Full API access:</strong> 80+ tools vs Roll20's Pro-tier-only API with no HTTP requests</li>
+                                <li><strong>Data ownership:</strong> SQLite on your machine vs cloud-only storage</li>
+                                <li><strong>World generation:</strong> Procedural terrain, not just map uploads</li>
+                                <li><strong>No subscription:</strong> Free forever vs $11/month for advanced features</li>
+                            </ul>
+                        </div>
+                        <div class="disadvantages">
+                            <h4>Roll20 Advantages</h4>
+                            <ul>
+                                <li><strong>Player network:</strong> Built-in LFG with millions of active users</li>
+                                <li><strong>Official content:</strong> Licensed D&D, Pathfinder, Call of Cthulhu modules</li>
+                                <li><strong>Zero install:</strong> Browser-based, no desktop app needed</li>
+                                <li><strong>800+ character sheets:</strong> Community-built for virtually every system</li>
+                                <li><strong>Production stability:</strong> 12+ years of battle-tested infrastructure</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-card detailed">
+                    <h3>vs. Foundry VTT</h3>
+                    <p class="competitor-desc">The technical gold standard for self-hosted VTTs with 2,700+ community modules.</p>
+                    <div class="comparison-columns">
+                        <div class="advantages">
+                            <h4>Quest Keeper Advantages</h4>
+                            <ul>
+                                <li><strong>Native AI integration:</strong> Foundry's founder explicitly refuses AI features</li>
+                                <li><strong>Simpler persistence:</strong> Human-readable SQLite vs binary LevelDB</li>
+                                <li><strong>Open source:</strong> MIT licensed vs proprietary</li>
+                                <li><strong>Built-in 3D:</strong> Three.js included vs module-dependent</li>
+                                <li><strong>Free:</strong> No $50 license required</li>
+                            </ul>
+                        </div>
+                        <div class="disadvantages">
+                            <h4>Foundry Advantages</h4>
+                            <ul>
+                                <li><strong>Mature ecosystem:</strong> 2,700+ modules, 350+ game systems</li>
+                                <li><strong>Superior lighting:</strong> PixiJS WebGL with colored dynamic lighting</li>
+                                <li><strong>Full JavaScript API:</strong> Build complete game systems and modules</li>
+                                <li><strong>Active community:</strong> Years of accumulated knowledge and support</li>
+                                <li><strong>Production polish:</strong> 5+ years of development and refinement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-card detailed">
+                    <h3>vs. D&D Beyond</h3>
+                    <p class="competitor-desc">The official D&D platform with the best character builder and immediate access to new content.</p>
+                    <div class="comparison-columns">
+                        <div class="advantages">
+                            <h4>Quest Keeper Advantages</h4>
+                            <ul>
+                                <li><strong>AI Dungeon Master:</strong> WotC policy prohibits AI in D&D products</li>
+                                <li><strong>Data ownership:</strong> You own your data vs "you don't own your books"</li>
+                                <li><strong>3D battlemap:</strong> D&D Beyond cancelled their 3D Sigil VTT</li>
+                                <li><strong>API access:</strong> 80+ MCP tools vs API promised for 7+ years, never delivered</li>
+                                <li><strong>No repurchasing:</strong> Works with any content you already own</li>
+                            </ul>
+                        </div>
+                        <div class="disadvantages">
+                            <h4>D&D Beyond Advantages</h4>
+                            <ul>
+                                <li><strong>Official content:</strong> New books available 1-2 weeks early</li>
+                                <li><strong>Character builder UX:</strong> The most polished D&D character creation experience</li>
+                                <li><strong>Automatic errata:</strong> Rules updates applied instantly</li>
+                                <li><strong>Content sharing:</strong> 12 players across 5 campaigns on one Master sub</li>
+                                <li><strong>2024 rules toggle:</strong> Support for both 2014 and 2024 D&D versions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honest Limitations -->
+            <div class="limitations">
+                <h3>⚠️ Honest Limitations</h3>
+                <p>Quest Keeper AI is in <strong>alpha</strong>. Here's what we don't have yet:</p>
+                <ul class="limitation-list">
+                    <li><strong>No content library:</strong> We rely on SRD and user-created content. No official licensed modules.</li>
+                    <li><strong>No player network:</strong> No built-in LFG. You bring your own players or play solo.</li>
+                    <li><strong>Solo developer:</strong> Competitors have teams and years of development. We're just getting started.</li>
+                    <li><strong>Unproven at scale:</strong> Our SQLite approach hasn't been stress-tested with massive campaigns.</li>
+                    <li><strong>Learning curve unknown:</strong> 80+ MCP tools may overwhelm users seeking simplicity.</li>
+                </ul>
+            </div>
+        </section>
+
         <section id="roadmap" class="roadmap">
             <h2>[ DEVELOPMENT_ROADMAP ]</h2>
             <p class="roadmap-intro">From core foundation to comprehensive RPG platform</p>
@@ -297,42 +518,6 @@
                     <h3>🎨 Design System</h3>
                     <p>Retro-futuristic design language with colors, typography, and UI components</p>
                     <a href="/style-guide" class="doc-link">View Style Guide →</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="comparison">
-            <h2>[ WHY_QUEST_KEEPER ]</h2>
-            <div class="comparison-grid">
-                <div class="comparison-card">
-                    <h3>vs. AI Dungeon</h3>
-                    <ul class="pros-cons">
-                        <li class="pro">✅ Full D&D 5e mechanics</li>
-                        <li class="pro">✅ Authentic dice &amp; combat</li>
-                        <li class="pro">✅ Persistent state</li>
-                        <li class="pro">✅ Visual battlemap</li>
-                        <li class="pro">✅ Free &amp; open source</li>
-                    </ul>
-                </div>
-                <div class="comparison-card">
-                    <h3>vs. D&D Beyond</h3>
-                    <ul class="pros-cons">
-                        <li class="pro">✅ AI Dungeon Master</li>
-                        <li class="pro">✅ 3D spatial combat</li>
-                        <li class="pro">✅ Procedural worlds</li>
-                        <li class="pro">✅ Quest tracking</li>
-                        <li class="pro">✅ Free &amp; open source</li>
-                    </ul>
-                </div>
-                <div class="comparison-card">
-                    <h3>vs. Roll20</h3>
-                    <ul class="pros-cons">
-                        <li class="pro">✅ AI-driven narrative</li>
-                        <li class="pro">✅ Full API access</li>
-                        <li class="pro">✅ Solo or group play</li>
-                        <li class="pro">✅ Desktop native</li>
-                        <li class="pro">✅ World generation</li>
-                    </ul>
                 </div>
             </div>
         </section>
