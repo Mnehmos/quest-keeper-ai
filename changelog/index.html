@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - Quest Keeper AI</title>
+    <meta name="description" content="Development changelog for Quest Keeper AI - tracking updates, features, and fixes">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .changelog-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .changelog-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 4px;
+        }
+
+        .changelog-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--neon-cyan);
+        }
+
+        .version-card {
+            background: rgba(0, 255, 136, 0.03);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 4px;
+            padding: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .version-card.latest {
+            border-color: var(--neon-green);
+            background: rgba(0, 255, 136, 0.08);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+        }
+
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .version-title h2 {
+            margin: 0;
+            color: var(--neon-cyan);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .release-date {
+            color: var(--text-muted);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .badge-latest {
+            background: var(--neon-green);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .change-group {
+            margin-bottom: 20px;
+        }
+
+        .change-group h3 {
+            color: var(--text-white);
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .change-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .change-list {
+            list-style: none;
+            padding: 0;
+            margin-left: 10px;
+        }
+
+        .change-list li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .change-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--neon-cyan);
+        }
+
+        @media (max-width: 768px) {
+            .version-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="/favicon.svg" alt="Quest Keeper D20" class="logo-icon"> Quest Keeper AI</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/analysis">Analysis</a></li>
+                <li><a href="/roadmap">Roadmap</a></li>
+                <li><a href="/quickstart">Quick Start</a></li>
+                <li><a href="/api-reference">API Reference</a></li>
+                <li><a href="/style-guide">Style Guide</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="changelog-container">
+        <div class="changelog-header">
+            <h1>&gt; CHANGELOG</h1>
+            <p class="subtitle">Tracking the evolution of Quest Keeper AI</p>
+        </div>
+
+        <div class="version-card latest">
+            <div class="version-header">
+                <div class="version-title">
+                    <h2>v0.3.0 - The Living World Update <span class="badge-latest">LATEST</span></h2>
+                </div>
+                <div class="release-date">December 6, 2025</div>
+            </div>
+
+            <div class="change-group">
+                <h3><span class="change-icon">✨</span> Backend & Systems</h3>
+                <ul class="change-list">
+                    <li><strong>135+ MCP Tools:</strong> Massive expansion to 135 tools (commit <code>be4d574</code>).</li>
+                    <li><strong>Spatial Graph System:</strong> Implemented room persistence, node networks, and world coordinate hierarchy (commit <code>4f100c7</code>, <code>9910710</code>).</li>
+                    <li><strong>Social Hearing:</strong> Added spatial-aware conversation mechanics where distance affects NPC perception (commit <code>272f478</code>).</li>
+                    <li><strong>Magic Auras:</strong> Complete implementation of area-effect auras for spells (Paladin auras, Spirit Guardians) (commit <code>c8de161</code>).</li>
+                    <li><strong>Concentration:</strong> Robust concentration tracking system for sustaining spell effects (commit <code>9ce6bff</code>).</li>
+                    <li><strong>Living Economy:</strong> Validated heat generation and black market fixes (commit <code>d9b52ea</code>).</li>
+                </ul>
+            </div>
+
+            <div class="change-group">
+                <h3><span class="change-icon">🎨</span> Frontend & Design</h3>
+                <ul class="change-list">
+                    <li><strong>Glassmorphism UI:</strong> Implemented comprehensive glass-card design system for all feature modules.</li>
+                    <li><strong>Dynamic Backgrounds:</strong> Added animated radial gradients and scanline effects for authentic cyber-fantasy immersion.</li>
+                    <li><strong>Scroll Animations:</strong> Integrated IntersectionObserver for smooth reveal animations on all pages.</li>
+                    <li><strong>Typing Effects:</strong> Added retro-terminal typing animations to hero sections.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="version-card">
+            <div class="version-header">
+                <div class="version-title">
+                    <h2>v0.2.0 - Unified Architecture</h2>
+                </div>
+                <div class="release-date">November 2025</div>
+            </div>
+
+            <div class="change-group">
+                <h3><span class="change-icon">⚙️</span> Architecture</h3>
+                <ul class="change-list">
+                    <li><strong>Unified Binary:</strong> Merged Game State and Combat Engine servers into a single executable `rpg-mcp`.</li>
+                    <li><strong>Performance:</strong> 40% reduction in memory usage and faster tool call latency.</li>
+                    <li><strong>Cross-Platform:</strong> Native binaries for Windows, macOS, and Linux.</li>
+                </ul>
+            </div>
+
+            <div class="change-group">
+                <h3><span class="change-icon">📝</span> Documentation</h3>
+                <ul class="change-list">
+                    <li>Comprehensive Analysis paper published (~18k words).</li>
+                    <li>Complete API Reference with examples for all tools.</li>
+                    <li>Interactive Style Guide launched.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="version-card">
+            <div class="version-header">
+                <div class="version-title">
+                    <h2>v0.1.0 - Initial Release</h2>
+                </div>
+                <div class="release-date">October 2025</div>
+            </div>
+
+            <div class="change-group">
+                <h3><span class="change-icon">🚀</span> Launch Features</h3>
+                <ul class="change-list">
+                    <li>Initial MCP implementation with 80 original tools.</li>
+                    <li>Basic 3D battlemap visualization with Three.js.</li>
+                    <li>SQLite persistence layer.</li>
+                    <li>Roo Code integration mode.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer style="margin-top: 100px; padding: 40px 20px; text-align: center; border-top: 2px solid var(--neon-cyan);">
+        <p>&copy; 2025 Quest Keeper AI. All rights reserved.</p>
+        <p style="margin-top: 10px;">
+            <a href="/" style="color: var(--neon-cyan);">Home</a> | 
+            <a href="/changelog" style="color: var(--neon-cyan);">Changelog</a>
+        </p>
+    </footer>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <title>API Reference - Quest Keeper AI</title>
     <meta name="description" content="Complete API reference for Quest Keeper AI's MCP tools - 97 tools across Game State and Combat Engine servers">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <style>
         /* Override sticky navigation */
         nav {
@@ -249,7 +249,7 @@
         <header class="api-header">
             <h1>// API REFERENCE</h1>
             <div class="subtitle">Complete MCP Tool Documentation</div>
-            <div class="tool-count">97 TOTAL TOOLS // 2 SERVERS // MODEL CONTEXT PROTOCOL</div>
+            <div class="tool-count">135+ TOTAL TOOLS // 1 UNIFIED SERVER // MODEL CONTEXT PROTOCOL</div>
         </header>
 
         <div class="email-signup" style="margin: 40px auto; max-width: 1200px;">
@@ -292,18 +292,18 @@
             <main class="main-content">
                 <section id="overview" class="content-section">
                     <h2>// OVERVIEW</h2>
-                    <p>Quest Keeper AI provides 97 MCP (Model Context Protocol) tools across two specialized servers for building AI-powered D&D 5e campaigns.</p>
+                    <p>Quest Keeper AI provides 135+ MCP (Model Context Protocol) tools in a single, unified binary for building AI-powered D&D 5e campaigns.</p>
 
                     <div class="highlight-box">
-                        <p><strong>🎮 Game State Server:</strong> 68 tools for character management, world persistence, and game logic</p>
-                        <p><strong>⚔️ Combat Engine Server:</strong> 29 tools for dice mechanics, spatial combat, and tactical operations</p>
+                        <p><strong>⚙️ Unified rpg-mcp Server:</strong> A single executable handling character state, combat mechanics, authentic D&D rules, and world simulation.</p>
                     </div>
 
                     <h3>Server Architecture</h3>
-                    <p>The dual-server architecture separates concerns:</p>
+                    <p>The unified architecture provides seamless integration:</p>
                     <ul>
-                        <li><strong>Game State Server</strong> - Handles persistence, character data, world state, and game progression</li>
-                        <li><strong>Combat Engine Server</strong> - Provides stateless combat calculations, dice rolling, and spatial combat</li>
+                        <li><strong>Core Systems</strong> - Character data, world state, and game progression</li>
+                        <li><strong>Combat Engine</strong> - Stateless combat calculations and spatial tracking</li>
+                        <li><strong>Simulation Kernel</strong> - Economy, decomposition, and social dynamics</li>
                     </ul>
 
                     <div class="code-example">
@@ -316,8 +316,8 @@
                 </section>
 
                 <section id="game-state" class="content-section">
-                    <h2>// GAME STATE SERVER <span class="server-badge">rpg-game-state</span></h2>
-                    <p>The Game State Server manages all persistent game data using SQLite for reliable storage across sessions.</p>
+                    <h2>// CORE SYSTEMS <span class="server-badge">rpg-mcp</span></h2>
+                    <p>The Core Systems manage permanent game data using SQLite for reliable storage across sessions.</p>
 
                     <h3 id="characters">Character Management</h3>
                     <p>CRUD operations for player characters with full D&D 5e stat tracking.</p>
@@ -660,11 +660,42 @@
                             <p>Adds multiple creatures to encounter simultaneously.</p>
                         </div>
                     </div>
+                    </div>
+
+                   <h3 id="economy">Advanced Economy & Simulation</h3>
+                    <p>New systems for theft, corpse management, and improvisation.</p>
+
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <h4>steal_item</h4>
+                            <p>Attempt to steal items with heat generation and witness tracking.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>sell_to_fence</h4>
+                            <p>Sell stolen goods to black market contacts based on heat levels.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>create_corpse</h4>
+                            <p>Generates harvestable corpses from fallen enemies with decay timers.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>harvest_corpse</h4>
+                            <p>Extract resources (venom, pelt, bone) from corpses based on checks.</p>
+                        </div>
+                        <div class="tool-card">
+                            <h4>resolve_improvised_stunt</h4>
+                            <p>Adjudicate "Rule of Cool" actions with DC generation and outcomes.</p>
+                        </div>
+                         <div class="tool-card">
+                            <h4>record_conversation_memory</h4>
+                            <p>Store NPC interactions to influence future relationship status.</p>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="combat-engine" class="content-section">
-                    <h2>// COMBAT ENGINE SERVER <span class="server-badge">rpg-combat-engine</span></h2>
-                    <p>The Combat Engine Server provides stateless combat calculations and spatial battlefield management.</p>
+                    <h2>// COMBAT SYSTEMS <span class="server-badge">rpg-mcp</span></h2>
+                    <p>The Combat Systems provide stateless combat calculations, dice physics, and spatial battlefield management.</p>
 
                     <h3 id="dice">Dice & Rolling Mechanics</h3>
                     <p>Complete D&D 5e dice system with advantage, modifiers, and critical hits.</p>

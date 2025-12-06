@@ -6,7 +6,7 @@
     <title>Quick Start Guide - Quest Keeper AI</title>
     <meta name="description" content="Get started with Quest Keeper AI - Setup the desktop app or standalone MCP backend">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <style>
         .quickstart-container {
             max-width: 1200px;
@@ -306,10 +306,9 @@
 git clone https://github.com/Mnehmos/QuestKeeperAI-v2.git
 cd QuestKeeperAI-v2
 
-# Clone the backend (as sidecar)
 git clone https://github.com/Mnehmos/rpg-mcp.git</div>
 
-                    <h3><span class="step-number">2</span> Build the MCP Backend</h3>
+                    <h3><span class="step-number">2</span> Build the Unified Server</h3>
                     <div class="code-block">cd rpg-mcp
 npm install
 npm run build:binaries</div>
@@ -317,21 +316,21 @@ npm run build:binaries</div>
                     <div class="highlight-box">
                         <p><strong>📦 Output:</strong> This creates platform-specific binaries in <code>bin/</code>:</p>
                         <ul style="margin-top: 10px; margin-left: 20px;">
-                            <li><code>rpg-mcp-win.exe</code> (Windows)</li>
-                            <li><code>rpg-mcp-macos</code> (macOS)</li>
-                            <li><code>rpg-mcp-linux</code> (Linux)</li>
+                            <li><code>dnd-mcp-server-win.exe</code> (Windows)</li>
+                            <li><code>dnd-mcp-server-macos</code> (macOS)</li>
+                            <li><code>dnd-mcp-server-linux</code> (Linux)</li>
                         </ul>
                     </div>
 
                     <h3><span class="step-number">3</span> Copy Binary to Frontend</h3>
                     <div class="code-block"># Windows example
-copy bin\rpg-mcp-win.exe ..\QuestKeeperAI-v2\src-tauri\binaries\rpg-mcp-server-x86_64-pc-windows-msvc.exe
+copy bin\dnd-mcp-server-win.exe ..\QuestKeeperAI-v2\src-tauri\binaries\dnd-mcp-server-x86_64-pc-windows-msvc.exe
 
 # macOS example
-cp bin/rpg-mcp-macos ../QuestKeeperAI-v2/src-tauri/binaries/rpg-mcp-server-x86_64-apple-darwin
+cp bin/dnd-mcp-server-macos ../QuestKeeperAI-v2/src-tauri/binaries/dnd-mcp-server-x86_64-apple-darwin
 
 # Linux example
-cp bin/rpg-mcp-linux ../QuestKeeperAI-v2/src-tauri/binaries/rpg-mcp-server-x86_64-unknown-linux-gnu</div>
+cp bin/dnd-mcp-server-linux ../QuestKeeperAI-v2/src-tauri/binaries/dnd-mcp-server-x86_64-unknown-linux-gnu</div>
 
                     <h3><span class="step-number">4</span> Install &amp; Run Frontend</h3>
                     <div class="code-block">cd ../QuestKeeperAI-v2
