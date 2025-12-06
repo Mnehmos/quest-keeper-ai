@@ -75,12 +75,20 @@ body::after {
 
 body {
     font-family: 'IBM Plex Mono', 'Courier New', monospace;
-    background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 50%, #0f0520 100%);
+    background: radial-gradient(circle at 50% 50%, #1f1f2e 0%, #0f0520 50%, #050508 100%);
+    background-size: 200% 200%;
+    animation: gradientMove 20s ease infinite;
     color: var(--text-white);
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .container {
@@ -446,13 +454,16 @@ section h2 {
 }
 
 .feature-card {
-    background: rgba(17, 17, 24, 0.8);
+    background: rgba(17, 17, 24, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 2rem;
     text-align: center;
-    transition: all 0.3s;
-    border: 2px solid var(--border-cyan);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid var(--border-cyan);
     position: relative;
     clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .feature-card::before {
@@ -510,11 +521,13 @@ section h2 {
 }
 
 .server-card {
-    background: rgba(17, 17, 24, 0.9);
+    background: rgba(17, 17, 24, 0.7);
+    backdrop-filter: blur(12px);
     padding: 2rem;
-    border: 2px solid var(--border-cyan);
+    border: 1px solid var(--border-cyan);
     position: relative;
     transition: all 0.3s;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .server-card::before {
@@ -1478,3 +1491,23 @@ footer p {
         padding: 1.5rem;
     }
 }
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* H1 Cursor Effect */
+.hero-content h1::after {
+    content: '_';
+    animation: blink 1s infinite;
+    display: inline-block;
+}
+
