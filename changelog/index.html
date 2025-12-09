@@ -144,7 +144,54 @@
         <div class="version-card latest">
             <div class="version-header">
                 <div class="version-title">
-                    <h2>v0.3.0 - The Living World Update <span class="badge-latest">LATEST</span></h2>
+                    <h2>v0.3.1 - The Campaign Experience Update <span class="badge-latest">LATEST</span></h2>
+                </div>
+                <div class="release-date">December 9, 2025</div>
+            </div>
+
+            <div class="change-group">
+                <h3><span class="change-icon">🎮</span> Campaign & Session Management</h3>
+                <ul class="change-list">
+                    <li><strong>Campaign Setup Wizard:</strong> New guided workflow for creating campaigns with world generation, party creation, and character assignment.</li>
+                    <li><strong>Session Management System:</strong> CampaignSession entity with start/end tracking and session state persistence.</li>
+                    <li><strong>World Generation Modal:</strong> Visual interface for procedural world creation with seed configuration.</li>
+                </ul>
+            </div>
+
+            <div class="change-group">
+                <h3><span class="change-icon">⚔️</span> Combat HUD System</h3>
+                <ul class="change-list">
+                    <li><strong>Combat HUD Components:</strong> 6 new HUD components for real-time combat information display.</li>
+                    <li><strong>prefillInput Integration:</strong> Quick action buttons that pre-fill chat commands for combat actions.</li>
+                    <li><strong>Inventory Drawer:</strong> HUD-integrated inventory access during combat.</li>
+                </ul>
+            </div>
+
+            <div class="change-group">
+                <h3><span class="change-icon">👤</span> Character Management</h3>
+                <ul class="change-list">
+                    <li><strong>Character Type Badges:</strong> Visual indicators for PC/NPC/Enemy/Neutral character types.</li>
+                    <li><strong>Character Selector:</strong> Dropdown component for quick character switching.</li>
+                    <li><strong>CRUD Management UI:</strong> Edit/Delete buttons with ConfirmModal for safe character management.</li>
+                    <li><strong>Stat Rolling Fix:</strong> Resolved parsing mismatch where dice rolls weren't properly extracted from MCP metadata.</li>
+                </ul>
+            </div>
+
+            <div class="change-group">
+                <h3><span class="change-icon">✨</span> Backend Enhancements</h3>
+                <ul class="change-list">
+                    <li><strong>Narrative Context Tool:</strong> <code>get_narrative_context</code> aggregates world, character, combat, and secrets for LLM context injection.</li>
+                    <li><strong>Dynamic Tool Registry:</strong> On-demand tool loading with metadata for 135+ tools across 26 categories.</li>
+                    <li><strong>Workflow System:</strong> Batch operation tools with YAML workflow definitions and executor.</li>
+                    <li><strong>Event Inbox:</strong> Centralized event system for cross-component communication.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="version-card">
+            <div class="version-header">
+                <div class="version-title">
+                    <h2>v0.3.0 - The Living World Update</h2>
                 </div>
                 <div class="release-date">December 6, 2025</div>
             </div>
