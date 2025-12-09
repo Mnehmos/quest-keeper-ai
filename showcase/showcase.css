@@ -1,0 +1,750 @@
+/* ============================================
+   SHOWCASE PAGE - THE RETURNED
+   Quest Keeper AI Playtest Archive
+   ============================================ */
+
+/* Showcase Hero */
+.showcase-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 4rem 2rem;
+  background: 
+    radial-gradient(ellipse at 50% 100%, rgba(0, 100, 150, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, #1f1f2e 0%, #0f0520 50%, #050508 100%);
+}
+
+.showcase-title {
+  font-size: 5rem !important;
+  letter-spacing: 12px !important;
+  margin-bottom: 1rem !important;
+  background: linear-gradient(180deg, var(--neon-cyan) 0%, rgba(0, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.5));
+}
+
+.hero-quote {
+  font-size: 1.5rem;
+  color: var(--neon-orange);
+  font-style: italic;
+  margin: 2rem 0 0.5rem;
+  text-shadow: 0 0 20px var(--neon-orange);
+}
+
+.hero-attribution {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 3rem;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+.scroll-indicator span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--neon-cyan), transparent);
+  animation: pulse-line 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Story Sections */
+.story-section {
+  padding: 6rem 2rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.story-section.full-width .story-content,
+.story-content.full-width {
+  grid-column: 1 / -1;
+}
+
+.section-marker {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.marker-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--neon-cyan);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-cyan);
+  background: rgba(0, 255, 255, 0.05);
+}
+
+.marker-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--neon-cyan), transparent);
+}
+
+/* Narrative Blocks */
+.narrative-block {
+  margin-bottom: 2rem;
+}
+
+.narrative-block h2 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2rem;
+  color: var(--neon-cyan);
+  margin-bottom: 1.5rem;
+  text-align: left;
+  letter-spacing: 2px;
+}
+
+.narrative-block.centered h2 {
+  text-align: center;
+}
+
+.prose {
+  color: var(--text-white);
+  line-height: 1.9;
+  font-size: 1.05rem;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+.prose .highlight {
+  color: var(--neon-orange);
+  text-shadow: 0 0 10px rgba(255, 149, 0, 0.3);
+}
+
+.prose.closing {
+  font-style: italic;
+  color: var(--text-muted);
+  border-left: 2px solid var(--border-cyan);
+  padding-left: 1.5rem;
+  margin-top: 2rem;
+}
+
+.mission-briefing {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--neon-orange);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 149, 0, 0.1);
+  border-left: 3px solid var(--neon-orange);
+}
+
+/* Dialogue */
+.dialogue-block {
+  margin: 2rem 0;
+}
+
+.dialogue-block.centered {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.dialogue {
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  border-left: 3px solid;
+}
+
+.dialogue .speaker {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.dialogue p {
+  color: var(--text-white);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.dialogue p + p {
+  margin-top: 0.75rem;
+}
+
+.dialogue em {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.dialogue strong {
+  color: var(--neon-cyan);
+}
+
+/* Dialogue Types */
+.dialogue.dm {
+  border-color: var(--neon-orange);
+  background: rgba(255, 149, 0, 0.05);
+}
+
+.dialogue.dm .speaker {
+  color: var(--neon-orange);
+}
+
+.dialogue.player {
+  border-color: var(--neon-cyan);
+  background: rgba(0, 255, 255, 0.05);
+}
+
+.dialogue.player .speaker {
+  color: var(--neon-cyan);
+}
+
+.dialogue.npc {
+  border-color: var(--neon-magenta);
+  background: rgba(255, 0, 255, 0.05);
+}
+
+.dialogue.npc .speaker {
+  color: var(--neon-magenta);
+}
+
+.dialogue.entity {
+  border-color: var(--neon-green);
+  background: rgba(0, 255, 0, 0.08);
+  font-size: 1.1rem;
+}
+
+.dialogue.entity .speaker {
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green);
+}
+
+.dialogue.entity p {
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.dialogue.final-words {
+  border-width: 4px;
+  padding: 1.5rem 2rem;
+}
+
+.entity-dialogue .dialogue.entity {
+  margin: 1.5rem 0;
+}
+
+.final-dialogue .dialogue {
+  padding: 1.5rem 2rem;
+}
+
+/* Insight Panel (Sidebar) */
+.insight-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.insight-panel.floating {
+  position: relative;
+  top: 0;
+  grid-column: 2;
+}
+
+.insight-card {
+  background: rgba(17, 17, 24, 0.9);
+  border: 1px solid var(--border-cyan);
+  padding: 1.25rem;
+  position: relative;
+}
+
+.insight-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.insight-icon {
+  font-size: 1rem;
+}
+
+.insight-type {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.insight-card h4 {
+  font-size: 0.95rem;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+
+.insight-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Insight Types */
+.insight-card.emergent {
+  border-color: rgba(0, 255, 136, 0.4);
+}
+
+.insight-card.emergent .insight-icon,
+.insight-card.emergent .insight-type {
+  color: #00ff88;
+}
+
+.insight-card.mechanic {
+  border-color: rgba(0, 150, 255, 0.4);
+}
+
+.insight-card.mechanic .insight-icon,
+.insight-card.mechanic .insight-type {
+  color: #0096ff;
+}
+
+.insight-card.dice {
+  border-color: rgba(255, 80, 80, 0.4);
+}
+
+.insight-card.dice .insight-icon,
+.insight-card.dice .insight-type {
+  color: #ff5050;
+}
+
+.insight-card.philosophy {
+  border-color: rgba(0, 255, 255, 0.4);
+}
+
+.insight-card.philosophy .insight-icon,
+.insight-card.philosophy .insight-type {
+  color: var(--neon-cyan);
+}
+
+.insight-card.state {
+  border-color: rgba(180, 100, 255, 0.4);
+}
+
+.insight-card.state .insight-icon,
+.insight-card.state .insight-type {
+  color: #b464ff;
+}
+
+/* Tool Calls */
+.tool-calls {
+  background: rgba(10, 10, 15, 0.95);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.tool-header {
+  font-size: 0.7rem;
+  color: var(--neon-green);
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.tool-calls pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+.tool-calls code {
+  font-size: 0.75rem;
+  color: var(--text-white);
+  line-height: 1.6;
+}
+
+/* Dark Section */
+.dark-section {
+  background: 
+    linear-gradient(180deg, transparent 0%, rgba(0, 20, 40, 0.3) 50%, transparent 100%);
+}
+
+/* Combat Section */
+.combat-section {
+  background: 
+    linear-gradient(180deg, transparent 0%, rgba(100, 0, 0, 0.1) 50%, transparent 100%);
+}
+
+.combat-tracker {
+  background: rgba(17, 17, 24, 0.95);
+  border: 2px solid var(--border-cyan);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.tracker-header {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--neon-cyan);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.initiative-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.init-entry {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid;
+}
+
+.init-entry.player {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+}
+
+.init-entry.ally {
+  border-color: var(--neon-magenta);
+  color: var(--neon-magenta);
+}
+
+.init-entry.enemy {
+  border-color: #ff5050;
+  color: #ff5050;
+}
+
+/* Death Section */
+.death-section {
+  background: 
+    radial-gradient(ellipse at 50% 50%, rgba(100, 0, 0, 0.2) 0%, transparent 70%);
+}
+
+.death-sequence {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.death-event {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(100, 0, 0, 0.2);
+  border-left: 3px solid #ff5050;
+  align-items: center;
+}
+
+.event-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: #ff5050;
+  letter-spacing: 1px;
+}
+
+.event-damage {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.event-result {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-white);
+}
+
+.death-event.final {
+  border-color: #ff0000;
+  background: rgba(150, 0, 0, 0.3);
+  border-width: 4px;
+}
+
+.death-event.final .event-label,
+.death-event.final .event-result {
+  color: #ff0000;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+/* Decision Moment */
+.decision-moment {
+  margin: 3rem auto;
+  max-width: 600px;
+}
+
+.decision-box {
+  background: rgba(17, 17, 24, 0.9);
+  border: 2px solid var(--neon-orange);
+  padding: 2rem;
+  position: relative;
+}
+
+.decision-box::before {
+  content: '// DECISION_POINT';
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: var(--bg-dark);
+  padding: 0 10px;
+  color: var(--neon-orange);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
+
+.coin-flip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-cyan);
+}
+
+.coin {
+  font-size: 3rem;
+  color: var(--neon-orange);
+  animation: spin-coin 0.5s ease-out;
+  text-shadow: 0 0 20px var(--neon-orange);
+}
+
+@keyframes spin-coin {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(720deg); }
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dice-result {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.outcome {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  color: var(--neon-green);
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--neon-green);
+}
+
+/* Resurrection Section */
+.resurrection-section {
+  background: 
+    radial-gradient(ellipse at 50% 30%, rgba(0, 100, 100, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, transparent 0%, rgba(0, 50, 80, 0.2) 50%, transparent 100%);
+}
+
+.divine-response {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(0, 255, 136, 0.03);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  position: relative;
+}
+
+.divine-response::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 50% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Epilogue */
+.epilogue {
+  padding: 6rem 2rem;
+  text-align: center;
+  background: 
+    linear-gradient(180deg, transparent 0%, rgba(0, 255, 255, 0.05) 50%, transparent 100%);
+}
+
+.epilogue-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.epilogue h2 {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2.5rem;
+  color: var(--neon-cyan);
+  margin-bottom: 1.5rem;
+  letter-spacing: 3px;
+}
+
+.epilogue > p {
+  color: var(--text-white);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.session-stats {
+  background: rgba(17, 17, 24, 0.8);
+  border: 2px solid var(--border-cyan);
+  padding: 2rem;
+  margin: 3rem 0;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(107, 114, 128, 0.2);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-name {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  color: var(--neon-cyan);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.cta-section {
+  margin: 3rem 0;
+}
+
+.closing-quote {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  color: var(--neon-green);
+  margin-top: 3rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.closing-attribution {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .story-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .insight-panel {
+    position: relative;
+    top: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .insight-card {
+    flex: 1 1 300px;
+  }
+  
+  .insight-panel.floating {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .showcase-title {
+    font-size: 2.5rem !important;
+    letter-spacing: 4px !important;
+  }
+  
+  .hero-quote {
+    font-size: 1.1rem;
+  }
+  
+  .story-section {
+    padding: 3rem 1rem;
+  }
+  
+  .death-event {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .coin-flip {
+    flex-direction: column;
+  }
+}
+
+/* Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.death-event.reveal {
+  transition-delay: calc(var(--index, 0) * 0.15s);
+}
+
+.insight-card.reveal {
+  transition-delay: calc(var(--index, 0) * 0.1s);
+}

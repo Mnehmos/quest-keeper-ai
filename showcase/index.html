@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Returned — Quest Keeper AI Playtest Archive</title>
+    <meta
+      name="description"
+      content="Experience the first complete playtest of Quest Keeper AI. A dead legionnaire, a freed god, and a resurrection that shouldn't have been possible."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="showcase.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <div class="logo">
+            <img src="/favicon.svg" alt="Quest Keeper D20" class="logo-icon" />
+            Quest Keeper AI
+          </div>
+          <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/quickstart">Quick Start</a></li>
+            <li><a href="/api-reference">API</a></li>
+            <li><a href="https://github.com/Mnehmos/rpg-mcp" target="_blank">GitHub</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- HERO -->
+      <section class="showcase-hero">
+        <div class="hero-content">
+          <div class="terminal-prompt">session://thyrsus-mare/001</div>
+          <h1 class="showcase-title">THE RETURNED</h1>
+          <p class="tagline">[ PLAYTEST_ARCHIVE // DEC_09_2025 ]</p>
+          <p class="hero-quote">"What the fuck did you just do?"</p>
+          <p class="hero-attribution">— Cassia Nereia, upon resurrection</p>
+          
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-number">3hr</div>
+              <div class="stat-label">Session</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">1</div>
+              <div class="stat-label">Death</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">1</div>
+              <div class="stat-label">Resurrection</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">150+</div>
+              <div class="stat-label">Tool Calls</div>
+            </div>
+          </div>
+          
+          <div class="scroll-indicator">
+            <span>SCROLL TO EXPERIENCE</span>
+            <div class="scroll-line"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROLOGUE -->
+      <section class="story-section" id="prologue">
+        <div class="section-marker">
+          <span class="marker-label">PROLOGUE</span>
+          <span class="marker-line"></span>
+        </div>
+        
+        <div class="story-content">
+          <div class="narrative-block">
+            <h2>A Coin for the Ferryman</h2>
+            <div class="prose">
+              <p>The harbor of Portus Sanguinis breathes with the rhythm of Mare Nostrum. Salt-crusted ropes creak against weathered wood. The smell of fish, tar, and foreign spices mingles with something older—something that clings to the man walking down the gangplank.</p>
+              <p><strong class="highlight">Marcus Varro died three months ago.</strong> An arrow through the throat in Parthia, far from the sea he never knew he'd miss. He remembers the dark river. The ferryman's pale hand reaching for payment. And then—</p>
+              <p>He woke on a beach with sand in his wounds and a cold coin clutched in his fist.</p>
+            </div>
+          </div>
+          
+          <div class="dialogue-block">
+            <div class="dialogue dm">
+              <span class="speaker">DM</span>
+              <p>You step onto the dock. The coin against your chest is cold—always cold, even in the Mediterranean sun. What brings a dead man to Portus Sanguinis?</p>
+            </div>
+            <div class="dialogue player">
+              <span class="speaker">MARCUS</span>
+              <p>Work. The kind that doesn't ask questions about why a former centurion walks with sand still in his lungs.</p>
+            </div>
+          </div>
+        </div>
+        
+        <aside class="insight-panel">
+          <div class="insight-card emergent">
+            <div class="insight-header">
+              <span class="insight-icon">✦</span>
+              <span class="insight-type">EMERGENT</span>
+            </div>
+            <h4>Character Creation Through Narrative</h4>
+            <p>Marcus's "Revenant Legionnaire" class doesn't exist in any rulebook. It emerged from the player's concept and was given mechanical reality: Death's Witness (sense spirits), Unliving Debt (the coin's burden), Cold Flesh (resistance to cold).</p>
+          </div>
+          
+          <div class="insight-card mechanic">
+            <div class="insight-header">
+              <span class="insight-icon">⚙</span>
+              <span class="insight-type">MECHANIC</span>
+            </div>
+            <h4>Persistent Identity</h4>
+            <p>The system created a character with full D&D 5e stats, custom abilities, and inventory—all stored in SQLite. Marcus exists whether we're playing or not.</p>
+          </div>
+          
+          <div class="tool-calls">
+            <div class="tool-header">// MCP_TOOL_CALLS</div>
+            <pre><code>create_character({
+  name: "Marcus Varro",
+  class: "Revenant Legionnaire",
+  race: "Human (Undead-Touched)",
+  hp: 28, maxHp: 28, ac: 18
+})
+
+give_item({
+  characterId: "marcus-varro",
+  itemId: "gladius-of-the-returned"
+})
+
+create_party({
+  name: "The Returned"
+})</code></pre>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ACT I: THE DROWNED WOLF -->
+      <section class="story-section" id="act-1">
+        <div class="section-marker">
+          <span class="marker-label">ACT I</span>
+          <span class="marker-line"></span>
+        </div>
+        
+        <div class="story-content">
+          <div class="narrative-block">
+            <h2>The Drowned Wolf</h2>
+            <div class="prose">
+              <p>The tavern hunches at the end of a narrow street, its sign—a wolf with seaweed tangled in its fur—swinging in the salt breeze. Inside, the air is thick with smoke and the low murmur of men who've learned that loud voices attract attention.</p>
+              <p>Behind the bar, a one-armed man polishes a cup with the practiced efficiency of someone who's done it ten thousand times. His remaining arm bears the faded brand of <strong class="highlight">Legio XII Fulminata</strong>—the Thunderbolt Legion.</p>
+            </div>
+          </div>
+          
+          <div class="dialogue-block">
+            <div class="dialogue npc">
+              <span class="speaker">GNAEUS ONE-ARM</span>
+              <p>You've got the look of a man who died and didn't stay buried. Sit. Drink. Tell me what brings Ferrata to my door.</p>
+            </div>
+            <div class="dialogue player">
+              <span class="speaker">MARCUS</span>
+              <p>How did you—</p>
+            </div>
+            <div class="dialogue npc">
+              <span class="speaker">GNAEUS</span>
+              <p><em>*taps his temple*</em> Twenty years reading soldiers. Your sandals are regulation. Your posture is parade-ground. And your eyes... your eyes have seen the dark river.</p>
+            </div>
+          </div>
+        </div>
+        
+        <aside class="insight-panel">
+          <div class="insight-card emergent">
+            <div class="insight-header">
+              <span class="insight-icon">✦</span>
+              <span class="insight-type">EMERGENT</span>
+            </div>
+            <h4>Worldbuilding Through Dialogue</h4>
+            <p>The Legio XII Fulminata detail wasn't pre-planned. It emerged naturally from establishing Gnaeus as a veteran, then connecting him to Marcus through Roman military culture. Now it's canonical—a thread to pull later.</p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- THE SILENT ISLE -->
+      <section class="story-section dark-section" id="silent-isle">
+        <div class="section-marker">
+          <span class="marker-label">ACT II</span>
+          <span class="marker-line"></span>
+        </div>
+        
+        <div class="story-content">
+          <div class="narrative-block">
+            <h2>The Silent Isle</h2>
+            <div class="prose">
+              <p>The island rises from the fog like a drowned man breaking surface—grey cliffs, black sand, and the remains of what might once have been a lighthouse. The silence is absolute. No birds. No waves against rock. Even the wind seems to die at the island's edge.</p>
+              <p>In the lighthouse basement, chains older than Rome hang from walls carved with symbols that hurt to look at directly. And in those chains—</p>
+            </div>
+          </div>
+          
+          <div class="dialogue-block entity-dialogue">
+            <div class="dialogue dm">
+              <span class="speaker">DM</span>
+              <p>The figure in the chains doesn't have a form your mind can hold. It shifts—now water, now darkness, now something with too many eyes. But its voice, when it speaks, is clear.</p>
+            </div>
+            <div class="dialogue entity">
+              <span class="speaker">THE DREAMING DEEP</span>
+              <p>LITTLE BREATHING THING. YOU CARRY A COIN THAT DOES NOT BELONG TO YOU.</p>
+            </div>
+            <div class="dialogue player">
+              <span class="speaker">MARCUS</span>
+              <p>Who chained you here?</p>
+            </div>
+            <div class="dialogue entity">
+              <span class="speaker">THE DREAMING DEEP</span>
+              <p>THOSE WHO FEARED WHAT I MIGHT DREAM. THEY BOUND ME WITH IRON AND SALT AND LIVING ANCHORS. YOUR SAILORS. THEY SLEEP NOW. DREAMING MY DREAMS. KEEPING ME STILL.</p>
+            </div>
+          </div>
+        </div>
+        
+        <aside class="insight-panel">
+          <div class="insight-card mechanic">
+            <div class="insight-header">
+              <span class="insight-icon">⚙</span>
+              <span class="insight-type">MECHANIC</span>
+            </div>
+            <h4>Secrets System</h4>
+            <p>The Dreaming Deep's true nature was created as a SECRET in the database—with leak patterns and reveal conditions. The DM knew what it was. The player learned only what the entity chose to share.</p>
+          </div>
+          
+          <div class="tool-calls">
+            <div class="tool-header">// SECRET_MANAGEMENT</div>
+            <pre><code>create_secret({
+  type: "npc",
+  name: "Dreaming Deep's Nature",
+  secretDescription: "Ancient pre-Olympian entity...",
+  leakPatterns: ["elder god", "pre-Roman"],
+  sensitivity: "critical"
+})</code></pre>
+          </div>
+        </aside>
+      </section>
+
+      <!-- THE CHOICE -->
+      <section class="story-section" id="the-choice">
+        <div class="story-content full-width">
+          <div class="narrative-block centered">
+            <h2>The Coin Flip</h2>
+            <div class="prose">
+              <p>The bronze chest sits on a plinth at the room's center—covered in the same painful symbols as the walls. The entity's attention fixes on it with something that might be hunger or fear.</p>
+            </div>
+          </div>
+          
+          <div class="dialogue-block centered">
+            <div class="dialogue entity">
+              <span class="speaker">THE DREAMING DEEP</span>
+              <p>THE CHEST IS A LOCK. THE DREAMERS ARE ANCHORS. BREAK EITHER AND I WAKE FULLY. BUT I AM OLD, LITTLE THING. OLDER THAN YOUR GODS. MY DREAMS HAVE WEIGHT.</p>
+            </div>
+            <div class="dialogue player">
+              <span class="speaker">MARCUS</span>
+              <p>If I free you, what happens to the sailors?</p>
+            </div>
+            <div class="dialogue entity">
+              <span class="speaker">THE DREAMING DEEP</span>
+              <p>PERHAPS THEY WAKE. PERHAPS THEY DO NOT. DREAMING IS... DIFFICULT TO LEAVE.</p>
+            </div>
+          </div>
+          
+          <div class="decision-moment">
+            <div class="decision-box">
+              <div class="dialogue player">
+                <span class="speaker">MARCUS</span>
+                <p>I flip a coin. Heads, I free it. Tails, I walk away.</p>
+              </div>
+              <div class="coin-flip">
+                <div class="coin">⬢</div>
+                <div class="result">
+                  <span class="dice-result">d2 = 2</span>
+                  <span class="outcome">HEADS — MERCY</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="narrative-block centered">
+            <div class="prose">
+              <p>The gladius comes down on the bronze chest. For a moment, nothing—then the metal unmakes itself, crumbling into rust and salt and something that might be screaming.</p>
+              <p>The entity rises. The chains shatter. The lighthouse groans.</p>
+              <p>And the sailors—<strong class="highlight">two of them open their eyes.</strong></p>
+            </div>
+          </div>
+          
+          <div class="dialogue-block centered">
+            <div class="dialogue entity">
+              <span class="speaker">THE DREAMING DEEP</span>
+              <p>I WILL REMEMBER YOU, LEGIONNAIRE. I WILL REMEMBER MERCY. WHEN THE TIDE COMES, AND IT WILL COME, I WILL REMEMBER WHAT YOU CHOSE TODAY.</p>
+            </div>
+          </div>
+        </div>
+        
+        <aside class="insight-panel floating">
+          <div class="insight-card dice">
+            <div class="insight-header">
+              <span class="insight-icon">⚄</span>
+              <span class="insight-type">DICE</span>
+            </div>
+            <h4>Player-Invented Mechanic</h4>
+            <p>The coin flip wasn't the DM's idea. The player introduced it as Marcus's way of letting fate decide moral choices. Simple, brutal, and dramatically powerful.</p>
+          </div>
+          
+          <div class="insight-card philosophy">
+            <div class="insight-header">
+              <span class="insight-icon">◈</span>
+              <span class="insight-type">PHILOSOPHY</span>
+            </div>
+            <h4>Agency Through Randomness</h4>
+            <p>Marcus didn't choose to free the god. He chose to let chance decide—then committed to the result. A different kind of agency, but deeply meaningful.</p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ACT III: WAREHOUSE NINE -->
+      <section class="story-section combat-section" id="act-3">
+        <div class="section-marker">
+          <span class="marker-label">ACT III</span>
+          <span class="marker-line"></span>
+        </div>
+        
+        <div class="story-content">
+          <div class="narrative-block">
+            <h2>Warehouse Nine</h2>
+            <p class="mission-briefing">"Find the leader, kill the rest."</p>
+            <div class="prose">
+              <p>Back in Portus Sanguinis, information costs silver. The Order of the Binding Tide operates through a local coordinator—a magistrate named Corvus who uses Warehouse Nine as his base. Cassia's employers want him found. They want answers about the operation. They want everyone else dead.</p>
+              <p>The warehouse squats at the end of the commercial district, its doors bolted, its windows dark. Two guards flank the entrance. Inside—unknown.</p>
+            </div>
+          </div>
+          
+          <div class="combat-tracker">
+            <div class="tracker-header">// INITIATIVE_ORDER</div>
+            <div class="initiative-list">
+              <div class="init-entry enemy">Titus the Whisper — 17</div>
+              <div class="init-entry player">Marcus Varro — 15</div>
+              <div class="init-entry enemy">South Guard — 12</div>
+              <div class="init-entry enemy">Magistrate Corvus — 11</div>
+              <div class="init-entry ally">Cassia Nereia — 9</div>
+              <div class="init-entry enemy">North Guard — 7</div>
+            </div>
+          </div>
+        </div>
+        
+        <aside class="insight-panel">
+          <div class="insight-card mechanic">
+            <div class="insight-header">
+              <span class="insight-icon">⚙</span>
+              <span class="insight-type">MECHANIC</span>
+            </div>
+            <h4>Combat Resolution</h4>
+            <p>Every attack roll, damage calculation, and HP change was processed through rpg-mcp. The system tracked initiative order, position, conditions—everything needed for tactical combat.</p>
+          </div>
+          
+          <div class="insight-card dice">
+            <div class="insight-header">
+              <span class="insight-icon">⚄</span>
+              <span class="insight-type">DICE</span>
+            </div>
+            <h4>Honest Dice</h4>
+            <p>The DM doesn't fudge rolls. When Cassia died, those dice were real. When the resurrection worked, that was real too.</p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- CASSIA'S DEATH -->
+      <section class="story-section death-section" id="death">
+        <div class="story-content full-width">
+          <div class="narrative-block centered">
+            <h2>The Death of Cassia Nereia</h2>
+            <div class="prose">
+              <p>Round three. Cassia has pushed too far forward—flanking the southern guard, her blade red with his blood. She doesn't see Corvus raise his hand. She doesn't hear the words of power until water is filling her lungs from the inside.</p>
+            </div>
+          </div>
+          
+          <div class="death-sequence">
+            <div class="death-event">
+              <span class="event-label">DROWNING GRASP</span>
+              <span class="event-damage">6 necrotic damage</span>
+              <span class="event-result">22 → 5 HP</span>
+            </div>
+            <div class="death-event">
+              <span class="event-label">GUARD STRIKE</span>
+              <span class="event-damage">Critical hit — 17 damage</span>
+              <span class="event-result">5 → 0 HP (unconscious)</span>
+            </div>
+            <div class="death-event">
+              <span class="event-label">COUP DE GRACE</span>
+              <span class="event-damage">7 damage (auto-crit)</span>
+              <span class="event-result">2 death save failures</span>
+            </div>
+            <div class="death-event final">
+              <span class="event-label">EXECUTION</span>
+              <span class="event-damage">14 damage at 0 HP</span>
+              <span class="event-result">INSTANT DEATH</span>
+            </div>
+          </div>
+          
+          <div class="dialogue-block centered">
+            <div class="dialogue dm">
+              <span class="speaker">DM</span>
+              <p>The warehouse is silent except for Corvus's laughter. "One less anchor for the binding," he says. "The sea takes what the sea takes."</p>
+            </div>
+          </div>
+        </div>
+        
+        <aside class="insight-panel floating">
+          <div class="insight-card dice">
+            <div class="insight-header">
+              <span class="insight-icon">⚄</span>
+              <span class="insight-type">DICE</span>
+            </div>
+            <h4>Unscripted Death</h4>
+            <p>This wasn't planned. The guard's attacks hit. The damage exceeded thresholds. D&D 5e rules say instant death occurs when damage at 0 HP exceeds max HP. Cassia was dead by the mechanics.</p>
+          </div>
+          
+          <div class="insight-card philosophy">
+            <div class="insight-header">
+              <span class="insight-icon">◈</span>
+              <span class="insight-type">PHILOSOPHY</span>
+            </div>
+            <h4>Stakes Matter</h4>
+            <p>Quest Keeper AI doesn't protect characters from consequence. Death is possible. That possibility makes everything else meaningful.</p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- RESURRECTION -->
+      <section class="story-section resurrection-section" id="resurrection">
+        <div class="section-marker">
+          <span class="marker-label">RESURRECTION</span>
+          <span class="marker-line"></span>
+        </div>
+        
+        <div class="story-content full-width">
+          <div class="narrative-block centered">
+            <h2>The Dark River</h2>
+            <div class="prose">
+              <p>The battle is over. Corvus is bound and bleeding. Titus is dead. The guards are corpses. And Cassia—</p>
+              <p>Cassia lies where she fell, blood pooling beneath her, eyes open and empty.</p>
+              <p>Marcus kneels beside her. The coin against his chest—the ferryman's coin—<strong class="highlight">is warm for the first time since he woke on that beach.</strong></p>
+            </div>
+          </div>
+          
+          <div class="dialogue-block centered">
+            <div class="dialogue player">
+              <span class="speaker">MARCUS</span>
+              <p>My Death's Witness ability. I can see spirits near death. Can I see her?</p>
+            </div>
+            <div class="dialogue dm">
+              <span class="speaker">DM</span>
+              <p>You close your eyes. When you open them, you're standing on the banks of a dark river. Grey mist. Black water. And ahead—a small boat, and a figure in pale robes poling toward the far shore. In the boat: Cassia, translucent, confused.</p>
+            </div>
+            <div class="dialogue player">
+              <span class="speaker">MARCUS</span>
+              <p>I hold up the coin—the one the Dreaming Deep warmed when I freed it—and I call out. Not to the ferryman. To the thing I freed.</p>
+              <p><strong>"You said you would remember mercy. I'm calling in that debt."</strong></p>
+            </div>
+          </div>
+          
+          <div class="divine-response">
+            <div class="dialogue entity">
+              <span class="speaker">THE DREAMING DEEP</span>
+              <p>I REMEMBER YOU, LEGIONNAIRE.</p>
+            </div>
+            <div class="dialogue player">
+              <span class="speaker">MARCUS</span>
+              <p>She shouldn't be on that boat. Not yet.</p>
+            </div>
+            <div class="dialogue entity">
+              <span class="speaker">THE DREAMING DEEP</span>
+              <p>EVERYONE BOARDS THE BOAT EVENTUALLY. EVEN YOU BOARDED ONCE.</p>
+            </div>
+            <div class="dialogue player">
+              <span class="speaker">MARCUS</span>
+              <p>And I got off. Let her get off too. I'll pay her fare. My coin for her passage back.</p>
+            </div>
+            <div class="dialogue entity final-words">
+              <span class="speaker">THE DREAMING DEEP</span>
+              <p>I REMEMBER MERCY. SHE STILL OWES. AS YOU STILL OWE. BUT THE CROSSING CAN WAIT.</p>
+            </div>
+          </div>
+          
+          <div class="narrative-block centered">
+            <div class="prose">
+              <p>The ferryman's pole reverses. The boat turns. The mist swallows everything—</p>
+              <p>And Marcus opens his eyes in the warehouse, kneeling beside Cassia's body as <strong class="highlight">she gasps her first living breath.</strong></p>
+            </div>
+          </div>
+        </div>
+        
+        <aside class="insight-panel floating">
+          <div class="insight-card emergent">
+            <div class="insight-header">
+              <span class="insight-icon">✦</span>
+              <span class="insight-type">EMERGENT</span>
+            </div>
+            <h4>Player Creativity</h4>
+            <p>The DM didn't suggest this. The player connected: (1) the coin warming when the god was freed, (2) the god's promise to remember, (3) the Death's Witness vision ability. That synthesis was pure player agency.</p>
+          </div>
+          
+          <div class="insight-card mechanic">
+            <div class="insight-header">
+              <span class="insight-icon">⚙</span>
+              <span class="insight-type">MECHANIC</span>
+            </div>
+            <h4>Divine Intervention</h4>
+            <p>This wasn't a spell. There's no "Resurrection" in Marcus's abilities. This was narrative consequence of prior choices: mercy to the god, the coin as payment, Death's Witness as the framework.</p>
+          </div>
+          
+          <div class="tool-calls">
+            <div class="tool-header">// STATE_CHANGES</div>
+            <pre><code>update_character({
+  id: "cassia",
+  hp: 1,
+  race: "Human (Touched)",
+  removeConditions: ["dead"]
+})
+
+give_item({
+  characterId: "cassia",
+  itemId: "coin-of-dreaming-deep"
+})
+
+add_party_member({
+  partyId: "the-returned",
+  characterId: "cassia",
+  role: "member"
+})</code></pre>
+          </div>
+        </aside>
+      </section>
+
+      <!-- AFTERMATH -->
+      <section class="story-section" id="aftermath">
+        <div class="story-content full-width">
+          <div class="narrative-block centered">
+            <h2>"What the Fuck Did You Just Do?"</h2>
+            <div class="prose">
+              <p>Cassia sits up, coughing, alive. Her hand goes to her chest—finds a coin there that wasn't there before. Cold metal against her skin. Her eyes find Marcus, and there's something new in them. Fear. Gratitude. And the dawning horror of someone who's seen the dark river and remembers it.</p>
+            </div>
+          </div>
+          
+          <div class="dialogue-block centered final-dialogue">
+            <div class="dialogue npc">
+              <span class="speaker">CASSIA</span>
+              <p><em>*staring at the coin in her hand*</em></p>
+              <p>What the fuck did you just do?</p>
+            </div>
+            <div class="dialogue player">
+              <span class="speaker">MARCUS</span>
+              <p>I paid your fare.</p>
+            </div>
+            <div class="dialogue npc">
+              <span class="speaker">CASSIA</span>
+              <p>I was—I saw—there was a river and a boat and something HUGE in the water and—</p>
+              <p><em>*slowly*</em> We're the same now, aren't we? Both carrying coins. Both... touched.</p>
+            </div>
+          </div>
+          
+          <div class="narrative-block centered">
+            <div class="prose closing">
+              <p>In the corner, Corvus groans against his bonds. In the back room, a chest of records waits to be opened. Outside, Portus Sanguinis continues its slow rot.</p>
+              <p>But in this moment, two people who have crossed the dark river and returned sit in the blood and silence of their victory, bound by debts to something older than Rome.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EPILOGUE -->
+      <section class="epilogue">
+        <div class="epilogue-content">
+          <h2>This Is Quest Keeper AI</h2>
+          <p>Every moment you just read emerged from the collaboration between human creativity and AI-powered game mechanics. The dice were real. The death was real. The resurrection wasn't scripted.</p>
+          
+          <div class="session-stats">
+            <div class="stat-row">
+              <span class="stat-name">Session Date</span>
+              <span class="stat-value">December 9, 2025</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Duration</span>
+              <span class="stat-value">~3 hours</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">XP Awarded</span>
+              <span class="stat-value">300</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Coin Flips</span>
+              <span class="stat-value">3</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-name">Tool Calls</span>
+              <span class="stat-value">150+</span>
+            </div>
+          </div>
+          
+          <div class="cta-section">
+            <a href="/quickstart" class="cta-button">&gt; BEGIN_YOUR_STORY</a>
+            <a href="https://github.com/Mnehmos/rpg-mcp" target="_blank" class="cta-button secondary">&gt; VIEW_SOURCE</a>
+          </div>
+          
+          <p class="closing-quote">"I WILL REMEMBER YOU. I WILL REMEMBER MERCY."</p>
+          <p class="closing-attribution">— The Dreaming Deep</p>
+        </div>
+      </section>
+
+      <footer>
+        <p>&copy; 2025 Quest Keeper AI. All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://github.com/Mnehmos/rpg-mcp" target="_blank" class="social-link">GitHub (Backend)</a>
+          <a href="https://github.com/Mnehmos/QuestKeeperAI-v2" target="_blank" class="social-link">GitHub (Frontend)</a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.story-section, .narrative-block, .dialogue-block, .insight-card, .death-event').forEach(el => {
+        el.classList.add('reveal');
+        observer.observe(el);
+      });
+
+      // Smooth scroll for navigation
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
