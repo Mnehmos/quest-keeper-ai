@@ -12,8 +12,11 @@
   text-align: center;
   position: relative;
   padding: 4rem 2rem;
-  background: 
-    radial-gradient(ellipse at 50% 100%, rgba(0, 100, 150, 0.15) 0%, transparent 50%),
+  background: radial-gradient(
+      ellipse at 50% 100%,
+      rgba(0, 100, 150, 0.15) 0%,
+      transparent 50%
+    ),
     radial-gradient(circle at 50% 50%, #1f1f2e 0%, #0f0520 50%, #050508 100%);
 }
 
@@ -21,7 +24,11 @@
   font-size: 5rem !important;
   letter-spacing: 12px !important;
   margin-bottom: 1rem !important;
-  background: linear-gradient(180deg, var(--neon-cyan) 0%, rgba(0, 255, 255, 0.6) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--neon-cyan) 0%,
+    rgba(0, 255, 255, 0.6) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -69,13 +76,23 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-10px); }
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
 }
 
 @keyframes pulse-line {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Story Sections */
@@ -103,7 +120,7 @@
 }
 
 .marker-label {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 0.8rem;
   color: var(--neon-cyan);
   letter-spacing: 4px;
@@ -126,7 +143,7 @@
 }
 
 .narrative-block h2 {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 2rem;
   color: var(--neon-cyan);
   margin-bottom: 1.5rem;
@@ -162,7 +179,7 @@
 }
 
 .mission-briefing {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   color: var(--neon-orange);
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
@@ -190,7 +207,7 @@
 
 .dialogue .speaker {
   display: block;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 0.75rem;
   letter-spacing: 2px;
   margin-bottom: 0.5rem;
@@ -256,7 +273,7 @@
 }
 
 .dialogue.entity p {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   letter-spacing: 1px;
 }
 
@@ -308,7 +325,7 @@
 }
 
 .insight-type {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 0.7rem;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -377,7 +394,7 @@
   background: rgba(10, 10, 15, 0.95);
   border: 1px solid rgba(0, 255, 136, 0.3);
   padding: 1rem;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 .tool-header {
@@ -400,14 +417,22 @@
 
 /* Dark Section */
 .dark-section {
-  background: 
-    linear-gradient(180deg, transparent 0%, rgba(0, 20, 40, 0.3) 50%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 20, 40, 0.3) 50%,
+    transparent 100%
+  );
 }
 
 /* Combat Section */
 .combat-section {
-  background: 
-    linear-gradient(180deg, transparent 0%, rgba(100, 0, 0, 0.1) 50%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(100, 0, 0, 0.1) 50%,
+    transparent 100%
+  );
 }
 
 .combat-tracker {
@@ -418,7 +443,7 @@
 }
 
 .tracker-header {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 0.8rem;
   color: var(--neon-cyan);
   letter-spacing: 2px;
@@ -435,7 +460,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.9rem;
   background: rgba(0, 0, 0, 0.3);
   border-left: 3px solid;
@@ -458,8 +483,11 @@
 
 /* Death Section */
 .death-section {
-  background: 
-    radial-gradient(ellipse at 50% 50%, rgba(100, 0, 0, 0.2) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(100, 0, 0, 0.2) 0%,
+    transparent 70%
+  );
 }
 
 .death-sequence {
@@ -481,7 +509,7 @@
 }
 
 .event-label {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 0.85rem;
   color: #ff5050;
   letter-spacing: 1px;
@@ -493,7 +521,7 @@
 }
 
 .event-result {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.85rem;
   color: var(--text-white);
 }
@@ -524,7 +552,7 @@
 }
 
 .decision-box::before {
-  content: '// DECISION_POINT';
+  content: "// DECISION_POINT";
   position: absolute;
   top: -12px;
   left: 20px;
@@ -553,8 +581,12 @@
 }
 
 @keyframes spin-coin {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(720deg); }
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(720deg);
+  }
 }
 
 .result {
@@ -564,13 +596,13 @@
 }
 
 .dice-result {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.85rem;
   color: var(--text-muted);
 }
 
 .outcome {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 1.2rem;
   color: var(--neon-green);
   letter-spacing: 2px;
@@ -579,9 +611,17 @@
 
 /* Resurrection Section */
 .resurrection-section {
-  background: 
-    radial-gradient(ellipse at 50% 30%, rgba(0, 100, 100, 0.15) 0%, transparent 50%),
-    linear-gradient(180deg, transparent 0%, rgba(0, 50, 80, 0.2) 50%, transparent 100%);
+  background: radial-gradient(
+      ellipse at 50% 30%,
+      rgba(0, 100, 100, 0.15) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 50, 80, 0.2) 50%,
+      transparent 100%
+    );
 }
 
 .divine-response {
@@ -594,14 +634,17 @@
 }
 
 .divine-response::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(ellipse at 50% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(0, 255, 136, 0.1) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -609,8 +652,12 @@
 .epilogue {
   padding: 6rem 2rem;
   text-align: center;
-  background: 
-    linear-gradient(180deg, transparent 0%, rgba(0, 255, 255, 0.05) 50%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
 }
 
 .epilogue-content {
@@ -619,7 +666,7 @@
 }
 
 .epilogue h2 {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 2.5rem;
   color: var(--neon-cyan);
   margin-bottom: 1.5rem;
@@ -661,7 +708,7 @@
 
 .stat-value {
   color: var(--neon-cyan);
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
 }
 
 .cta-section {
@@ -669,7 +716,7 @@
 }
 
 .closing-quote {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   font-size: 1.2rem;
   color: var(--neon-green);
   margin-top: 3rem;
@@ -688,18 +735,18 @@
   .story-section {
     grid-template-columns: 1fr;
   }
-  
+
   .insight-panel {
     position: relative;
     top: 0;
     flex-direction: row;
     flex-wrap: wrap;
   }
-  
+
   .insight-card {
     flex: 1 1 300px;
   }
-  
+
   .insight-panel.floating {
     grid-column: 1;
   }
@@ -710,20 +757,20 @@
     font-size: 2.5rem !important;
     letter-spacing: 4px !important;
   }
-  
+
   .hero-quote {
     font-size: 1.1rem;
   }
-  
+
   .story-section {
     padding: 3rem 1rem;
   }
-  
+
   .death-event {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
-  
+
   .coin-flip {
     flex-direction: column;
   }
@@ -747,4 +794,83 @@
 
 .insight-card.reveal {
   transition-delay: calc(var(--index, 0) * 0.1s);
+}
+
+/* --- DEEP DIVE STYLES --- */
+
+/* Technical Logs */
+.log-container {
+  background: #0d0d12;
+  border: 1px solid #2a2a35;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  overflow-x: auto;
+}
+
+.log-header {
+  color: #6b7280;
+  border-bottom: 1px solid #2a2a35;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.log-entry {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.log-timestamp {
+  color: #50fa7b;
+}
+
+.log-message {
+  color: #a9b1d6;
+}
+
+.log-error {
+  color: #ff5555;
+}
+
+/* Analysis Sidebars */
+.analysis-sidebar {
+  border-left: 2px solid var(--neon-magenta);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+}
+
+.analysis-title {
+  font-family: "Share Tech Mono", monospace;
+  color: var(--neon-magenta);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+/* Bug Highlight */
+.bug-block {
+  background: rgba(255, 85, 85, 0.1);
+  border: 1px solid rgba(255, 85, 85, 0.3);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.bug-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #ff5555;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  font-family: "Share Tech Mono", monospace;
+  text-transform: uppercase;
 }
