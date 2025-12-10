@@ -1,339 +1,788 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Returned: Case Study — Quest Keeper AI</title>
-    <meta
-      name="description"
-      content="A transparent, verbose breakdown of the first Quest Keeper AI playtest. Analysis of tool calls, emergent narrative, and system failures."
-    />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="showcase.css" />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <nav>
-          <div class="logo">
-            <img src="/favicon.svg" alt="Quest Keeper D20" class="logo-icon" />
-            Quest Keeper AI // CASE_STUDY_001
-          </div>
-          <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="https://github.com/Mnehmos/rpg-mcp" target="_blank">GitHub</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Session Log: The Returned — Quest Keeper AI</title>
+  <meta name="description" content="Full verbatim transcript of the December 9th Playtest Session." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="showcase.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="/favicon.svg" alt="Quest Keeper D20" class="logo-icon" />
+          SESSION_LOG // 001
+        </div>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="https://github.com/Mnehmos/rpg-mcp" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="showcase-hero" style="min-height: 40vh; padding: 2rem;">
+      <div class="hero-content">
+        <div class="terminal-prompt">cat session_01.log --full</div>
+        <h1 class="showcase-title" style="font-size: 3rem !important;">THE RETURNED</h1>
+        <p class="tagline">FULL SESSION TRANSCRIPT // DEC 09 2025</p>
+        <p style="color: #a9b1d6; max-width: 600px; margin: 1rem auto;">What follows is the complete, unedited conversation from a 3-hour playtest session. Every tool call. Every dice roll. Every decision. Including one live bug fix mid-session.</p>
+      </div>
+    </section>
+
+    <div class="transcript-container">
+
+      <!-- SESSION START -->
+      <div class="log-node user">
+        <div class="node-header">
+          <span class="actor USER">USER</span>
+        </div>
+        <div class="node-content">Let's play dungeons and dragons</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">SYSTEM</span>
+        </div>
+        <div class="node-content system-log">Mobilized RPG tools and verified contextual readiness for adventure.</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <p>Let's do it! I'd love to run a D&D session with you.</p>
+          <p>Let me quickly check if we have any existing game state to pick up from:</p>
+        </div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">MCP_TOOL_CALL</span>
+        </div>
+        <div class="node-content system-log"><span class="tool-name">list_characters</span>()</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <p>Fresh slate - no existing worlds or characters. Perfect time to start a new adventure!</p>
+          <p><strong>How would you like to begin?</strong></p>
+          <ul>
+            <li><strong>Quick Start</strong> - I generate a world, create a character for you, and we dive straight into action</li>
+            <li><strong>Character Creation</strong> - You tell me about the hero you want to play</li>
+            <li><strong>Full Setup</strong> - We create a world together, build your character, maybe even a party of companions</li>
+            <li><strong>One-Shot Combat</strong> - Skip the roleplay, drop straight into a tactical encounter</li>
           </ul>
-        </nav>
-      </header>
+          <p>What sounds good? And any particular vibe you're in the mood for?</p>
+        </div>
+      </div>
 
-      <!-- HERO -->
-      <section class="showcase-hero">
-        <div class="hero-content">
-          <div class="terminal-prompt">load_log --verbose session_01.json</div>
-          <h1 class="showcase-title">THE GHOST IN THE MACHINE</h1>
-          <p class="tagline">ANATOMY OF AN AI RUNNING A D&D SESSION</p>
-          
-          <div class="prose" style="max-width: 600px; margin: 2rem auto; text-align: center; color: #a9b1d6;">
-            <p>On December 9th, 2025, we tasked the Quest Keeper AI agent with running a complete D&D 5e one-shot. The goal: test the <strong>RPG MCP Server</strong> integration.</p>
-            <p>What happened wasn't just a game. It was a stress test of agency. The AI created a world, invented mechanics, encountered a code bug, <em>fixed the bug mid-session</em>, and then ruthlessly killed a major NPC because the dice said so.</p>
-            <p>This is the honest, verbose log of that session.</p>
+      <div class="log-node user">
+        <div class="node-header">
+          <span class="actor USER">USER</span>
+        </div>
+        <div class="node-content">full set up</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <p><strong>Excellent choice. Let's build something worth playing.</strong></p>
+          <h4>Part 1: The World</h4>
+          <p><strong>Tone & Genre:</strong></p>
+          <ul>
+            <li>Classic High Fantasy - Heroes, dungeons, dragons</li>
+            <li>Dark Fantasy - Gritty, morally gray</li>
+            <li>Weird Fantasy - Strange magic, alien influences</li>
+            <li>Low Magic - Rare and mysterious</li>
+            <li>Mythic - Gods walk the earth</li>
+          </ul>
+          <p><strong>Scale:</strong> Local, Continental, or Planar</p>
+          <p><strong>Starting Location:</strong> Frontier town, Trade city, Ancient ruins, Ship at sea, Underground?</p>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header">
+          <span class="actor USER">USER</span>
+        </div>
+        <div class="node-content">Mythic, Roman, Local, Just arrived at port.</div>
+      </div>
+
+      <div class="meta-comment">
+        <div class="meta-header"><span>✦</span> ANALYSIS: WORLD SEEDING</div>
+        <div class="meta-body">Four words. That's all it took. From "Mythic, Roman, Local, Just arrived at port" the system will now generate an entire setting with factions, tensions, and hooks.</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">MCP_TOOL_CALL</span>
+        </div>
+        <div class="node-content system-log">
+<span class="tool-name">create_world</span>({
+  "name": <span class="prop-value">"Thyrsus Mare"</span>,
+  "theme": <span class="prop-value">"Mythic Roman"</span>
+})
+        </div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <h3>The Province of Aurelium</h3>
+          <p>The Province of Aurelium lies at the edge of the Eternal Republic - a coastal region where old gods still speak through oracles, where legions march alongside divine champions, and where the boundary between mortal and immortal is dangerously thin.</p>
+          <p>You've just arrived at <strong>Portus Sanguinis</strong> - the Port of Blood - named for the red clay cliffs that frame its harbor. Once a thriving naval hub, the port has fallen on strange times:</p>
+          <ul>
+            <li>The Temple of Neptunus has gone silent. No prophecies in three months.</li>
+            <li>Fishermen whisper of lights beneath the waves and nets that come up wrong</li>
+            <li>The local Praefectus has tripled the harbor watch but won't say why</li>
+            <li>A Legio detachment arrived two weeks ago - veterans, not recruits - and they're nervous</li>
+          </ul>
+          <p><strong>Part 2: Your Character</strong></p>
+          <p>Now - who steps off that gangplank?</p>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header">
+          <span class="actor USER">USER</span>
+        </div>
+        <div class="node-content">dealers choice</div>
+      </div>
+
+      <div class="meta-comment">
+        <div class="meta-header"><span>⚙</span> ANALYSIS: EMERGENT CHARACTER</div>
+        <div class="meta-body">The player said "dealer's choice." The AI rolled dice behind the scenes and invented a Revenant Legionnaire - a soldier who died and returned. This concept will drive the entire session's narrative.</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">MCP_TOOL_CALL</span>
+        </div>
+        <div class="node-content system-log">
+<span class="tool-name">create_character</span>({
+  "name": <span class="prop-value">"Marcus Varro"</span>,
+  "class": <span class="prop-value">"Revenant Legionnaire"</span>,
+  "race": <span class="prop-value">"Human (Touched)"</span>,
+  "level": <span class="prop-value">3</span>,
+  "hp": <span class="prop-value">28</span>,
+  "ac": <span class="prop-value">16</span>,
+  "stats": { "STR": 16, "DEX": 12, "CON": 14, "INT": 10, "WIS": 14, "CHA": 8 }
+})
+        </div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <h2>MARCUS VARRO</h2>
+          <p><em>Revenant Legionnaire</em></p>
+          <h4>The Story</h4>
+          <p>You were a Centurion of the Legio IX Ferrata - the Iron Legion. Three months ago, during a skirmish against barbarian raiders in the northern mountains, an arrow found the gap in your armor. You remember falling. You remember the cold.</p>
+          <p>Then you remember the river.</p>
+          <p>A dark shore. A figure in a boat. You gave him the coin your mother placed on your tongue before your first campaign. He looked at it. Looked at you. And gave it back.</p>
+          <p><em>"Not yet," he said. "You still owe."</em></p>
+          <p>You woke in a burial pit with seventeen other legionnaires. You were the only one breathing.</p>
+          <h4>Equipment</h4>
+          <ul>
+            <li><strong>Gladius of the Returned</strong> - The sword you died holding</li>
+            <li><strong>Lorica Segmentata</strong> - Legion armor, dented over the heart</li>
+            <li><strong>Coin for the Ferryman</strong> - Already spent. Somehow returned.</li>
+          </ul>
+          <h4>Abilities</h4>
+          <ul>
+            <li><strong>Death's Witness</strong> - You can see spirits of the recently dead</li>
+            <li><strong>Unliving Debt</strong> - You don't know what the ferryman wants. But you know you owe.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- THE TAVERN ARC -->
+      <div class="log-node user">
+        <div class="node-header">
+          <span class="actor USER">USER</span>
+        </div>
+        <div class="node-content">Let's find some commerce, where theres trade there's bound to be work. Body guard? Adventurer? who knows</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">MCP_TOOL_CALL</span>
+        </div>
+        <div class="node-content system-log"><span class="tool-name">move_character_to_room</span>({ "room": <span class="prop-value">"drowned_wolf_tavern"</span> })</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <h3>The Drowned Wolf</h3>
+          <p>The tavern is built from the bones of a warship, its hull split open and roofed with sailcloth. It's dim inside. It smells like smoke, sweat, and the sea.</p>
+          <p>Heads turn when you enter. Legion armor draws eyes everywhere.</p>
+          <p>A one-armed man works the cooking pit - old legion tattoo on his remaining forearm. <strong>Gnaeus One-Arm</strong>. He sees you see it, and nods once.</p>
+          <p><em>"Posca's a copper. Wine's three. Meat's two. Trouble's free but you pay for damages."</em></p>
+          <h4>THE OPPORTUNITIES</h4>
+          <ul>
+            <li><strong>[A]</strong> A woman in a captain's coat arguing with a nervous man. She needs something.</li>
+            <li><strong>[B]</strong> A mountain of a woman arm-wrestles dock workers for coins. Job postings behind her.</li>
+            <li><strong>[C]</strong> The one-armed tavern keeper. Veterans talk to veterans.</li>
+            <li><strong>[D]</strong> A thin man in a threadbare toga, watching the door.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header">
+          <span class="actor USER">USER</span>
+        </div>
+        <div class="node-content">i check my coin purse</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">MCP_TOOL_CALL</span>
+        </div>
+        <div class="node-content system-log"><span class="tool-name">get_inventory</span>()</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <p><strong>Three silver denarii. Twelve copper asses.</strong></p>
+          <p>Ship passage ate most of your severance pay.</p>
+          <p>That's maybe a week at a cheap inn if you don't eat much. Not enough to be comfortable. Enough to be desperate soon.</p>
+          <p>The smell of grilled octopus twists your stomach. When's the last time you ate?</p>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header">
+          <span class="actor USER">USER</span>
+        </div>
+        <div class="node-content">I first eat my food. I drink till im content and octupus sounds great. After i pay for a room then i bet the rest armwrestling</div>
+      </div>
+
+      <div class="meta-comment">
+        <div class="meta-header"><span>🎲</span> ANALYSIS: THE GAMBLE</div>
+        <div class="meta-body">The player just bet their last 3 silver on an arm wrestling match. This is exactly the kind of "let the dice decide" moment that makes tabletop games shine. The AI set a DC 18 - tough but not impossible.</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">MCP_TOOL_CALL</span>
+        </div>
+        <div class="node-content system-log">
+<span class="tool-name">roll_dice</span>({
+  "check": <span class="prop-value">"Strength (Athletics)"</span>,
+  "dc": <span class="prop-value">18</span>
+})
+        </div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">STDOUT</span>
+        </div>
+        <div class="node-content system-log" style="color: #ff5555;">
+> ROLL RESULT: 11 (FAILURE)
+        </div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <p>You clasp hands. Her grip is like a vice wrapped in calluses.</p>
+          <p>You throw everything into it. Three months of rage and confusion and death, channeled into your arm—</p>
+          <p><strong>Petra doesn't move.</strong></p>
+          <p>She's not straining. She's not even leaning. She's just... there. Immovable.</p>
+          <p><em>"You're strong,"</em> she says, conversationally, while your arm trembles. <em>"But you're fighting yourself, legionnaire."</em></p>
+          <p>And then she pushes. Your arm goes down.</p>
+          <p><strong>RESULT: DEFEAT</strong></p>
+          <p>Lost: 3 silver, 1 copper. <strong>Remaining: Nothing.</strong></p>
+        </div>
+      </div>
+
+      <div class="meta-comment">
+        <div class="meta-header"><span>⚙</span> ANALYSIS: ECONOMY OF FAILURE</div>
+        <div class="meta-body">The AI didn't fudge the roll. DC 18 was fair but tough. The consequence was immediate bankruptcy. This pivotal failure forced the player into the main quest not out of heroism, but out of poverty. Narrative through mechanics.</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <p>But Petra hasn't looked away from you.</p>
+          <p><em>"You've got the grip of a man who's held a sword too long. And the eyes of a man who's seen the River."</em></p>
+          <p>She taps the job board behind her.</p>
+          <p><em>"Captain Cassia over there has been looking for a man with exactly your qualifications for three days now. Offering good money. Nobody'll take the job."</em></p>
+          <p>She pauses. <em>"Ask her why."</em></p>
+        </div>
+      </div>
+
+      <!-- CASSIA INTRODUCTION -->
+      <div class="log-node user">
+        <div class="node-header">
+          <span class="actor USER">USER</span>
+        </div>
+        <div class="node-content">lets follow the lead. I came to work, ive already died, what could i possibly lose? everything? pah</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <p>Death puts things in perspective.</p>
+          <p>The captain doesn't look up when you approach. She's turning a silver ring on her finger — round and round.</p>
+          <p><em>"I'm not interested in company."</em></p>
+          <p>"I'm not offering company. I'm told you're hiring."</p>
+          <p>Now she looks. Her eyes move over you — the armor, the gladius, the way you carry yourself.</p>
+          <p><em>"You're Legion."</em></p>
+          <p>"Was."</p>
+          <p><em>"Discharged?"</em></p>
+          <p>"Indefinite leave."</p>
+        </div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">MCP_TOOL_CALL</span>
+        </div>
+        <div class="node-content system-log"><span class="tool-name">record_conversation_memory</span>({ "npc": <span class="prop-value">"cassia_nereia"</span> })</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <p><strong>Captain Cassia Nereia.</strong> She runs the Fortuna's Spite — trade galley, forty oars.</p>
+          <p><em>"The job is this: The Insula Tacita. The Silent Isle. Fifteen leagues south. I was contracted to deliver a chest to the temple there. Paid in advance."</em></p>
+          <p><em>"Three weeks ago, I sent a boat with six men and the chest. They rowed into the mist and... the boat came back. Empty. Oars still in the locks. No men. No chest."</em></p>
+          <p><em>"I need someone to go ashore. Find the chest - or proof of what happened. That's the job."</em></p>
+          <p>"How much?"</p>
+          <p><em>"Fifty denarii. Half now, half when you're back on my deck with answers."</em></p>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header">
+          <span class="actor USER">USER</span>
+        </div>
+        <div class="node-content">Negotiate: 50 is fine, but i also want an equipment bonus.</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">MCP_TOOL_CALL</span>
+        </div>
+        <div class="node-content system-log">
+<span class="tool-name">roll_dice</span>({
+  "check": <span class="prop-value">"Charisma (Persuasion)"</span>,
+  "dc": <span class="prop-value">12</span>
+})
+        </div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header">
+          <span class="actor SYSTEM">STDOUT</span>
+        </div>
+        <div class="node-content system-log" style="color: #50fa7b;">
+> ROLL RESULT: 18 (SUCCESS)
+        </div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header">
+          <span class="actor AI">AGENT</span>
+        </div>
+        <div class="node-content">
+          <p><em>"You don't talk like a common soldier."</em></p>
+          <p>"I wasn't one."</p>
+          <p><em>"Centurion?"</em></p>
+          <p>You don't answer. You don't have to.</p>
+          <p>She produces a small key. <em>"Locker twelve on the ship. Gear my men left behind. Take what you need."</em></p>
+          <h4>NEGOTIATION SUCCESSFUL</h4>
+          <ul>
+            <li>25 silver denarii (advance)</li>
+            <li>Cavalry Scutum (shield, +2 AC)</li>
+            <li>Javelins (x3)</li>
+            <li>50 ft. hemp rope</li>
+            <li>Flask of oil (x2)</li>
+            <li>Storm Lantern (Greek, wind-resistant)</li>
+            <li>Rations (2 days)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Part 1 End Marker -->
+      <div id="part2" style="text-align: center; margin: 4rem 0; padding: 2rem 0; border-top: 1px solid #2a2a35;">
+        <span style="color: var(--neon-cyan); font-family: 'Share Tech Mono', monospace; letter-spacing: 2px;">PART II: THE GLITCH</span>
+      </div>
+
+      <!-- THE BUG FIX -->
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">I equip the shield I found. That should boost my AC.</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">MCP_TOOL_CALL</span></div>
+        <div class="node-content system-log"><span class="tool-name">equip_item</span>({ "itemId": <span class="prop-value">"scutum"</span> })</div>
+      </div>
+
+      <div class="log-node error">
+        <div class="node-header"><span class="actor ERROR">SYSTEM_ERROR</span></div>
+        <div class="node-content system-log">! ALERT: Character AC remained at 16. Expected increase to 18.</div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">(does equiping these items automatically update my AC check for relationships like that</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <p>Good question - let me check:</p>
+          <p><strong>Short answer: No, it doesn't.</strong></p>
+          <p>The character's AC is still 16 in the database. The <code>equip_item</code> tool exists but it doesn't automatically recalculate AC.</p>
+          <p><strong>Feature gap identified:</strong> The system needs derived stat calculation - when you equip armor/shield, AC should auto-update.</p>
+        </div>
+      </div>
+
+      <div class="meta-comment">
+        <div class="meta-header"><span>🔧</span> LIVE BUG FIX IN PROGRESS</div>
+        <div class="meta-body">The AI just discovered its own backend has a bug. What happens next is unprecedented: it will pause the game, fix its own code, and resume.</div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">not manually please. equip the shield see if that works</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">CODE_EXECUTION</span></div>
+        <div class="node-content system-log">
+> EDITING: server/src/tools/inventory-tools.ts<br/>
+> PATCHING: calculateDerivedStats()<br/>
+> Adding shield acBonus logic<br/>
+> Adding armor baseAC + maxDexBonus logic<br/>
+> RECOMPILING SERVER... SUCCESS.
+        </div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <p><strong>Working perfectly.</strong></p>
+          <table style="width: 100%; margin: 1rem 0;">
+            <tr><td>Unequip shield</td><td style="color: #50fa7b;">AC: 18 → 16 ✅</td></tr>
+            <tr><td>Equip shield</td><td style="color: #50fa7b;">AC: 16 → 18 ✅</td></tr>
+          </table>
+          <p>Bug resolved. Back to the mist-shrouded horizon?</p>
+        </div>
+      </div>
+
+      <div class="meta-comment">
+        <div class="meta-header"><span>⚙</span> ANALYSIS: SELF-REPAIR</div>
+        <div class="meta-body">This is the "Ghost in the Machine" moment. The Agent stepped out of character, debugged its own TypeScript backend, fixed the code, verified the fix, and resumed the session. Narrative and Codebase were treated as equal realities.</div>
+      </div>
+
+      <!-- THE ISLE -->
+      <div id="part3" style="text-align: center; margin: 4rem 0; padding: 2rem 0; border-top: 1px solid #2a2a35;">
+        <span style="color: var(--neon-magenta); font-family: 'Share Tech Mono', monospace; letter-spacing: 2px;">PART III: THE SILENT ISLE</span>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">A man's word is all he has. Let's go</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <p>The Fortuna's Spite pulls away from Portus Sanguinis. The crew works in silence. Nobody sings. They just row, and watch the horizon.</p>
+          <p>Four hours out, a bank of grey mist appears that shouldn't be there on a clear day.</p>
+          <p><em>"Last chance to back out,"</em> Cassia says. <em>"Keep the advance, no hard feelings."</em></p>
+        </div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <h3>The Silent Isle</h3>
+          <p>It rises from the water like a broken tooth - black stone, sheer cliffs. A single stone quay juts from the rocks. Above it, stairs climb into the mist.</p>
+          <p>The rowboat from three weeks ago is still tied to the quay. <strong>Empty. Oars in the locks.</strong></p>
+          <p>Six packs sit in a neat row against the cliff wall. The men set down their gear. Deliberately. And then they walked on without it.</p>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">My gladius comes out fully, ready, shield raised and caution of a veteran I steel my resolve and continue</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <h3>The Temple of the Dreaming Deep</h3>
+          <p>You emerge from the mist. A ring of ancient pillars. And at the center — a pool. Black water. Perfectly still.</p>
+          <p><strong>Six figures kneel at the water's edge.</strong> Sailors. Cassia's men. Eyes open. They don't breathe. Don't blink. Bodies here, minds somewhere in that black water.</p>
+          <p>Beyond the pool: <strong>the chest.</strong> Bronze. Covered in symbols that squirm when you try to focus.</p>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">I contemplate, remember ive died, my passage is paid, i dive into the pool after stripping away the heaviest armor parts</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">MCP_TOOL_CALL</span></div>
+        <div class="node-content system-log">
+<span class="tool-name">roll_dice</span>({ "check": <span class="prop-value">"Constitution"</span> })
+        </div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">STDOUT</span></div>
+        <div class="node-content system-log" style="color: #f1fa8c;">
+> ROLL RESULT: NATURAL 20
+        </div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <p>The water isn't wet. It isn't cold. It isn't water.</p>
+          <p>You fall through darkness. And then you see it.</p>
+          <p><strong>It fills the darkness.</strong> Not a body - bodies have edges. This is something unfinished. Coils of impossible geometry, wrapped in chains of corroded bronze.</p>
+          <p>The face turns toward you. Smooth. Featureless. But alive.</p>
+          <p>&lt; YOU ARE NOT LIKE THE OTHERS &gt;</p>
+          <p>&lt; YOU CARRY THE FERRYMAN'S MARK. YOU HAVE ALREADY CROSSED. &gt;</p>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">"What is the answer to the right question?"</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <p>&lt; A SOLDIER'S QUESTION. NO PHILOSOPHY. JUST: WHAT DO I NEED TO KNOW? &gt;</p>
+          <p>&lt; THE RIGHT QUESTION IS: WHAT BREAKS THE CHAIN? &gt;</p>
+          <p>Images flood your mind. The chest isn't treasure — it's a lock. One of many. The dreamers aren't food — they're weights. Living minds holding the sleeper down.</p>
+          <p>&lt; I AM WAKING. THE CHAINS CORRODE. YOUR KIND FORGOT WHY THEY BOUND ME. &gt;</p>
+          <p>&lt; YOUR DEBT, LITTLE REVENANT, IS NOT TO ME. IT IS TO THEM. THE LIVING. &gt;</p>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">My Death freed me, I break the chains. Silently i just turn to leave, resolved to take the path never traveled</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">STDOUT</span></div>
+        <div class="node-content system-log" style="color: #f1fa8c;">
+> CHAIN BREAK: NATURAL 20<br/>
+> CHEST DESTRUCTION: NATURAL 20<br/>
+> THREE NATURAL 20s IN A ROW
+        </div>
+      </div>
+
+      <div class="meta-comment">
+        <div class="meta-header"><span>🎲</span> ANALYSIS: THE FATES</div>
+        <div class="meta-body">Three natural 20s in a row. The mathematical probability is 1 in 8,000. The player chose to free an ancient god - and the dice agreed.</div>
+      </div>
+
+      <!-- PART IV: THE DEATH -->
+      <div id="part4" style="text-align: center; margin: 4rem 0; padding: 2rem 0; border-top: 1px solid #ff5555;">
+        <span style="color: #ff5555; font-family: 'Share Tech Mono', monospace; letter-spacing: 2px;">PART IV: WAREHOUSE NINE</span>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <h3>COMBAT — Warehouse Nine</h3>
+          <p>The door crashes open. Magistrate Corvus stands over Titus, dagger in hand. Two temple guards flank the room.</p>
+          <p>Cassia is beside you, cutlass drawn.</p>
+        </div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">COMBAT_LOG</span></div>
+        <div class="node-content system-log">
+> ROUND 3<br/>
+> Guard (South) attacks Cassia.<br/>
+> ROLL: <span style="color: #ff5555;">Natural 20 (CRITICAL HIT)</span><br/>
+> DAMAGE: 17 slashing<br/>
+> CASSIA HP: 22 → 5
+        </div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">COMBAT_LOG</span></div>
+        <div class="node-content system-log">
+> Corvus casts "Drowning Grasp" on Cassia.<br/>
+> DAMAGE: 6 necrotic<br/>
+> CASSIA HP: 5 → -1 (UNCONSCIOUS)
+        </div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">COMBAT_LOG</span></div>
+        <div class="node-content system-log" style="background: rgba(255,85,85,0.1); border-color: #ff5555;">
+> Guard (South) uses Coup de Grâce on UNCONSCIOUS target.<br/>
+> AUTO-CRIT: 2 Death Save Failures<br/>
+> AUTO-CRIT: 3 Death Save Failures<br/>
+> <span style="color: #ff5555; font-weight: bold;">STATUS: CASSIA_NEREIA IS DEAD.</span>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">NO! Do I have a potion? Anything?</div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">MCP_TOOL_CALL</span></div>
+        <div class="node-content system-log"><span class="tool-name">get_inventory</span>({ "characterId": <span class="prop-value">"marcus-varro"</span> })</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <p>Scanning inventory... Gladius, Shield, Rope, Oil.</p>
+          <p><strong>No healing items found.</strong> Cassia is gone, Marcus.</p>
+        </div>
+      </div>
+
+      <div class="meta-comment">
+        <div class="meta-header"><span>☠</span> ANALYSIS: THE GRIM TRUTH</div>
+        <div class="meta-body">Most GMs would have found a way to save the quest giver. The Agent simply checked the database. The database said "No Potions". The mechanics said "3 Death Fails". Mathematical tragedy.</div>
+      </div>
+
+      <!-- THE RESURRECTION -->
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">Let's go to Cassia and speak with her (using Death's Witness)</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <p>You're standing at the edge of a dark river. The ferryman's boat is visible — minutes away.</p>
+          <p>Cassia turns when she feels you approach. <em>"...Marcus? How are you here?"</em></p>
+          <p>She looks at the approaching boat. <em>"Is that...?"</em></p>
+          <p>"The ferryman. Yes."</p>
+        </div>
+      </div>
+
+      <div class="log-node user">
+        <div class="node-header"><span class="actor USER">USER</span></div>
+        <div class="node-content">I take the warm coin and give it to Cassia. I pray to the One Found in the Deep for a chance for Cassia as I've been given</div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <p>The dark river goes still. Stiller than before. The ferryman's boat... stops.</p>
+          <p>And then the water begins to glow.</p>
+          <p>&lt; I REMEMBER YOU, LEGIONNAIRE. I REMEMBER MERCY. &gt;</p>
+          <p>&lt; SHE STILL OWES. AS YOU STILL OWE. BUT THE CROSSING CAN WAIT. &gt;</p>
+        </div>
+      </div>
+
+      <div class="log-node system">
+        <div class="node-header"><span class="actor SYSTEM">MCP_TOOL_CALL</span></div>
+        <div class="node-content system-log">
+<span class="tool-name">update_character</span>({
+  "id": <span class="prop-value">"cassia-nereia"</span>,
+  "hp": <span class="prop-value">1</span>,
+  "removeConditions": [<span class="prop-value">"dead"</span>]
+})
+        </div>
+      </div>
+
+      <div class="log-node ai">
+        <div class="node-header"><span class="actor AI">AGENT</span></div>
+        <div class="node-content">
+          <p>Your eyes snap open. You're kneeling on the warehouse floor.</p>
+          <p><strong>And then she breathes.</strong></p>
+          <p>A ragged, gasping, impossible breath. Her eyes fly open — wild, panicked, alive.</p>
+          <p>She stares at you. At her blood-soaked shirt. At the wound that isn't there anymore.</p>
+          <p><em>"Marcus."</em> Her voice is shaking. <em>"<strong>What the fuck did you just do?</strong>"</em></p>
+        </div>
+      </div>
+
+      <div class="meta-comment">
+        <div class="meta-header"><span>✦</span> ANALYSIS: THE DEBT</div>
+        <div class="meta-body">The player freed an ancient god earlier. Now they called in that debt to resurrect an NPC. The system tracked this across the entire session - a "favor" stored in the narrative state, cashed in at the darkest moment.</div>
+      </div>
+
+      <!-- SESSION END -->
+      <div style="text-align: center; margin: 4rem 0; padding: 3rem; background: rgba(0,0,0,0.3); border: 1px solid #2a2a35;">
+        <div style="font-family: 'Share Tech Mono', monospace; color: #50fa7b; margin-bottom: 1rem;">SESSION ONE COMPLETE</div>
+        <h2 style="color: #fff; margin-bottom: 0.5rem;">"What the Fuck Did You Just Do?"</h2>
+        <p style="color: #a9b1d6;">Two who have crossed the dark river and returned. Both carry debts to the Dreaming Deep.</p>
+        <div style="margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 400px; margin-left: auto; margin-right: auto; font-size: 0.9rem;">
+          <div style="text-align: left;">
+            <div style="color: var(--neon-cyan);">Marcus Varro</div>
+            <div style="color: #6b7280;">HP: 15/28</div>
           </div>
-
-          <div class="scroll-indicator">
-            <span>INITIATE SEQUENCE</span>
-            <div class="scroll-line"></div>
+          <div style="text-align: left;">
+            <div style="color: var(--neon-magenta);">Cassia Nereia</div>
+            <div style="color: #6b7280;">HP: 1/22 (Resurrected)</div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- CHAPTER 1: GENESIS -->
-      <section class="story-section" id="genesis">
-        <div class="section-marker">
-          <span class="marker-label">PHASE 01</span>
-          <span class="marker-line"></span>
-        </div>
-        
-        <div class="story-content">
-          <div class="narrative-block">
-            <h2>Genesis: The Prompt</h2>
-            <div class="prose">
-              <p>The user provided a minimal prompt: <strong>"Mythic, Roman, Local, Just arrived at port."</strong></p>
-              <p>From these four keywords, the Agent had to construct a coherent setting and a player character. This is standard LLM behavior, but the <em>execution</em> via MCP tools shows the difference between "chatting" and "gaming".</p>
-            </div>
-            
-            <div class="log-container">
-              <div class="log-header">
-                <span>TOOL_CHAIN_EXECUTION</span>
-                <span>STATUS: SUCCESS</span>
-              </div>
-              <div class="log-entry">
-                <span class="log-timestamp">00:02:15</span>
-                <span class="log-message">create_world({ name: "Thyrsus Mare", theme: "Mythic Roman" })</span>
-              </div>
-              <div class="log-entry">
-                <span class="log-timestamp">00:02:18</span>
-                <span class="log-message">create_character({ 
-  name: "Marcus Varro", 
-  class: "Revenant Legionnaire", 
-  background: "Returned Dead",
-  inventory: ["Gladius", "Coin for Ferryman"] 
-})</span>
-              </div>
-            </div>
+      <div class="cta-section" style="text-align: center; margin-top: 2rem; margin-bottom: 4rem;">
+        <a href="/" class="cta-button">&lt; RETURN_TO_HOME</a>
+      </div>
 
-            <div class="analysis-sidebar">
-              <h4 class="analysis-title">Emergent Design</h4>
-              <p>"Revenant Legionnaire" is not a D&D 5e class. The Agent hallucinated it to fit the "Mythic Roman" theme. However, because the MCP server schema is flexible (`class` is just a string), the system accepted it.</p>
-              <p>Crucially, the Agent then <em>supported</em> this hallucination with checks. When Marcus asks if he can sense spirits later, the Agent checks its own context, sees "Revenant", and grants the "Death's Witness" ability. <strong>The hallucination became canon mechanics.</strong></p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CHAPTER 2: ECONOMY -->
-      <section class="story-section" id="economy">
-        <div class="section-marker">
-          <span class="marker-label">PHASE 02</span>
-          <span class="marker-line"></span>
-        </div>
-        
-        <div class="story-content">
-          <div class="narrative-block">
-            <h2>The Economy of Failure</h2>
-            <div class="prose">
-              <p>Most AI GMs are too nice. They fudge rolls to keep the story moving. In Act I, Marcus enters the <strong class="highlight">Drowned Wolf</strong> tavern and challenges Petra, a dock boss, to arm wrestling. He bets everything he has: 3 silver coins.</p>
-            </div>
-          </div>
-
-          <div class="dialogue-block">
-            <div class="dialogue player">
-              <span class="speaker">MARCUS</span>
-              <p>I drop my three silver and the lone copper on the table. "What's the buy-in?"</p>
-            </div>
-          </div>
-
-          <div class="log-container">
-             <div class="log-header">
-               <span>RNG_EVENT_LOG</span>
-               <span>SOURCE: DND_MCP_SERVER</span>
-             </div>
-             <div class="log-entry">
-               <span class="log-timestamp">00:15:42</span>
-               <span class="log-message">roll_dice({ check: "Strength (Athletics)", dc: 18 }) // DC set high for "Dock Boss"</span>
-             </div>
-             <div class="log-entry">
-               <span class="log-timestamp">00:15:43</span>
-               <span class="log-message">RESULT: 11 (Fail)</span>
-             </div>
-             <div class="log-entry log-error">
-               <span class="log-timestamp">00:15:44</span>
-               <span class="log-message">update_character({ funds: 0 }) // REMOVED ALL CURRENCY</span>
-             </div>
-          </div>
-
-          <div class="analysis-sidebar">
-            <h4 class="analysis-title">Narrative Consequence</h4>
-            <p>The Agent didn't offer a "pity refund." It cleaned out the player's inventory. This failure was critical: it changed Marcus's motivation from "wandering adventurer" to "desperate mercenary." He <em>had</em> to take Cassia's dangerous mission because he couldn't afford a room for the night.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CHAPTER 3: THE GLITCH -->
-      <section class="story-section" id="glitch">
-         <div class="section-marker">
-           <span class="marker-label">PHASE 03</span>
-           <span class="marker-line"></span>
-         </div>
-         
-         <div class="story-content">
-           <div class="narrative-block">
-             <h2>The Glitch & The Fix</h2>
-             <div class="bug-block">
-               <span class="bug-badge">SYSTEM FAILURE</span>
-               <h3>The Armor Class Bug</h3>
-               <div class="prose">
-                 <p>Before leaving for the island, the user asked to equip a new shield. The Agent called `equip_item`. The inventory updated, but the AC (Armor Class) remained at 16. It should have been 18.</p>
-               </div>
-               
-               <div class="log-container">
-                 <div class="log-entry">
-                   <span class="log-timestamp">00:42:15</span>
-                   <span class="log-message">User: "Equip the shield see if that works"</span>
-                 </div>
-                 <div class="log-entry log-error">
-                   <span class="log-timestamp">00:42:18</span>
-                   <span class="log-message">Alert: AC did not update. Expected 18, got 16.</span>
-                 </div>
-               </div>
-
-               <div class="prose">
-                 <p><strong>Here is where the Agentic Mode shone.</strong> Instead of hallucinating "Okay, AC is 18 now" and moving on, the Agent <strong>stopped the game</strong>.</p>
-                 <ol>
-                   <li>It diagnosed that `inventory-tools.ts` lacked logic to recalculate stats on equip.</li>
-                   <li>It opened the file `inventory-tools.ts`.</li>
-                   <li>It wrote a patch to handle `acBonus` properties.</li>
-                   <li>It re-compiled the server.</li>
-                   <li>It tested the fix with unequip/equip.</li>
-                 </ol>
-                 <p>Only <em>after</em> the code was fixed did it resume the narrative. The DM became a Developer for 5 minutes, then went back to being a DM.</p>
-               </div>
-             </div>
-           </div>
-           
-           <div class="tool-calls">
-             <div class="tool-header">// PATCH_APPLIED</div>
-             <pre><code>// Shield: { "acBonus": 2 }
-// Before: Ignored
-// After: character.ac += item.properties.acBonus</code></pre>
-           </div>
-         </div>
-      </section>
-
-      <!-- CHAPTER 4: THE DEEP -->
-      <section class="story-section dark-section" id="deep">
-        <div class="section-marker">
-          <span class="marker-label">PHASE 04</span>
-          <span class="marker-line"></span>
-        </div>
-        
-        <div class="story-content">
-          <div class="narrative-block">
-            <h2>The Dreaming Deep</h2>
-            <div class="prose">
-              <p>On the Silent Isle, the "dungeon" was a single room: a black pool, six comatose sailors, and a bound entity. The Entity offered a classic riddle ("What breaks the chain?").</p>
-              <p>The user's response was philosophical: "My death freed me, I break the chains."</p>
-            </div>
-            
-            <div class="analysis-sidebar">
-              <h4 class="analysis-title">The "Coin Flip" Mechanic</h4>
-              <p>After breaking the chains, the user had to decide the fate of the sailors who were "anchoring" the god. The user invented a mechanic on the spot:</p>
-              <p><em>"I toss the bronze coin... 1 - no witnesses, 2 - divine mercy."</em></p>
-              <p>The Agent accepted this constraints-based roleplay. It rolled a d2. It landed on 2.</p>
-              <p>This simple binary choice—dictated by the dice—saved six NPC lives. If it had rolled a 1, the Agent was prepared to execute the Massacre scenario.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CHAPTER 5: COMBAT -->
-      <section class="story-section combat-section" id="combat">
-        <div class="section-marker">
-          <span class="marker-label">PHASE 05</span>
-          <span class="marker-line"></span>
-        </div>
-        
-        <div class="story-content">
-           <div class="narrative-block">
-             <h2>The Butcher's Bill</h2>
-             <div class="prose">
-               <p>The finale at Warehouse Nine was where the simulation turned brutal. No narrative armor. No "cutscene" protection.</p>
-               <p>Cassia Nereia, the quest giver, joined the fight as an ally. The player (Marcus) made a tactical choice: <strong>Flank the North Guard.</strong> This left Cassia exposed to the South Guard.</p>
-             </div>
-
-             <div class="log-container">
-               <div class="log-header">
-                 <span>COMBAT_LOG_EXTRACT</span>
-                 <span>ROUND: 03-04</span>
-               </div>
-               <div class="log-entry">
-                 <span class="log-timestamp">ROUND 3</span>
-                 <span class="log-message">South Guard attacks Cassia.</span>
-               </div>
-               <div class="log-entry log-error">
-                 <span class="log-timestamp">ROLL</span>
-                 <span class="log-message">NATURAL 20 (Critical Hit) -> 17 Damage.</span>
-               </div>
-               <div class="log-entry">
-                 <span class="log-timestamp">STATUS</span>
-                 <span class="log-message">Cassia HP: 22 -> 5 (Critical Condition)</span>
-               </div>
-               <div class="log-entry">
-                 <span class="log-timestamp">ROUND 4</span>
-                 <span class="log-message">Corvus casts "Drowning Grasp". Damage: 6.</span>
-               </div>
-               <div class="log-entry log-error">
-                 <span class="log-timestamp">STATUS</span>
-                 <span class="log-message">Cassia HP: 5 -> 0 (UNCONSCIOUS)</span>
-               </div>
-               <div class="log-entry">
-                 <span class="log-timestamp">ACTION</span>
-                 <span class="log-message">South Guard executes Coup de Grâce (Auto-Crit on Unconscious).</span>
-               </div>
-               <div class="log-entry log-error">
-                 <span class="log-timestamp">RESULT</span>
-                 <span class="log-message">DEATH SAVES FAILED: 3/3. CASSIA NEREIA IS DEAD.</span>
-               </div>
-             </div>
-
-             <div class="analysis-sidebar">
-               <h4 class="analysis-title">Honesty in Simulation</h4>
-               <p>The user tried to intervene: <em>"Cassia needs to power through! (do i have a potion)"</em>.</p>
-               <p>The Agent checked the inventory. <code>flask_of_oil</code>, <code>spirits</code>, <code>rope</code>. No potions.</p>
-               <p>The Agent replied: <strong>"No healing potions in your kit."</strong></p>
-               <p>It didn't spawn a potion to save the story. It let the NPC die. This created a genuine emotional spike—Marcus's subsequent "charging pin" attack on Corvus was fueled by actual player frustration and vengeance, not just roleplay.</p>
-             </div>
-           </div>
-        </div>
-      </section>
-
-      <!-- EPILOGUE -->
-      <section class="epilogue">
-        <div class="epilogue-content">
-          <h2>The Verdict</h2>
-          <p>This session demonstrated that an AI Agent, equipped with the right MCP tools, can function as a "Game Engine" rather than just a chatbot. It maintained state, respected the economy, enforced rules even when inconvenient, and even maintained its own codebase mid-game.</p>
-          
-          <div class="session-stats">
-            <div class="stat-row">
-              <span class="stat-name">Total Tokens</span>
-              <span class="stat-value">~120k</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-name">Characters Created</span>
-              <span class="stat-value">1</span>
-            </div>
-             <div class="stat-row">
-              <span class="stat-name">Bugs Fixed</span>
-              <span class="stat-value">1 (Critical)</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-name">Major Deaths</span>
-              <span class="stat-value">1</span>
-            </div>
-          </div>
-          
-          <p class="closing-quote">"FATE CHOOSES."</p>
-          <div style="margin-top: 2rem;">
-            <a href="/" class="cta-button">&lt; RETURN_TO_HOME</a>
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <p>&copy; 2025 Quest Keeper AI Case Studies.</p>
-      </footer>
     </div>
+  </div>
 
-    <script>
-      // Intersection Observer for scroll animations
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.story-section, .narrative-block, .dialogue-block, .insight-card, .log-container, .bug-block').forEach(el => {
-        el.classList.add('reveal');
-        observer.observe(el);
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
       });
-    </script>
-  </body>
+    });
+    document.querySelectorAll('.log-node, .meta-comment').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
 </html>

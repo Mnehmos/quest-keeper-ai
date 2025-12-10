@@ -874,3 +874,148 @@
   font-family: "Share Tech Mono", monospace;
   text-transform: uppercase;
 }
+
+/* --- TRANSCRIPT STYLES --- */
+
+.transcript-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.transcript-container::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(42, 42, 53, 0.5);
+  z-index: 0;
+}
+
+.log-node {
+  position: relative;
+  padding-left: 50px;
+  margin-bottom: 2.5rem;
+}
+
+.log-node::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 10px;
+  width: 9px;
+  height: 9px;
+  background: #1f1f2e;
+  border: 1px solid #2a2a35;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.log-node.user::before {
+  border-color: var(--neon-cyan);
+  background: rgba(0, 255, 255, 0.1);
+}
+.log-node.system::before {
+  border-color: var(--neon-green);
+  background: rgba(0, 255, 136, 0.1);
+}
+.log-node.ai::before {
+  border-color: var(--neon-magenta);
+  background: rgba(255, 0, 255, 0.1);
+}
+.log-node.error::before {
+  border-color: #ff5555;
+  background: rgba(255, 85, 85, 0.1);
+}
+
+/* Node Header */
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.8rem;
+}
+
+.timestamp {
+  color: #6b7280;
+}
+.actor {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.actor.USER {
+  color: var(--neon-cyan);
+}
+.actor.SYSTEM {
+  color: var(--neon-green);
+}
+.actor.AI {
+  color: var(--neon-magenta);
+}
+.actor.ERROR {
+  color: #ff5555;
+}
+
+/* Node Content */
+.node-content {
+  background: rgba(13, 13, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #c0caf5;
+}
+
+.node-content.system-log {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  background: #0d0d12;
+  border-color: #2a2a35;
+  color: #a9b1d6;
+}
+
+/* Meta Commentary (Interleaved) */
+.meta-comment {
+  margin: 1.5rem 0 1.5rem 50px;
+  background: rgba(0, 255, 136, 0.03);
+  border-left: 2px solid var(--neon-green);
+  padding: 1rem 1.5rem;
+  position: relative;
+}
+
+.meta-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--neon-green);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meta-body {
+  font-size: 0.9rem;
+  color: #a9b1d6;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Specific Highlights */
+.command-text {
+  color: var(--neon-cyan);
+  font-family: "IBM Plex Mono", monospace;
+}
+.tool-name {
+  color: var(--neon-orange);
+}
+.prop-value {
+  color: #f1fa8c;
+}
